@@ -25,14 +25,14 @@ version: 1.0.0
 author:
   name: kh-mo
   description: Wanna be a <strong>researcher & engineer</strong>.
-  gravatar: 3c2986ad7ac1f2230ea3596f44563328 # md5 hash of your email address
+#  gravatar: 3c2986ad7ac1f2230ea3596f44563328 # md5 hash of your email address
   contact:
     #linkedin:  https://www.linkedin.com/in/lizhihao
     github:    https://github.com/kh-mo
     # facebook:  <hide>
     #twitter:   https://twitter.com/Li_Zhihao
     #weibo:     http://weibo.com/41173780
-    email:     momkdh2@naver.com
+    email:     mailto:momkdh2@naver.com
 
 # Navigation (2nd level links supported)
 nav:
