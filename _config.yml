@@ -25,7 +25,7 @@ version: 1.0.0
 # About/contact
 author:
   name: kh-mo
-  description: Wanna be <br> a <strong>researcher & engineer</strong>.
+  description: Wanna be a <br><strong>Researcher & Engineer</strong>.
 #  gravatar: 3c2986ad7ac1f2230ea3596f44563328 # md5 hash of your email address
   contact:
     #linkedin:  https://www.linkedin.com/in/lizhihao
@@ -43,10 +43,10 @@ nav:
     - '/Advanced Deeplearning/'
     - { Summarization: '/Advanced Deeplearning/Summarization/' }
     - { Translation: '/Advanced Deeplearning/Translation/' }
-  About:
-    - '/about/'
-  Github Project:
-    - 'http://codinfox.github.io/'
+#  About:
+#    - '/about/'
+#  Github Project:
+#    - 'http://codinfox.github.io/'
 
 # Where are tags and categories displayed
 tag_page: '/Advanced Deeplearning/Translation/'
