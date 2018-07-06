@@ -47,6 +47,8 @@ nav:
     - '/about/'
   Github Project:
     - 'http://codinfox.github.io/'
+  Advanced Deeplearning:
+    - { Summarization: '/blog/summarization/' }
 
 # Where are tags and categories displayed
 tag_page: '/blog/tags/'
