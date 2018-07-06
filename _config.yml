@@ -39,6 +39,8 @@ author:
 nav:
   Home:
     - '/'
+  Daily:
+    - '/Daily/'
   Advanced Deeplearning:
     - '/Advanced Deeplearning/'
     - { Summarization: '/Advanced Deeplearning/Summarization/' }
@@ -51,6 +53,7 @@ nav:
 #    - { Summarization: '/Advanced Deeplearning/summarization/' }
 
 # Where are tags and categories displayed
+Daily_page: '/Daily/Daily/'
 tag_page: '/Advanced Deeplearning/tags/'
 Summarization_page: '/Advanced Deeplearning/Summarization/'
 #summarization_page: '/Advanced Deeplearning/summarization/'
