@@ -39,10 +39,6 @@ author:
 nav:
   Home:
     - '/'
-  Daily:
-    - '/Daily/'
-    - { Day: '/Advanced Deeplearning/Day/' }
-    - { Test: '/Advanced Deeplearning/Test/' }
   Advanced Deeplearning:
     - '/Advanced Deeplearning/'
     - { Summarization: '/Advanced Deeplearning/Summarization/' }
@@ -53,8 +49,6 @@ nav:
     - 'http://codinfox.github.io/'
 
 # Where are tags and categories displayed
-Day_page: '/Advanced Deeplearning/Day/'
-Test_page: '/Advanced Deeplearning/Test/'
 Translation_page: '/Advanced Deeplearning/Translation/'
 Summarization_page: '/Advanced Deeplearning/Summarization/'
 
