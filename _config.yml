@@ -41,18 +41,21 @@ nav:
     - '/'
   Daily:
     - '/Daily/'
+    - { Test: '/Advanced Deeplearning/Test/' }
   Advanced Deeplearning:
     - '/Advanced Deeplearning/'
     - { Summarization: '/Advanced Deeplearning/Summarization/' }
-    - { Tags: '/Advanced Deeplearning/tags/' }
+    - { Tags: '/Advanced Deeplearning/Translation/' }
   About:
     - '/about/'
   Github Project:
     - 'http://codinfox.github.io/'
 
 # Where are tags and categories displayed
-tag_page: '/Advanced Deeplearning/tags/'
-category_page: '/Advanced Deeplearning/Summarization/'
+Day_page: '/Advanced Deeplearning/Day/'
+Test_page: '/Advanced Deeplearning/Test/'
+Translation_page: '/Advanced Deeplearning/Translation/'
+Summarization_page: '/Advanced Deeplearning/Summarization/'
 
 hero:
   image: /public/img/we_will_be_giants_by_yalestewart.jpg
