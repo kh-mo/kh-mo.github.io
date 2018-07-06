@@ -53,6 +53,7 @@ nav:
 # Where are tags and categories displayed
 tag_page: '/blog/tags/'
 category_page: '/blog/categories/'
+summarization_page: '/blog/summarization/'
 
 hero:
   image: /public/img/we_will_be_giants_by_yalestewart.jpg
