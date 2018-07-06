@@ -47,13 +47,13 @@ nav:
     - '/about/'
   Github Project:
     - 'http://codinfox.github.io/'
-  Advanced Deeplearning:
-    - { Summarization: '/blog/summarization/' }
+#  Advanced Deeplearning:
+#    - { Summarization: '/blog/summarization/' }
 
 # Where are tags and categories displayed
 tag_page: '/blog/tags/'
 category_page: '/blog/categories/'
-summarization_page: '/blog/summarization/'
+#summarization_page: '/blog/summarization/'
 
 hero:
   image: /public/img/we_will_be_giants_by_yalestewart.jpg
