@@ -4,6 +4,7 @@ tagline: for machine learning # 'A Jekyll theme based on Lanyon'
 description:  'A Jekyll theme adapted from <a href="http://lanyon.getpoole.com/" target="_blank">Lanyon</a>. Made by <a href="http://codinfox.github.io" target="_blank">@codinfox</a>.'
 baseurl: ""
 url: http://kh-mo.github.io
+profile: /public/img/we_will_be_giants_by_yalestewart.jpg
 
 # Site configurations
 gems:
