@@ -41,11 +41,12 @@ nav:
     - '/'
   Daily:
     - '/Daily/'
+    - { Day: '/Advanced Deeplearning/Day/' }
     - { Test: '/Advanced Deeplearning/Test/' }
   Advanced Deeplearning:
     - '/Advanced Deeplearning/'
     - { Summarization: '/Advanced Deeplearning/Summarization/' }
-    - { Tags: '/Advanced Deeplearning/Translation/' }
+    - { Translation: '/Advanced Deeplearning/Translation/' }
   About:
     - '/about/'
   Github Project:
