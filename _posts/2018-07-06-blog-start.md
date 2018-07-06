@@ -1,7 +1,8 @@
 ---
 layout: post
 title: 블로그 첫 포스팅
-category: start
+category: daily
+tag: start
 ---
 
 오만 시행착오 끝에 첫 블로그 포스팅을 하게 되었습니다!

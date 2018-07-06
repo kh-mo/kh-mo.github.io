@@ -49,8 +49,8 @@ nav:
     - 'http://codinfox.github.io/'
 
 # Where are tags and categories displayed
-Translation_page: '/Advanced Deeplearning/Translation/'
-Summarization_page: '/Advanced Deeplearning/Summarization/'
+tag_page: '/Advanced Deeplearning/Translation/'
+category_page: '/Advanced Deeplearning/Summarization/'
 
 hero:
   image: /public/img/we_will_be_giants_by_yalestewart.jpg
