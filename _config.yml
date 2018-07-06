@@ -17,7 +17,7 @@ sass:
   style: compressed
   sass_dir: _scss
 paginate: 5
-paginate_path: '/Advanced Deeplearning/page:num', 'Daily/page:num'
+paginate_path: '/Advanced Deeplearning/page:num'
 permalink: pretty
 
 version: 1.0.0
@@ -51,9 +51,8 @@ nav:
     - 'http://codinfox.github.io/'
 
 # Where are tags and categories displayed
-Daily_page: '/Daily/Day/'
 tag_page: '/Advanced Deeplearning/tags/'
-Summarization_page: '/Advanced Deeplearning/Summarization/'
+category_page: '/Advanced Deeplearning/Summarization/'
 
 hero:
   image: /public/img/we_will_be_giants_by_yalestewart.jpg
