@@ -16,7 +16,7 @@ excerpt_separator: "<!-- more -->"
 sass:
   style: compressed
   sass_dir: _scss
-paginate: 1
+paginate: 2
 paginate_path: '/Advanced Deeplearning/page:num'
 permalink: pretty
 
