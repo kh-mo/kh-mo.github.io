@@ -43,6 +43,7 @@ nav:
     - '/Advanced Deeplearning/'
     - { Summarization: '/Advanced Deeplearning/Summarization/' }
     - { Translation: '/Advanced Deeplearning/Translation/' }
+    - { Test: '/Advanced Deeplearning/Test/' }
 #  About:
 #    - '/about/'
 #  Github Project:

@@ -3,6 +3,7 @@ layout: post
 title: 블로그 첫 포스팅
 category: daily
 tag: start
+a1: please
 ---
 
 오만 시행착오 끝에 첫 블로그 포스팅을 하게 되었습니다!
