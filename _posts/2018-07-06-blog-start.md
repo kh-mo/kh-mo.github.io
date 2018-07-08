@@ -1,8 +1,7 @@
 ---
 layout: post
 title: 블로그 첫 포스팅
-section: Daily
-category: start
+category: Daily
 tag: start2
 ---
 
