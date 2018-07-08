@@ -39,10 +39,14 @@ author:
 nav:
   Home:
     - '/'
+  Basic Deeplearning:
+    - '/Basic Deeplearning/'
   Advanced Deeplearning:
     - '/Advanced Deeplearning/'
     - { Category: '/Advanced Deeplearning/Summarization/' }
     - { Tag: '/Advanced Deeplearning/Translation/' }
+  Dataset:
+    - '/Dataset/'
 #    - { Test: '/Advanced Deeplearning/Test/' }
 #    - { Test2: '/Advanced Deeplearning/Test2/' }
 #  About:
