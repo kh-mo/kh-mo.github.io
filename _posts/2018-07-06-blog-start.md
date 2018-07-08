@@ -1,9 +1,9 @@
 ---
 layout: post
 title: 블로그 첫 포스팅
-section: Daily,
-category: daily
-tag: start
+section: Daily
+category: start
+tag: start2
 ---
 
 오만 시행착오 끝에 첫 블로그 포스팅을 하게 되었습니다!
