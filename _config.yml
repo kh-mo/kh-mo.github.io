@@ -5,7 +5,6 @@ description:  'A Jekyll theme adapted from <a href="http://lanyon.getpoole.com/"
 baseurl: ""
 url: http://kh-mo.github.io
 profile: /public/img/we_will_be_giants_by_yalestewart.jpg
-section:
 
 # Site configurations
 gems:
@@ -69,3 +68,6 @@ hero:
 mathjax: true # whether support mathjax
 google_analytics_token: 'UA-00000000-1' # leave blank if you don't want google analytics
 disqus_short_name: 'your_short_name' # leave blank if you don't want disqus
+
+# custom variable
+section: ""
