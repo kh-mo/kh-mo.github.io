@@ -3,10 +3,12 @@ layout: page
 title: Daily
 ---
 
+{% assign checker = post.section %}
+
 <div class="tags-expo">
   <div class="tags-expo-list">
     {% for tag in site.categories %}
-      {% if post.section == "Daily" %}
+      {% if post.section == checker %}
       <a href="#{{ tag[0] | slugify }}" class="post-tag">{{ tag[0] }}</a>
     {% endfor %}
   </div>
