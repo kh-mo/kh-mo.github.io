@@ -39,6 +39,8 @@ author:
 nav:
   Home:
     - '/'
+  Update:
+    - '/'
   Daily:
     - '/Daily/'
   Basic Deeplearning:
