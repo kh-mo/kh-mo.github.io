@@ -5,6 +5,7 @@ description:  'A Jekyll theme adapted from <a href="http://lanyon.getpoole.com/"
 baseurl: ""
 url: http://kh-mo.github.io
 profile: /public/img/we_will_be_giants_by_yalestewart.jpg
+section:
 
 # Site configurations
 gems:
