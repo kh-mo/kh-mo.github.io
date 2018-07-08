@@ -6,15 +6,18 @@ title: Summarization
 <div class="tags-expo">
   <div class="tags-expo-list">
     {% for tag in site.categories.summarization_cat %}
-    <a href="#{{ tag[0] | slugify }}" class="post-tag">{{ tag[0] }}</a>
+    <!--<a href="#{{ tag[0] | slugify }}" class="post-tag">{{ tag[0] }}</a>-->
+    {{ tag }}
     {% endfor %}
   </div>
   <hr/>
   <div class="tags-expo-section">
     {% for tag in site.categories.summarization_cat %}
-    <h2 id="{{ tag[0] | slugify }}">{{ tag[0] }}</h2>
+    <!--<h2 id="{{ tag[0] | slugify }}">{{ tag[0] }}</h2>-->
+    {{ tag }}
     <ul class="tags-expo-posts">
-      {% for post in tag[1] %}
+      <!--{% for post in tag[1] %}-->
+      {% for post in tag %}
         <a class="post-title" href="{{ site.baseurl }}{{ post.url }}">
       <li>
         {{ post.title }}
