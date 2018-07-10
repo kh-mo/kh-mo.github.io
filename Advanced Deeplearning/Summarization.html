@@ -6,7 +6,9 @@ title: Summarization
 <div class="tags-expo">
   <div class="tags-expo-list">
     {% for tag in site.categories %}
-    <a href="#{{ tag[0] | slugify }}" class="post-tag">{{ tag[0] }}</a>
+      {% if tag[0] contains "summarization" %}
+      <a href="#{{ tag[0] | slugify }}" class="post-tag">{{ tag[0] }}</a>
+      {% endif %}
     {% endfor %}
   </div>
   <hr/>
