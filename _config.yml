@@ -39,7 +39,7 @@ author:
 nav:
   Home:
     - '/'
-  Update4:
+  Update0:
     - '/'
   Daily:
     - '/Daily/'
@@ -51,10 +51,8 @@ nav:
     - { Tag: '/Advanced Deeplearning/Translation/' }
   Dataset:
     - '/Dataset/'
-#    - { Test: '/Advanced Deeplearning/Test/' }
-#    - { Test2: '/Advanced Deeplearning/Test2/' }
-#  About:
-#    - '/about/'
+  Unclassified:
+    - '/Unclassified/'
 #  Github Project:
 #    - 'http://codinfox.github.io/'
 
