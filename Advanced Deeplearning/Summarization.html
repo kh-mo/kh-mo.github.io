@@ -8,7 +8,7 @@ title: Summarization
     <!--{% for tag in site.categories %}-->
     <!--{% if tag == null %}-->
     {% if site.categories contains "summarization" %}
-    <!--{% for tag in site.categories %}-->
+    {% for tag in site.categories %}
     <a href="#{{ tag[0] | slugify }}" class="post-tag">{{ tag[0] }}</a>
     {% endfor %}
   </div>
