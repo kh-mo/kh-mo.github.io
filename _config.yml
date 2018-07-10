@@ -45,8 +45,8 @@ nav:
     - '/Basic Deeplearning/'
   Advanced Deeplearning:
     - '/Advanced Deeplearning/'
-    - { Category: '/Advanced Deeplearning/Summarization/' }
-    - { Tag: '/Advanced Deeplearning/Translation/' }
+    - { Summarization: '/Advanced Deeplearning/Summarization/' }
+    - { Translation: '/Advanced Deeplearning/Translation/' }
   Dataset:
     - '/Dataset/'
   Unclassified:
