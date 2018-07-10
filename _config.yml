@@ -44,7 +44,8 @@ nav:
   Basic Deeplearning:
     - '/Basic Deeplearning/'
   Advanced Deeplearning:
-    - '/Advanced Deeplearning/'
+    -
+#    - '/Advanced Deeplearning/'
     - { Summarization: '/Advanced Deeplearning/Summarization/' }
     - { Translation: '/Advanced Deeplearning/Translation/' }
   Dataset:
