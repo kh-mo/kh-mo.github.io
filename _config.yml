@@ -40,7 +40,7 @@ nav:
   Home:
     - '/'
   Daily:
-    - '/Daily/'
+    - '/Daily/Daily/'
   Basic Deeplearning:
     - '/Basic Deeplearning/'
   Advanced Deeplearning:
