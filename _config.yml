@@ -42,16 +42,19 @@ nav:
   Daily:
     - '/Daily/'
   Basic Deeplearning:
-    - '/Basic Deeplearning/'
+    -
+#    - '/Basic Deeplearning/'
   Advanced Deeplearning:
     -
 #    - '/Advanced Deeplearning/'
     - { Summarization: '/Advanced Deeplearning/Summarization/' }
     - { Translation: '/Advanced Deeplearning/Translation/' }
   Dataset:
-    - '/Dataset/'
+    -
+#    - '/Dataset/'
   Unclassified:
-    - '/Unclassified/'
+    -
+#    - '/Unclassified/'
 #  Github Project:
 #    - 'http://codinfox.github.io/'
 
@@ -66,5 +69,5 @@ hero:
 # Puglins
 mathjax: true # whether support mathjax
 google_analytics_token: 'UA-00000000-1' # leave blank if you don't want google analytics
-disqus_short_name: 'your_short_name' # leave blank if you don't want disqus
+disqus_short_name: 'kh-mo' # leave blank if you don't want disqus
 
