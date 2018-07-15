@@ -22,4 +22,6 @@ LSTM은 기존의 vanilla RNN보다 긴 입력 시퀀스를 잘 처리하고  va
 Seq2Seq 모델은 LSTM 아키텍처 2개를 사용해 하나는 인코더(encoder), 하나는 디코더(decoder)로 사용하는 모델이 되겠습니다.
 이런 구성을 취한 이유는 이 논문이 도전했던 문제가 입력과 출력 시퀀스 길이가 다른 machine translation 문제였기 때문입니다.
 논문에서 나타난 그림을 보면 좀 더 이해에 도움이 될 것 같습니다.
-![Figure1 of Sequence to Sequence Learning with Neural Networks](/public/img/seq2seq-model-figure1.JPG "이미지제목")
+
+![](/public/img/seq2seq-model-figure1.JPG "Figure1 of Sequence to Sequence Learning with Neural Networks")
+
