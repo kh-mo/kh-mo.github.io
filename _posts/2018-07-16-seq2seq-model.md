@@ -93,7 +93,8 @@ Seq2seq 모델을 통해 문장을 번역하면 딱 1개 번역 결과를 얻게
 ## 결과
 본 모델의 번역 성능을 측정하기 위해 사용한 지표는 BLEU 스코어입니다.
 많은 NLP 문제에서 이 지표를 바탕으로 성능을 측정하곤 합니다.
+
 |  <center>Method</center> |  <center>test BLEU score</center> |
-|:-------|:-------:|
+|:--------|:--------:|
 |Baseline System(SMT) | <center>33.30</center> |
 |Ensemble of 5 reversed LSTMs, beam size 12 | <center>34.81</center> |
