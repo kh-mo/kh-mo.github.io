@@ -90,8 +90,10 @@ Seq2seq 모델을 통해 문장을 번역하면 딱 1개 번역 결과를 얻게
 물론 이 모든 단어를 다 사용하는 것이 아니고, 빈도수를 기준으로 단어를 정렬하여 영어 단어 16만개 프랑스 단어 8만개를 사용했습니다.
 그 외 단어는 \<UNK\> 토큰으로 대체하여 사용했습니다.
 
-
+## 결과
+본 모델의 번역 성능을 측정하기 위해 사용한 지표는 BLEU 스코어입니다.
+많은 NLP 문제에서 이 지표를 바탕으로 성능을 측정하곤 합니다.
 |  <center>Method</center> |  <center>test BLEU score</center> |
-|:--------|:--------:|
+|:---|:---:|
 |Baseline System(SMT) | <center>33.30</center> |
 |Ensemble of 5 reversed LSTMs, beam size 12 | <center>34.81</center> |
