@@ -1,6 +1,6 @@
 ---
 layout: post
-title: sequence to sequence 모델
+title: NLP의 새 트렌드, sequence to sequence 모델
 category: Translation
 ---
 
