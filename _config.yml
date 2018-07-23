@@ -49,6 +49,7 @@ nav:
 #    - '/Advanced Deeplearning/'
     - { Summarization: '/Advanced Deeplearning/Summarization/' }
     - { Translation: '/Advanced Deeplearning/Translation/' }
+    - { Image Generation: '/Advanced Deeplearning/Image Generation/' }
   Dataset:
     -
 #    - '/Dataset/'
