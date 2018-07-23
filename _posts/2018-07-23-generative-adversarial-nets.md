@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 딥러닝 이미지 생성 모델의 새 트렌드, Generative Adversarial Network
+title: 딥러닝 이미지 생성 모델의 새 트렌드, GAN
 category: Image Generation
 ---
 
