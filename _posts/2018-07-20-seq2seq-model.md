@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 딥러닝 자연어처리 새 트렌드, sequence to sequence 모델
+title: 딥러닝 자연어처리 새 트렌드, seq2seq 모델
 category: Translation
 ---
 
