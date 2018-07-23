@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 이미지 생성 모델의 새 트랜드, Generative Adversarial Network
+title: 이미지 생성 모델의 새 트렌드, Generative Adversarial Network
 category: Image Generation
 ---
 
