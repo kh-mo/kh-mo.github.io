@@ -32,4 +32,4 @@ $$\underset{G}{min}\underset{D}{max}V(D,G)=E_{x \sim {P}_{data}(x)}[logD(x)]+E_{
 
 먼저 D는 실제와 가짜 이미지를 확률값으로 구분합니다.
 실제 이미지인 경우는 1에 가까운 확률값을 할당하고 가짜 이미지는 0에 가까운 확률값을 할당해야 합니다.
-즉, 목적함수의 $E_{x \sim {P}_{data}(x)}[logD(x)]$과 $E_{z \sim {p}_z(z)}[log(1-D(G(z)))]$을 최대화 시켜야 합니다.<br>
+즉, 목적함수의 ${E_{x \sim {P}_{data}(x)}[logD(x)]}$과 ${E_{z \sim {p}_z(z)}[log(1-D(G(z)))]}$을 최대화 시켜야 합니다.<br>
