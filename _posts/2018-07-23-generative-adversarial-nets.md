@@ -27,4 +27,5 @@ GAN의 모델 구조는 매우 심플합니다.
 이미지 생성 모델 G가 있고 샘플이 실제 이미지인지 아니면 G가 만든 것인지 구분하는 판별 모델 D가 있는 구조입니다.
 구조 자체는 심플하나, GAN을 이해함에 있어서 중요한 포인트는 학습이 이루어지는 방식을 이해하는 것입니다.
 먼저 GAN의 목적함수는 다음과 같습니다.
-$$\underset{min}{G}\underset{max}{D}V(D,G)=E_x~{P_data(x)}$$
+
+$$\underset{G}{min}\underset{D}{max}V(D,G)=E_{x~P_data(x)}[logD(x)]+E_{z~p_z(z)}[log(1-D(G(z)))]$$
