@@ -28,4 +28,8 @@ GAN의 모델 구조는 매우 심플합니다.
 구조 자체는 심플하나, GAN을 이해함에 있어서 중요한 포인트는 학습이 이루어지는 방식을 이해하는 것입니다.
 먼저 GAN의 목적함수는 다음과 같습니다.
 
-$$\underset{G}{min}\underset{D}{max}V(D,G)=E_{x~P_data(x)}[logD(x)]+E_{z~p_z(z)}[log(1-D(G(z)))]$$
+$$\underset{G}{min}\underset{D}{max}V(D,G)=E_{x\~P_{data}(x)}[logD(x)]+E_{z\~p_z(z)}[log(1-D(G(z)))]$$
+
+먼저 D는 실제와 가짜 이미지를 확률값으로 구분합니다.
+실제 이미지인 경우는 1에 가까운 확률값을 할당하고 가짜 이미지는 0에 가까운 확률값을 할당해야 합니다.
+즉, 목적함수의 $E_{x\~P_{data}(x)}[logD(x)]$과 $E_{z\~p_z(z)}[log(1-D(G(z)))]$을 최대화 시켜야 합니다.<br>
