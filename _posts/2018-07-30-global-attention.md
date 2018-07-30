@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 입력 문장을 모두 고려하는 번역 모델, Global Attention
+title: 입력 시퀀스를 고려한 번역 모델, Global Attention
 category: Translation
 ---
 
