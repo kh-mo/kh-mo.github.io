@@ -7,7 +7,7 @@ category: Translation
 ## Meta Information
 * 제목 : Sequence to Sequence Learning with Neural Networks
 * 2014.09 : arXiv submit
-* 2014.12  : NIPS
+* 2014.12 : NIPS
 
 ## 연구 동기
 이번에 소개할 논문은 시퀀스(sequence)가 있는 데이터를 처리하는 대표적인 딥러닝 모델인 sequence to sequence 모델(이하 seq2seq)입니다.
