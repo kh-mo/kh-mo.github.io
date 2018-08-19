@@ -49,9 +49,10 @@ $$c_{i} = \sum_{j=1}^{T_x} \alpha_{ij}h_{j}$$
 수식으로 설명한 모델 구조는 다소 이해하기 어려울 수 있기 때문에 그림으로 한번 더 살펴보겠습니다.
 우선 본 논문에 나온 아키텍처를 설명하는 그림은 다음과 같습니다.
 
-{: refdef: style="text-align: center;"}
-![](/public/img/global-attention-figure1.JPG "Figure1 of Neural Machine Translation by Jointly Learning to Align and Translate") {.aligncenter}
-{: refdef}
+<center>
+!["Figure1 of Neural Machine Translation by Jointly Learning to Align and Translate"]
+<img src="/public/img/global-attention-figure1.JPG" width="40%">
+</center>
 
 이 그림에서 $X_1, X_2, X_3, X_T$는 인코더 입력 단어들입니다.
 그리고 바로 위 상자에서 $\overrightarrow{h_1}, \overleftarrow{h_1}$이 표현되는데 이는 정방향 RNN과 역방향 RNN을 의미합니다.
