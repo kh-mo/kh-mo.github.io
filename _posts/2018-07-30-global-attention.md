@@ -23,6 +23,10 @@ category: Translation
 기존의 seq2seq 모델에서 사용된 context vector는 인코더의 마지막 hidden state 였습니다.
 그러나 이 벡터는 인코더 입력 정보를 한 벡터로 압축해야 하기 때문에 한계가 있습니다.
 본 논문에서 제안하는 방식은 인코더의 마지막 hidden state 만 쓰는 것이 아니라 인코더의 모든 hidden state를 사용합니다.
+논문에서는 이를 다음과 같은 수식으로 표현합니다.
+
+$$c = q({h_1,...,h_{T_x}})$$
+
 
 
 
