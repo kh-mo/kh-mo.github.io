@@ -27,12 +27,20 @@ category: Translation
 
 $$c = q(\{h_1,...,h_{T_x}\})$$
 
-$h_1$은 인코더의 첫번째 hidden state, $h_{T_x}$는 인코더의 $T_x$번째 hidden state를 의미합니다.
+$h_1$은 인코더의 첫 번째 hidden state, $h_{T_x}$는 인코더의 $T_x$번째 hidden state를 의미합니다.
 이 $T_x$개 인코더 hidden state는 각각 매 순간 입력된 단어에 대한 정보를 담고 있습니다.
-디코더가 RNN의 타임스탭에 따라 한 단어를 생성할 때 마다 모든 인코더의 state와 비교하여 얼마나 정보가 잘 매칭되는지를 계산하는 것이 attention 모델입니다.
+디코더가 RNN의 타임 스탭에 따라 한 단어를 생성할 때 마다 이 모든 인코더의 state와 비교하여 얼마나 정보가 잘 매칭 되는지를 계산하는 것이 attention 모델입니다.
 그 계산 수식은 아래와 같은 과정을 따르게 됩니다.
 
 $$e_{ij} = a(s_{i-1}, h_j)$$
+
+디코더가 $s_i$번 째 단어를 예측할 때 $s_{i-1}$번째 디코더 hidden state와 모든 j개 인코더 hidden state를 a라는 함수를 이용하여 매칭합니다.
+이 a 함수를 alignment model 이라고 부르며 이것은 디코더와 인코더 hidden state 사이의 유사도를 구하는 개념으로 볼 수 있습니다.
+이렇게 $e_{ij}$를 구했으면 이를 softmax 함수를 사용하여 0~1사이로 정규화하여 가중치 형태로 변화시킵니다.
+다음과 같은 수식을 사용합니다.
+
+$$\alpha_{ij} = \frac{exp(e_{ij})}{\sum_{k=1}^{T_x} exp(e_{ik}}$$
+
 
 
 ## 성능 개선을 위한 테크닉
