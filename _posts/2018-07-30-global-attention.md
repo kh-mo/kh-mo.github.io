@@ -57,7 +57,8 @@ $$c_{i} = \sum_{j=1}^{T_x} \alpha_{ij}h_{j}$$
 그리고 바로 위 상자에서 $\overrightarrow{h_1}, \overleftarrow{h_1}$이 표현되는데 이는 정방향 RNN과 역방향 RNN을 의미합니다.
 본 아키텍처는 bidirectional RNN을 사용하기 때문에 그림에서 이렇게 나타내고 있는 것입니다.
 $\overrightarrow{h_1}, \overleftarrow{h_1}$을 합친 것이 위 수식에서 나타내고 있던 인코더의 $h_1$ hidden state 입니다.
-이 hidden state들과 그림 맨 위의 $S_{t-1}$의 사이에
+이 hidden state들과 그림 맨 위의 디코더 hidden state $S_{t-1}$의 사이에 계산을 통해 가중치 $\alpha_{t,i}$를 구할 수 있고 $\bigoplus$는 가중합을 의미합니다.
+이 가중합 결과가 context vector $c_i$가 되고 $S_{t-1}$과 함께 계산하여 $S_t$를 구할 수 있습니다.
 
 ## 성능 개선을 위한 테크닉
 
