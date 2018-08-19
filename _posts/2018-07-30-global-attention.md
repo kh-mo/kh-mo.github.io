@@ -46,6 +46,13 @@ $$\alpha_{ij} = \frac{exp(e_{ij})}{\sum_{k=1}^{T_x} exp(e_{ik})}$$
 
 $$c_{i} = \sum_{j=1}^{T_x} \alpha_{ij}h_{j}$$
 
+수식으로 설명한 모델 구조는 다소 이해하기 어려울 수 있기 때문에 그림으로 한번 더 살펴보겠습니다.
+우선 본 논문에 나온 아키텍처를 설명하는 그림은 다음과 같습니다.
+
+![](/public/img/global-attention-figure1.JPG "Figure1 of Neural Machine Translation by Jointly Learning to Align and Translate")
+
+이 그림에서 $X_1, X_2, X_3, X_T$는 인코더 입력 단어들입니다.
+
 
 ## 성능 개선을 위한 테크닉
 
