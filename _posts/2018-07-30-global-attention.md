@@ -39,8 +39,12 @@ $$e_{ij} = a(s_{i-1}, h_j)$$
 이렇게 $e_{ij}$를 구했으면 이를 softmax 함수를 사용하여 0~1사이로 정규화하여 가중치 형태로 변화시킵니다.
 다음과 같은 수식을 사용합니다.
 
-$$\alpha_{ij} = \frac{exp(e_{ij})}{\sum_{k=1}^{T_x} exp(e_{ik}}$$
+$$\alpha_{ij} = \frac{exp(e_{ij})}{\sum_{k=1}^{T_x} exp(e_{ik})}$$
 
+그리고 이 가중치들을 인코더의 hidden state들과 가중합을 해줌으로써 디코더 i번째 타임 스탭에 대한 context vector를 얻을 수 있습니다.
+수식은 다음과 같습니다.
+
+$$c_{i} = \sum_{j=1}^{T_x} \alpha_{ij}h_{j}$$
 
 
 ## 성능 개선을 위한 테크닉
