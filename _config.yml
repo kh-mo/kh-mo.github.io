@@ -41,20 +41,20 @@ nav:
     - '/'
   Daily:
     - '/Daily/'
-  Basic Deeplearning:
-    -
+#  Basic Deeplearning:
+#    -
 #    - '/Basic Deeplearning/'
   Advanced Deeplearning:
     -
 #    - '/Advanced Deeplearning/'
-    - { Summarization: '/Advanced Deeplearning/Summarization/' }
+#    - { Summarization: '/Advanced Deeplearning/Summarization/' }
     - { Translation: '/Advanced Deeplearning/Translation/' }
-    - { Image Generation: '/Advanced Deeplearning/Image Generation/' }
-  Dataset:
-    -
+#    - { Image Generation: '/Advanced Deeplearning/Image Generation/' }
+#  Dataset:
+#    -
 #    - '/Dataset/'
-  Unclassified:
-    -
+#  Unclassified:
+#    -
 #    - '/Unclassified/'
 #  Github Project:
 #    - 'http://codinfox.github.io/'
