@@ -24,7 +24,7 @@ b = torch.from_numpy(a)
 torch.cuda.is_available()
 
 ## cuda 메모리에 변수 올리기
-y = torch.ones_like(x,device=torch.device("cuda"))
+y = torch.ones_like(x,device=torch.device("cuda"))<br>
 x = x.to(torch.device("cuda"))
 
 ## cuda에서 cpu로 메모리로 변환
@@ -34,19 +34,19 @@ a.to(torch.device("cpu"))
 a.fill_(3.5)
 
 ## torch tensor와 numpy array는 같은 메모리 위치를 참조하기 때문에 하나가 변하면 다른것도 변함
-a = torch.ones(5)
-b = a.numpy()
-a.add_(1)
-print(a)
-print(b)
+a = torch.ones(5)<br>
+b = a.numpy()<br>
+a.add_(1)<br>
+print(a)<br>
+print(b)<br>
 
 ## 크기 10인 torch.tensor를 3으로 채우고 GPU할당
 torch.full((10, ), 3, device=torch.device("cuda"))
 
 ## gradient 계산에 변수를 포함하려면 requires_grad=True로 지정해야 함
-x = torch.ones(2,2, requires_grad=True)
+x = torch.ones(2,2, requires_grad=True)<br>
 y = x+2
 
 ## gradient 계산, 입력값이 scalar가 아니면 명시적으로 적어줘야 함
-y.backward(x)
+y.backward(x)<br>
 print(x.grad)
