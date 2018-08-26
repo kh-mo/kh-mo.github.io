@@ -42,11 +42,9 @@ nav:
   Daily:
     - '/Daily/'
   Basic Machine Learning:
-    -
     - '/Basic Machine Learning/'
   Advanced Machine Learning:
-    -
-#    - '/Advanced Machine Learning/'
+    - '/Advanced Machine Learning/'
 #    - { Summarization: '/Advanced Machine Learning/Summarization/' }
     - { Translation: '/Advanced Machine Learning/Translation/' }
 #    - { Image Generation: '/Advanced Machine Learning/Image Generation/' }
