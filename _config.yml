@@ -51,9 +51,8 @@ nav:
 #  Dataset:
 #    -
 #    - '/Dataset/'
-#  Unclassified:
-#    -
-#    - '/Unclassified/'
+  Unclassified:
+    - '/Unclassified/'
 #  Github Project:
 #    - 'http://codinfox.github.io/'
 
