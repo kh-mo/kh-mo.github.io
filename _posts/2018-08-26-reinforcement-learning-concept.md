@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Reinforcement Learning Concept
-category: Reinforcement Leaning
+category: Reinforcement Learning
 ---
 
 ## Meta Information
