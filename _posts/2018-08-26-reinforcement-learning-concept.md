@@ -5,8 +5,8 @@ category: Reinforcement Learning
 ---
 
 ## Meta Information
-* RL Course by David Silver : [youtube link](https://www.youtube.com/watch?v=2pWv7GOvuf0&index=1&list=PLhhVkSH_JBI8ofvmbrG7m86wmVXq_7dit)
-* [slide](http://www0.cs.ucl.ac.uk/staff/d.silver/web/Teaching_files/intro_RL.pdf)
+* RL Course by David Silver
+* [youtube link](https://www.youtube.com/watch?v=2pWv7GOvuf0&index=1&list=PLhhVkSH_JBI8ofvmbrG7m86wmVXq_7dit) / [slide link](http://www0.cs.ucl.ac.uk/staff/d.silver/web/Teaching_files/intro_RL.pdf)
 
 2016년 알파고가 이세돌에게 4:1로 승리를 거두면서 인공지능에 대한 관심이 급속히 증가했습니다.
 
