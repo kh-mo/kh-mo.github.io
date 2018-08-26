@@ -8,6 +8,7 @@ category: Reinforcement Learning
 * RL Course by David Silver
 * [youtube link](https://www.youtube.com/watch?v=2pWv7GOvuf0&index=1&list=PLhhVkSH_JBI8ofvmbrG7m86wmVXq_7dit) / [slide link](http://www0.cs.ucl.ac.uk/staff/d.silver/web/Teaching_files/intro_RL.pdf)
 
+
 2016년 알파고가 이세돌에게 4:1로 승리를 거두면서 인공지능에 대한 관심이 급속히 증가했습니다.
 물론 알파고가 영화 속에서 나오는 지능을 가진 인공지능은 아닙니다.
 다만, 알파고가 놀라운 이유는 불가능 속에서 가능성을 보였기 때문입니다.
@@ -15,8 +16,8 @@ category: Reinforcement Learning
 그렇지만 **강화학습**이라는 머신러닝 방법론을 통해 바둑두는 법을 학습한 알파고는 모든 사람들이 보는 앞에서 승리함으로써, 불가능해 보이는 계산속에서 효율적인 알고리즘을 사용하여 우리가 원하는 목적(바둑두는 방법)을 달성할 수 있음을 보여주었습니다.
 이 포스트 카테고리에서는 앞으로 강화학습에 대한 이야기를 다루도록 하겠습니다.
 
-## 강화학습이란?
 
+## 강화학습이란?
 간단하게 정의하자면 보상을 기반으로 학습하는 알고리즘이라고 할 수 있습니다.
 
 > 아이가 넘어지면서 자전거 타는 법을 배우는 과정
@@ -27,10 +28,13 @@ category: Reinforcement Learning
 그것을 강화학습이라고 부를 수 있습니다.
 
 
-
+## 강화학습의 사용분야
 강화학습은 의사결정(decision making)이 필요한 다양한 분야에 적용될 수 있습니다.
-
 강화학습의 컨셉이 '특정 상태에서 어떤 행동을 했을 때 향후 기대되는 보상이 최대가 될 것인가?'를 고민하는 분야이기 때문입니다.
+
+
+
+
 
 주어진 데이터의 특징을 파악하여 일반화시키는 분야인 머신러닝에서 강화학습은 지도학습, 비지도학습과 함께 한 축을 이루고 있습니다.
 
