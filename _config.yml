@@ -17,7 +17,7 @@ sass:
   style: compressed
   sass_dir: _scss
 paginate: 10
-paginate_path: '/Advanced Deeplearning/page:num'
+paginate_path: '/Advanced Machine Learning/page:num'
 permalink: pretty
 
 version: 1.0.0
@@ -41,15 +41,15 @@ nav:
     - '/'
   Daily:
     - '/Daily/'
-#  Basic Deeplearning:
-#    -
-#    - '/Basic Deeplearning/'
-  Advanced Deeplearning:
+  Basic Machine Learning:
     -
-#    - '/Advanced Deeplearning/'
-#    - { Summarization: '/Advanced Deeplearning/Summarization/' }
-    - { Translation: '/Advanced Deeplearning/Translation/' }
-#    - { Image Generation: '/Advanced Deeplearning/Image Generation/' }
+    - '/Basic Machine Learning/'
+  Advanced Machine Learning:
+    -
+#    - '/Advanced Machine Learning/'
+#    - { Summarization: '/Advanced Machine Learning/Summarization/' }
+    - { Translation: '/Advanced Machine Learning/Translation/' }
+#    - { Image Generation: '/Advanced Machine Learning/Image Generation/' }
 #  Dataset:
 #    -
 #    - '/Dataset/'
@@ -60,8 +60,8 @@ nav:
 #    - 'http://codinfox.github.io/'
 
 # Where are tags and categories displayed
-tag_page: '/Advanced Deeplearning/Translation/'
-category_page: '/Advanced Deeplearning/Summarization/'
+#tag_page: '/Advanced Machine Learning/Translation/'
+#category_page: '/Advanced Machine Learning/Summarization/'
 
 hero:
   image: /public/img/we_will_be_giants_by_yalestewart.jpg
