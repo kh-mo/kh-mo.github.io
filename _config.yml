@@ -44,7 +44,6 @@ nav:
   Basic Machine Learning:
     - '/Basic Machine Learning/'
   Advanced Machine Learning:
-    -
     - '/Advanced Machine Learning/'
 #    - { Summarization: '/Advanced Machine Learning/Summarization/' }
     - { Translation: '/Advanced Machine Learning/Translation/' }
