@@ -1,15 +1,14 @@
 ---
 layout: page
-title: Basic Machine Learning
+title: Daily
 ---
 
-{% assign category_name1 = "Translation %}
-{% assign category_name2 = "Daily" %}
+{% assign category_name = "Daily" %}
 
 <div class="tags-expo">
   <div class="tags-expo-list">
     {% for tag in site.categories %}
-      {% if tag[0] contains category_name1 %}
+      {% if tag[0] contains category_name %}
       <a href="#{{ tag[0] | slugify }}" class="post-tag">{{ tag[0] }}</a>
       {% endif %}
     {% endfor %}
@@ -17,7 +16,7 @@ title: Basic Machine Learning
   <hr/>
   <div class="tags-expo-section">
     {% for tag in site.categories %}
-      {% if tag[0] contains category_name1 %}
+      {% if tag[0] contains category_name %}
       <h2 id="{{ tag[0] | slugify }}">{{ tag[0] }}</h2>
       <ul class="tags-expo-posts">
         {% for post in tag[1] %}
