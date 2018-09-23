@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 블로그 첫 포스팅
+title: 소프트맥스와 시그모이드 그래디언트 비교
 category: Non-Category
 ---
 
@@ -20,7 +20,6 @@ RNN에 어텐션(attention)을 적용한 것은 resnet 모델에서 skip-connect
 소프트맥스 수식 형태는 다음과 같습니다.
 
 $$ p_i = \frac{exp^(x_i)}{\sum_{k} exp^{x_k}} $$
-
 
 전체 분류해야 할 범주의 갯수는 k개가 됩니다. 이 함수의 입력값은 $x_i$가 되고 출력값은 $p_i$가 됩니다.
 $p_i$는 0 ~ 1 사이의 값, 즉 확률을 가지게 되며 모든 k개 $p_i$의 합은 1이 됩니다.
