@@ -66,6 +66,12 @@ $$ y = \frac{f(x)}{g(x)} \implies \frac{dy}{dx} = \frac{f'(x)g(x)-f(x)g'(x)}{g(x
 
 $$ \frac{d{p_i}}{d{x_i}} = \frac{d{\frac{exp(x_i)}{\sum_{k} exp(x_k)}}}{d{x_i}}$$
 
+$p_i$는 분수이기 때문에 분자 $exp(x_i)$를 f, 분모 $\sum_{k} exp(x_k)$를 g로 보고 미분공식을 활용해 계산합니다.
+이 때, $\sum_{k} exp(x_k)$에서 $x_i$에 대한 편미분 결과는 $exp(x_i)$를 제외한 다른 값은 상수로 취급하여 소거됩니다.
+
+\begin{align*}
+$$ \frac{d{p_i}}{d{x_i}} &= $$
+\end{align*}
 
 ## Sigmoid gradient
 
