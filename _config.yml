@@ -41,18 +41,23 @@ nav:
     - '/'
   Daily:
     - '/Daily/'
-  Basic Machine Learning:
-    - '/Basic Machine Learning/'
-  Advanced Machine Learning:
-    - '/Advanced Machine Learning/'
+  Non-Category:
+    - '/Non-Category/'
+
+#  Category:
+#    -
+#  Basic Machine Learning:
+#    - '/Basic Machine Learning/'
+#  Advanced Machine Learning:
+#    - '/Advanced Machine Learning/'
 #    - { Summarization: '/Advanced Machine Learning/Summarization/' }
-    - { Translation: '/Advanced Machine Learning/Translation/' }
+#    - { Translation: '/Advanced Machine Learning/Translation/' }
 #    - { Image Generation: '/Advanced Machine Learning/Image Generation/' }
 #  Dataset:
 #    -
 #    - '/Dataset/'
-  Unclassified:
-    - '/Unclassified/'
+#  Unclassified:
+#    - '/Unclassified/'
 #  Github Project:
 #    - 'http://codinfox.github.io/'
 
