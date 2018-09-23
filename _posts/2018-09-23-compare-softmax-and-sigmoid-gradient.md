@@ -64,7 +64,7 @@ $$ y = \frac{f(x)}{g(x)} \implies \frac{dy}{dx} = \frac{f'(x)g(x)-f(x)g'(x)}{g(x
 즉, i번째 x에 대한 그래디언트 값과 i이외의 x에 대한 그래디언트 값이 다르게 나올 수 있기 때문에 이를 구분해서 계산해야 합니다.
 먼저 x가 i번째 입력값인 경우에 대해 살펴보겠습니다.
 
-
+$$ \frac{d{p_i}}{d{x_i}} = \frac{d{\frac{exp(x_i)}{\sum_{k} exp(x_k)}}}{d{x_i}}$$
 
 
 ## Sigmoid gradient
