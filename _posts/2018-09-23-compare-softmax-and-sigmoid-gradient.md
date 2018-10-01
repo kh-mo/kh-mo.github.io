@@ -82,5 +82,5 @@ $$ = - p_i \cdot p_j $$
 
 
 ## Sigmoid gradient
-\begin{split} A &= B \\ &=C \\ &=D \end{split}
+\begin{align} A &= B \\ &=C \\ &=D \end{align}
 
