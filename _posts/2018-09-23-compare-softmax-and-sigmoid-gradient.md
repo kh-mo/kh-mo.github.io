@@ -40,7 +40,9 @@ $x$ 값이 커질수록 $p_i$ 값은 1에 가까워지며, $x$ 값이 작아질�
 $$
 \begin{align}
 &y = exp(x) \implies \frac{dy}{dx} = exp(x) \\
+
 &y = \log x \implies \frac{dy}{dx} = \frac{1}{x} \\
+
 &y = \frac{f(x)}{g(x)} \implies \frac{dy}{dx} = \frac{f'(x)g(x)-f(x)g'(x)}{g(x)^2}
 \end{align}
 $$
@@ -58,15 +60,18 @@ $$ \frac{d{p_i}}{d{x_i}} = \frac{d{\frac{exp(x_i)}{\sum_{k} exp(x_k)}}}{d{x_i}}$
 $p_i$는 분수이기 때문에 분자 $exp(x_i)$를 f, 분모 $\sum_{k} exp(x_k)$를 g로 보고 미분공식을 활용해 계산합니다.
 이 때, $\sum_{k} exp(x_k)$에서 $x_i$에 대한 편미분 결과는 $exp(x_i)$를 제외한 다른 값은 상수로 취급하여 소거됩니다.
 
-$$ \frac{d{p_i}}{d{x_i}} $$
+$$
+\begin{align}
+\frac{d{p_i}}{d{x_i}} &= \frac{exp(x_i) (\sum_{} exp(x_k)) - exp(x_i) exp(x_i)}{(\sum_{} exp(x_k))^2} \\
 
-$$ = \frac{exp(x_i) (\sum_{} exp(x_k)) - exp(x_i) exp(x_i)}{(\sum_{} exp(x_k))^2} $$
+&= \frac{exp(x_i) (\sum_{} exp(x_k) - exp(x_i))}{\sum_{} exp(x_k) \sum_{} exp(x_k)} \\
 
-$$ = \frac{exp(x_i) (\sum_{} exp(x_k) - exp(x_i))}{\sum_{} exp(x_k) \sum_{} exp(x_k)}$$
+&= \frac{exp(x_i)}{\sum_{} exp(x_i)} (1-\frac{exp(x_i)}{\sum_{} exp(x_k}) \\
 
-$$ = \frac{exp(x_i)}{\sum_{} exp(x_i)} (1-\frac{exp(x_i)}{\sum_{} exp(x_k})$$
+&= p_i \cdot (1-p_i) \\
+\end{align}
+$$
 
-$$ = p_i \cdot (1-p_i) $$
 
 다음은 $x_i$가 아닌 $x_j$에 대한 경우를 살펴보겠습니다.
 f와 g는 동일하게 $p_i$의 분자 분모를 나타냅니다.
