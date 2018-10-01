@@ -72,22 +72,22 @@ $$
 \end{align}
 $$
 
-
-다음은 $x_i$가 아닌 $x_j$에 대한 경우를 살펴보겠습니다.
+다음은 $x_i$가 아닌 경우($x_j$에 대한 미분)를 살펴보겠습니다.
 f와 g는 동일하게 $p_i$의 분자 분모를 나타냅니다.
 
-$$ \frac{d{p_i}}{d{x_j}} $$
+$$
+\begin{align}
+\frac{d{p_i}}{d{x_j}} &= \frac{0 \cdot (\sum_{} exp(x_k)) - exp(x_i) exp(x_j)}{(\sum_{} exp(x_k))^2} \\
 
-$$ = \frac{0 \cdot (\sum_{} exp(x_k)) - exp(x_i) exp(x_j)}{(\sum_{} exp(x_k))^2} $$
+&= - \frac{exp(x_i)}{\sum_{} exp(x_k)} \cdot \frac{exp(x_j)}{\sum_{} exp(x_k)} \\
 
-$$ = - \frac{exp(x_i)}{\sum_{} exp(x_k)} \cdot \frac{exp(x_j)}{\sum_{} exp(x_k)}$$
-
-$$ = - p_i \cdot p_j $$
-
+&= - p_i \cdot p_j \\
+\end{align}
+$$
 
 
 
 
 ## Sigmoid gradient
-$$ \begin{align} A &= B \\ &=C \\ &=D \end{align} $$
+
 
