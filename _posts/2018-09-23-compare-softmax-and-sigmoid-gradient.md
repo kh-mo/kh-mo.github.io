@@ -16,8 +16,7 @@ RNN에 어텐션(attention)을 적용한 것은 resnet 모델에서 skip-connect
 해당 그래디언트를 계산하기 전에 몇가지 정의를 짚고 넘어가겠습니다.
 소프트맥스, 시그모이드 함수의 형태와 미분 공식 몇가지를 정의하고 넘어가겠습니다.
 
-
-### 소프트맥스
+### 1) 소프트맥스
 
 소프트맥스 수식 형태는 다음과 같습니다.
 
@@ -25,18 +24,16 @@ $$ p_i = \frac{exp(x_i)}{\sum_{k} exp(x_k)} $$
 
 전체 분류해야 할 범주의 갯수는 k개가 됩니다. 이 함수의 입력값은 $x_i$가 되고 출력값은 $p_i$가 됩니다.
 $p_i$는 0 ~ 1 사이의 값, 즉 확률을 가지게 되며 모든 k개 $p_i$의 합은 1이 됩니다.
-<br>
 
-### 시그모이드
+### 2) 시그모이드
 
 시그모이드 수식 형태는 다음과 같습니다
 
 $$ p_i = \frac{1}{1+exp(-x)} $$
 
 $x$ 값이 커질수록 $p_i$ 값은 1에 가까워지며, $x$ 값이 작아질수록 $p_i$ 값이 0에 가까워지게 됩니다.
-<br>
 
-### 미분 공식
+### 3) 미분 공식
 
 그래디언트 수식을 계산하는데 필요한 몇가지 미분 공식을 정리하고 넘어가겠습니다.
 
@@ -45,7 +42,6 @@ $$ y = exp(x) \implies \frac{dy}{dx} = exp(x) $$
 $$ y = \log x \implies \frac{dy}{dx} = \frac{1}{x} $$
 
 $$ y = \frac{f(x)}{g(x)} \implies \frac{dy}{dx} = \frac{f'(x)g(x)-f(x)g'(x)}{g(x)^2} $$
-<br>
 
 
 ## Softmax graident
@@ -68,7 +64,7 @@ $$ = \frac{exp(x_i) (\sum_{} exp(x_k) - exp(x_i))}{\sum_{} exp(x_k) \sum_{} exp(
 
 $$ = \frac{exp(x_i)}{\sum_{} exp(x_i)} (1-\frac{exp(x_i)}{\sum_{} exp(x_k})$$
 
-$$ p_i \cdot (1-p_i) $$
+$$ = p_i \cdot (1-p_i) $$
 
 다음은 $x_i$가 아닌 $x_j$에 대한 경우를 살펴보겠습니다.
 f와 g는 동일하게 $p_i$의 분자 분모를 나타냅니다.
@@ -79,7 +75,7 @@ $$ = \frac{0 \cdot (\sum_{} exp(x_k)) - exp(x_i) exp(x_j)}{(\sum_{} exp(x_k))^2}
 
 $$ = - \frac{exp(x_i)}{\sum_{} exp(x_k)} \cdot \frac{exp(x_j)}{\sum_{} exp(x_k)}$$
 
-$$ - p_i \cdot p_j $$
+$$ = - p_i \cdot p_j $$
 
 
 
