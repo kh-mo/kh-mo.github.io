@@ -37,11 +37,13 @@ $x$ 값이 커질수록 $p_i$ 값은 1에 가까워지며, $x$ 값이 작아질�
 
 그래디언트 수식을 계산하는데 필요한 몇가지 미분 공식을 정리하고 넘어가겠습니다.
 
-$$ y = exp(x) \implies \frac{dy}{dx} = exp(x) $$
-
-$$ y = \log x \implies \frac{dy}{dx} = \frac{1}{x} $$
-
-$$ y = \frac{f(x)}{g(x)} \implies \frac{dy}{dx} = \frac{f'(x)g(x)-f(x)g'(x)}{g(x)^2} $$
+$$
+\begin{align}
+&y = exp(x) \implies \frac{dy}{dx} = exp(x) \\
+&y = \log x \implies \frac{dy}{dx} = \frac{1}{x} \\
+&y = \frac{f(x)}{g(x)} \implies \frac{dy}{dx} = \frac{f'(x)g(x)-f(x)g'(x)}{g(x)^2}
+\end{align}
+$$
 
 
 ## Softmax graident
