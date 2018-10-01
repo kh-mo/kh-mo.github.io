@@ -40,9 +40,9 @@ $x$ 값이 커질수록 $p_i$ 값은 1에 가까워지며, $x$ 값이 작아질�
 $$
 \begin{align}
 &y = exp(x) \implies \frac{dy}{dx} = exp(x) \\
-
+<br>
 &y = \log x \implies \frac{dy}{dx} = \frac{1}{x} \\
-
+<br>
 &y = \frac{f(x)}{g(x)} \implies \frac{dy}{dx} = \frac{f'(x)g(x)-f(x)g'(x)}{g(x)^2}
 \end{align}
 $$
@@ -63,11 +63,11 @@ $p_i$는 분수이기 때문에 분자 $exp(x_i)$를 f, 분모 $\sum_{k} exp(x_k
 $$
 \begin{align}
 \frac{d{p_i}}{d{x_i}} &= \frac{exp(x_i) (\sum_{} exp(x_k)) - exp(x_i) exp(x_i)}{(\sum_{} exp(x_k))^2} \\
-
+<br>
 &= \frac{exp(x_i) (\sum_{} exp(x_k) - exp(x_i))}{\sum_{} exp(x_k) \sum_{} exp(x_k)} \\
-
+<br>
 &= \frac{exp(x_i)}{\sum_{} exp(x_i)} (1-\frac{exp(x_i)}{\sum_{} exp(x_k}) \\
-
+<br>
 &= p_i \cdot (1-p_i) \\
 \end{align}
 $$
@@ -78,9 +78,9 @@ f와 g는 동일하게 $p_i$의 분자 분모를 나타냅니다.
 $$
 \begin{align}
 \frac{d{p_i}}{d{x_j}} &= \frac{0 \cdot (\sum_{} exp(x_k)) - exp(x_i) exp(x_j)}{(\sum_{} exp(x_k))^2} \\
-
+<br>
 &= - \frac{exp(x_i)}{\sum_{} exp(x_k)} \cdot \frac{exp(x_j)}{\sum_{} exp(x_k)} \\
-
+<br>
 &= - p_i \cdot p_j \\
 \end{align}
 $$
