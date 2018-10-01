@@ -82,5 +82,5 @@ $$ = - p_i \cdot p_j $$
 
 
 ## Sigmoid gradient
+\begin{split} A &= B \\ &=C \\ &=D \end{split}
 
-$$ \begin{align*} -\sum { j }^{ }{ { y }{ j } } \frac { 1 }{ { p }{ j } } \frac { \partial { p }{ j } }{ \partial { a }{ i } } &=-\frac { { y }{ i } }{ { p }{ i } } { p }{ i }\left( 1-{ p }{ i } \right) -\sum { i\neq j }^{ }{ \frac { { y }{ j } }{ { p }{ j } } } \left( -{ p }{ i }{ p }{ j } \right) \ &=-{ y }{ i }+{ y }{ i }{ p }{ i }+\sum { i\neq j }^{ }{ { y }{ j }{ p }{ i } } \ &=-{ y }{ i }+\sum { j }^{ }{ { y }{ j }{ p }{ i } } \ &=-{ y }{ i }+{ p }{ i }\sum { j }^{ }{ { y }{ j } } \ \&={ p }{ i }-{ y }{ i } \end{align*} $$
