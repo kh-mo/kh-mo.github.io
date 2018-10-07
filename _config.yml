@@ -67,7 +67,7 @@ nav:
 
 hero:
   image: /public/img/star_of_the_night_sky.png
-  caption: Always have hope in our heart
+  caption: <strong>Always have hope in our heart. It's a long way, but let's go together.</strong>
 
 # Puglins
 mathjax: true # whether support mathjax
