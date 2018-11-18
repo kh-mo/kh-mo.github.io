@@ -22,4 +22,4 @@ D차원 벡터로 이루어진 단어 n개가 주어진 2차원 행렬을 가정
 
 $$cov(wordi,wordj) = \frac{1}{D-1} \sum_{N}^i \sum_{N}^j (wordi-u(wordi))^T(wordj-u(wordj))$$
 
-여기서 u(wordi)는 wordi의 element 평균값으로 채워진 D차원 벡터이다. 
+여기서 $u(wordi)$는 $wordi$의 element 평균값으로 채워진 D차원 벡터이다. 
