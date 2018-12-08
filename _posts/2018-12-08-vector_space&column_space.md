@@ -33,7 +33,7 @@ $$ ax^2 + bx + c $$
 $ \begin{bmatrix}
 a \\
 b \\
-c \\
+c 
 \end{bmatrix}$
 </center>
 
