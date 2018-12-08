@@ -31,9 +31,9 @@ $$ ax^2 + bx + c $$
 
 <center>
 $ \begin{bmatrix}
-a \\\\ 
-b \\\\
-c \\\\
+a \\
+b \\
+c \\
 \end{bmatrix}$
 </center>
 
