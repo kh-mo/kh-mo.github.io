@@ -34,6 +34,18 @@ RNN은 단어 토큰이 하나씩 들어가는 구조였고 CNN도 단어 묶음
 이 때문에 단어가 문장내에서 위치하는 position, 순서정보를 추가로 반영하고 싶어 사용한 것이 positional encoding입니다.
 사용된 수식은 다음과 같습니다.
 
-$$ PE_{(pos, 2i)} = sin(pos/10000^{2i/{d_model}}) $$
+$$ PE_{(pos, 2i)} = sin(pos/10000^{2i/d_{model}}) $$
 
-$$ PE_{(pos, 2i+1)} = cos(pos/10000^{2i/{d_model}}) $$
+$$ PE_{(pos, 2i+1)} = cos(pos/10000^{2i/d_{model}}) $$
+
+여기서 pos는 문장 속 단어를 의미합니다.
+그리고 i는 $d_{model}$ 차원 단어 벡터의 특정 포지션을 의미합니다.
+pos x i 로 구성된 2차원 행렬이 positioanl encoding의 결과입니다.
+이 행렬은 input sequence matrix와 동일한 크기를 가지기 때문에 요소들을 더하여 결과값을 냅니다.
+아래와 같은 그림으로 표현할 수 있습니다. 
+
+![](/public/img/attention_is_all_you_need_figure2.JPG "Figure2 of attention is all you need 논문 리뷰")
+
+positional encoding은 다음과 같이 구현할 수 있습니다.
+
+<script src="https://gist.github.com/kh-mo/6a774bba6ae97a507b80810351602584.js"></script>
