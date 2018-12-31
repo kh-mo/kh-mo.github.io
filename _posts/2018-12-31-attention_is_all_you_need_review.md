@@ -9,9 +9,9 @@ category: Non-Category
 
 ## The Transformer
 
-<center>
+{: refdef: style="text-align: center;"}
 ![](/public/img/attention_is_all_you_need_figure1.JPG "Figure1 of attention is all you need 논문 리뷰")
-</center>
+{: refdef}
 
 위 그림은 transformer 모델의 전체적인 구조를 표현하고 있습니다.
 기존의 seq2seq 모델들과는 달리 CNN과 RNN 아키텍처가 포함되어 있지 않은 구조라 다소 파격적입니다.
