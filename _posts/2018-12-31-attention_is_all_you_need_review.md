@@ -18,12 +18,12 @@ category: Non-Category
 
 ## Embedding
 
-기존의 seq2seq 모델들과 동일하게 input, output token을 받아 $d_model$ 차원 벡터로 변환해줍니다.
+기존의 seq2seq 모델들과 동일하게 input, output token을 받아 $d_{model}$ 차원 벡터로 변환해줍니다.
 pytorch로 다음과 같이 구현 가능합니다.
 
 <script src="https://gist.github.com/kh-mo/72919f0ecb434a0fe27551f880394f4e.js"></script>
 
-nn.Embedding 함수를 이용하여 $d_model$ 차원을 가진 단어 갯수만큼의 embedding matrix가 생성됩니다.
+nn.Embedding 함수를 이용하여 $d_{model}$ 차원을 가진 단어 갯수만큼의 embedding matrix가 생성됩니다.
 해당 embedding 클래스 객체에서 token값을 이용하여 단어에 대한 벡터를 얻을 수 있습니다.
 
 ## Positional Encoding
@@ -34,6 +34,6 @@ RNN은 단어 토큰이 하나씩 들어가는 구조였고 CNN도 단어 묶음
 이 때문에 단어가 문장내에서 위치하는 position, 순서정보를 추가로 반영하고 싶어 사용한 것이 positional encoding입니다.
 사용된 수식은 다음과 같습니다.
 
-$$ PE_(pos, 2i) = sin(pos/10000^{2i/d_model}) $$
+$$ PE_{(pos, 2i)} = sin(pos/10000^{2i/{d_model}}) $$
 
-$$ PE_(pos, 2i+1) = cos(pos/10000^{2i/d_model}) $$
+$$ PE_{(pos, 2i+1)} = cos(pos/10000^{2i/{d_model}}) $$
