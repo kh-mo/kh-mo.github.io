@@ -9,7 +9,9 @@ category: Non-Category
 
 ## The Transformer
 
+<center>
 ![](/public/img/attention_is_all_you_need_figure1.JPG "Figure1 of attention is all you need 논문 리뷰")
+</center>
 
 위 그림은 transformer 모델의 전체적인 구조를 표현하고 있습니다.
 기존의 seq2seq 모델들과는 달리 CNN과 RNN 아키텍처가 포함되어 있지 않은 구조라 다소 파격적입니다.
@@ -44,7 +46,9 @@ $$ PE_{(pos, 2i+1)} = cos(pos/10000^{2i/d_{model}}) $$
 이 행렬은 input sequence matrix와 동일한 크기를 가지기 때문에 요소들을 더하여 결과값을 냅니다.
 아래와 같은 그림으로 표현할 수 있습니다. 
 
+<center>
 ![](/public/img/attention_is_all_you_need_figure2.JPG "Figure2 of attention is all you need 논문 리뷰")
+</center>
 
 positional encoding은 다음과 같이 구현할 수 있습니다.
 
