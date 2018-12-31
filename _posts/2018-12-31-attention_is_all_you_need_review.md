@@ -29,7 +29,7 @@ nn.Embedding 함수를 이용하여 $d_{model}$ 차원을 가진 단어 갯수�
 ## Positional Encoding
 
 RNN 또는 CNN 기반 seq2seq 모델들은 자연스럽게 단어가 입력되는 순서 정보를 받을 수 있었습니다.
-RNN은 단어 토큰이 하나씩 들어가는 구조였고 CNN도 단어 묶음이 순차적으로 들어가게 되었지요.
+RNN은 단어 토큰이 하나씩 들어가는 구조였고 CNN도 단어 묶음이 순차적으로 들어갔습니다.
 그러나 transformer 모델은 문장을 통채로 입력으로 받고 있습니다.
 이 때문에 단어가 문장내에서 위치하는 position, 순서정보를 추가로 반영하고 싶어 사용한 것이 positional encoding입니다.
 사용된 수식은 다음과 같습니다.
@@ -40,7 +40,7 @@ $$ PE_{(pos, 2i+1)} = cos(pos/10000^{2i/d_{model}}) $$
 
 여기서 pos는 문장 속 단어를 의미합니다.
 그리고 i는 $d_{model}$ 차원 단어 벡터의 특정 포지션을 의미합니다.
-pos x i 로 구성된 2차원 행렬이 positioanl encoding의 결과입니다.
+수식에 따라 pos by i 로 구성된 2차원 행렬을 만들 수 있고 이것이 positioanl encoding의 결과입니다.
 이 행렬은 input sequence matrix와 동일한 크기를 가지기 때문에 요소들을 더하여 결과값을 냅니다.
 아래와 같은 그림으로 표현할 수 있습니다. 
 
