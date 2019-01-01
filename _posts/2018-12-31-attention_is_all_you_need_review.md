@@ -6,7 +6,7 @@ category: Non-Category
 
 본 포스트는 attention is all you need를 리뷰한 포스트입니다.
 잘못된 해석이나 이해가 포함될 수 있으니 첨언과 조언은 언제나 환영합니다.
-포스트에 사용된 그림은 논문의 그림과 이 곳(https://towardsdatascience.com/how-to-code-the-transformer-in-pytorch-24db27c8f9ec)을 참고했습니다.
+포스트에 사용된 그림은 논문의 그림과 [이 블로그](https://towardsdatascience.com/how-to-code-the-transformer-in-pytorch-24db27c8f9ec)를 참고했습니다.
 
 ## The Transformer
 
@@ -56,11 +56,25 @@ positional encoding 구현은 다음과 같습니다.
 
 ## Multi-Head Attention
 
-transformer 논문을 처음 접할 때 가장 이해하기 어려운 부분은 V와 K와 Q가 무엇인지 파악하는 것입니다.
+Transformer 논문을 처음 접할 때 가장 이해하기 어려운 부분은 V와 K와 Q가 무엇인지 파악하는 것입니다.
 논문의 3.2.3절 설명에 따르면 인코더의 V, K, Q는 모두 동일한 값으로 positional encoding을 통해 들어온 입력값 또는 이전 레이어의 출력값이 됩니다.
 디코더의 경우 Masked Multi-Head Attention의 V, K, Q는 인코더와 동일하게 positional encoding을 통한 입력값 또는 이전 레이어 출력값입니다.
 하지만 디코더 레이어 블록의 중간에 있는 Multi-Head Attention의 경우 Q는 디코더 sublayer의 출력값이고 V, K는 인코더의 출력값입니다.
 다소 복잡할 수 있기 때문에 주의를 기울여야 합니다.
 
 인코더에서 Multi-Head Attention은 3개 입력값 Q, K, V를 받습니다.
-실제로 같은 2차원 행렬인 Q, K, V는  
+실제로 같은 2차원 행렬인 Q, K, V는 각각 선형 연산을 통해 다른 2차원 행렬로 변환되게 됩니다.
+각 Q, K, V에 대해 총 h번 선형 연산이 수행되는데, 그 결과 각각 다른 벡터값을 얻어 연산을 수행하게 됩니다.
+이 과정은 parallel하게 이루어질 수 있습니다.
+Q, K, V로 구성된 h개 집합은 Scaled Dot-Product Attention 연산을 통해 h개 head를 생성합니다.
+Scaled Dot-Product Attention 연산은 나중에 설명하도록 하겠습니다.
+h개 head는 결합되어 다시 선형 연산을 통해 $d_{model}$ 차원의 벡터를 가지게 됩니다.
+이렇게 h번 연산을 수행하여 다시 결합하는 이유를 논문에서는 다음과 같이 설명하고 있습니다.
+
+> Multi-head attention allows the model to jointly attend to information from different representation subspaces at different positions. With a single attention head, averaging inhibits this.
+
+저는 이것을 h개의 여러 subspace로 입력 문장 정보를 입력하여 평균화하는 것이 더 풍부한 정보를 문장으로부터 추출할 수 있다고 해석하였습니다.
+단일 subspace를 사용하는 것보다 더 많은 정보를 얻을 수 있는 구조라고 생각됩니다(그저 블로거의 뇌피셜일 뿐입니다).
+이를 나타내는 수식과 그림은 아래와 같습니다.
+ 
+![](/public/img/attention_is_all_you_need_figure3.JPG "Figure3 of attention is all you need 논문 리뷰")
