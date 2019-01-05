@@ -6,7 +6,7 @@ category: Non-Category
 
 본 포스트는 attention is all you need를 리뷰한 포스트입니다.
 잘못된 해석이나 이해가 포함될 수 있으니 첨언과 조언은 언제나 환영합니다.
-포스트에 사용된 그림은 논문의 그림과 [이 블로그](https://towardsdatascience.com/how-to-code-the-transformer-in-pytorch-24db27c8f9ec)를 참고했습니다.
+포스트에 사용된 그림은 논문의 그림과 [블로그](https://towardsdatascience.com/how-to-code-the-transformer-in-pytorch-24db27c8f9ec), 그리고 [구글 자료](https://drive.google.com/file/d/0B8BcJC1Y8XqobGNBYVpteDdFOWc/view)를 참고했습니다.
 
 ## The Transformer
 
@@ -32,7 +32,7 @@ nn.Embedding 함수를 이용하여 $d_{model}$ 차원을 가진 단어 갯수�
 RNN 또는 CNN 기반 seq2seq 모델들은 자연스럽게 단어가 입력되는 순서 정보를 받을 수 있었습니다.
 RNN은 단어 토큰이 하나씩 들어가는 구조였고 CNN도 단어 묶음이 순차적으로 들어갔습니다.
 그러나 transformer 모델은 문장 전체를 입력으로 받습니다.
-때문에 순차적으로 계산하는 과정을 손실하게됩니다.
+때문에 순차적으로 계산하는 과정을 손실하게 됩니다.
 이 손실된 정보를 보정해주기 위해 도입된 것이 positional encoding입니다.
 사용된 수식은 다음과 같습니다.
 
@@ -41,7 +41,7 @@ $$ PE_{(pos, 2i)} = sin(pos/10000^{2i/d_{model}}) $$
 $$ PE_{(pos, 2i+1)} = cos(pos/10000^{2i/d_{model}}) $$
 
 여기서 pos는 문장 속 단어를 의미합니다.
-한 문장에 단어가 10개 있다면 pos는 1부터 10까지 값을 가지게 됩니다(python 구현시 0부터 9까지).
+한 문장에 단어가 10개 있다면 pos는 1부터 10까지 값을 가지게 됩니다(python 구현 시 0부터 9까지).
 그리고 i는 $d_{model}$ 차원 단어 벡터의 특정 포지션을 의미합니다.
 논문에서 $d_{model}$은 512차원으로 구성되므로 i는 1부터 512까지 값을 가지게 됩니다.
 수식을 따라 구현하면 pos by i 로 구성된 2차원 행렬을 만들 수 있고 이것이 positioanl encoding의 결과입니다.
@@ -78,3 +78,30 @@ h개 head는 결합되어 다시 선형 연산을 통해 $d_{model}$ 차원의 �
 이를 나타내는 수식과 그림은 아래와 같습니다.
  
 ![](/public/img/attention_is_all_you_need_figure3.JPG "Figure3 of attention is all you need 논문 리뷰")
+
+pytorch 구현은 다음과 같습니다.
+
+<script src="https://gist.github.com/kh-mo/e0a0116b01f3091c7b5146fd7abc3a66.js"></script>
+
+## Scaled Dot-Product Attention
+
+Attention은 특정 벡터가 다른 벡터와 얼마나 유사한지를 측정하여 가중합을 구하는 방식으로 진행됩니다.
+대표적인 attention 사용 방식은 아래와 같습니다.
+
+![](/public/img/attention_is_all_you_need_figure4.JPG "Figure4 of attention is all you need 논문 리뷰")
+
+이 중 인코더에서는 왼쪽 아래 encoder self-attention 방식을 사용하게 됩니다.
+인코더 입력 문장 속 단어들은 주변 모든 단어의 유사도를 계산합니다.
+이 연산은 내적(dot-product) 방식으로 수행됩니다.
+$Q{K^2}$ 수식은 내적을 통해 문장 속 모든 단어들의 유사도를 구하는 과정이 됩니다.
+이 방식이 훨씬 속도가 빠르고 효율적이기 때문에 사용한 것으로 논문에 언급되고 있습니다.
+
+> dot-product attention is much faster and more space-efficient in practice
+
+이 연산은 벡터의 내적이기때문에 차원이 커질수록 그 값도 커지게 됩니다.
+따라서 $sqrt{d_k}$로 정규화를 시켜줍니다.
+Attention은 각 벡터에 일정 가중치를 곱해 가중합을 구하는 개념이기 때문에 가중치들을 확률값으로 변환하여 연산을 수행합니다.
+이로서 아래와 같은 수식이 완성됩니다.
+
+$ Attention(Q, K, V) = softmax(\frac{Q{K^T}}{sqrt{d_k})V $ 
+ 
