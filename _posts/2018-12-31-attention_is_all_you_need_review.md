@@ -98,14 +98,15 @@ $Q{K^2}$ 수식은 내적을 통해 문장 속 모든 단어들의 유사도를 
 
 > dot-product attention is much faster and more space-efficient in practice
 
-이 연산은 벡터의 내적이기때문에 차원이 커질수록 그 값도 커지게 됩니다.
+이 연산은 벡터의 내적이라 차원이 커질수록 그 값도 커지게 됩니다.
 따라서 $\sqrt{d_k}$로 정규화를 시켜줍니다.
 Attention은 각 벡터에 일정 가중치를 곱해 가중합을 구하는 개념이기 때문에 가중치들을 확률값으로 변환하여 연산을 수행합니다.
 이로서 아래와 같은 수식이 완성됩니다.
 
-$$ Attention(Q, K, V) = softmax(\frac{Q{K^T}}{sqrt{d_k}})V $$
+$$ Attention(Q, K, V) = softmax(\frac{Q{K^T}}{\sqrt{d_k}})V $$
 
 그러나 디코더의 경우 문장을 생성하는 과정에서 뒤쪽 단어의 정보를 참조해서는 안됩니다.
+위 그림의 오른쪽 아래를 참고하시기 바랍니다.
 이것을 방지하기 위해서 앞쪽의 단어가 뒤에 나오는 단어와의 유사도를 구할 때 mask를 사용하여 참조를 방지합니다.
 전체적인 연산 그림은 아래와 같습니다.
 
@@ -119,8 +120,8 @@ $$ Attention(Q, K, V) = softmax(\frac{Q{K^T}}{sqrt{d_k}})V $$
 
 ## Feed-Forward Network
 
-인코더, 디코더 레이어에서 multi-head attention 연산과 normalization 연산을 거치고나면 단순한 feed forward 연산을 수행하게 된다.
-수식과 코드는 다음과 같다.
+인코더, 디코더 레이어에서 multi-head attention 연산과 normalization 연산을 거치고나면 단순한 feed forward 연산을 수행하게 됩니다.
+수식과 코드는 다음과 같습니다.
 
 $$ FFN(x) = max(0, xW_1 + b_1)W_2+b_2 $$  
 
