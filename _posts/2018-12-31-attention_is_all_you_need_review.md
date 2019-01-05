@@ -14,7 +14,7 @@ category: Non-Category
 
 위 그림은 transformer 모델의 전체적인 구조를 보여줍니다.
 기존의 seq2seq 모델들과는 달리 CNN과 RNN 아키텍처가 포함되어 있지 않은 구조라 다소 파격적입니다.
-그러나 여러가지 합리적인 근거를 기반한 모델로 그 성능이 매우 뛰어납니다.
+그러나 오로지 attention만으로 구성된 이 네트워크는 여러가지 합리적인 근거를 기반한 모델로 그 성능이 매우 뛰어납니다.
 한 부분씩 살펴보도록 하겠습니다.
 
 ## Embedding
@@ -50,6 +50,10 @@ $$ PE_{(pos, 2i+1)} = cos(pos/10000^{2i/d_{model}}) $$
 
 ![](/public/img/attention_is_all_you_need_figure2.JPG "Figure2 of attention is all you need 논문 리뷰")
 
+한 문장에 주어지는 단어의 갯수와 순서는 문장마다 다릅니다.
+그러나 위의 수식에 따르면 단어 벡터의 차원은 항상 일정하고 단어의 position 또한 고정되어 있기 때문에 늘 같은 position encoding 벡터값을 가지게 됩니다.
+다시 말하면 어떤 문장이 주어지더라도 첫번째 position encoding 벡터, 두번째 position encoding 벡터는 늘 일정한 값이 나타난다는 것입니다.
+다만 그 방식에 주기를 가진 sin, cos 함수를 넣어 규칙성을 주었다고 할 수 있습니다.
 positional encoding 구현은 다음과 같습니다.
 
 <script src="https://gist.github.com/kh-mo/6a774bba6ae97a507b80810351602584.js"></script>
@@ -90,15 +94,18 @@ Attention은 특정 벡터가 다른 벡터와 얼마나 유사한지를 측정�
 
 ![](/public/img/attention_is_all_you_need_figure4.JPG "Figure4 of attention is all you need 논문 리뷰")
 
-이 중 인코더에서는 왼쪽 아래 encoder self-attention 방식을 사용하게 됩니다.
-인코더 입력 문장 속 단어들은 주변 모든 단어의 유사도를 계산합니다.
+이 중 인코더에서는 왼쪽 아래 encoder self-attention 방식을 사용합니다.
+인코더 입력 문장 속 단어들은 주변 모든 단어와의 유사도를 계산합니다.
 이 연산은 내적(dot-product) 방식으로 수행됩니다.
-$Q{K^2}$ 수식은 내적을 통해 문장 속 모든 단어들의 유사도를 구하는 과정이 됩니다.
-이 방식이 훨씬 속도가 빠르고 효율적이기 때문에 사용한 것으로 논문에 언급되고 있습니다.
+수식 $Q{K^2}$은 내적을 통해 문장 속 모든 단어들의 유사도를 구하는 과정입니다.
+논문에서는 이 방식이 훨씬 속도가 빠르고 효율적이기 때문에 사용했다고 언급하고 있습니다.
 
 > dot-product attention is much faster and more space-efficient in practice
 
 이 연산은 벡터의 내적이라 차원이 커질수록 그 값도 커지게 됩니다.
+
+> assume that the components of q and k are independent random variables with mean 0 and variance 1. Then their dot product, $ q \cdot k = \sum_{i=1}^{d_k} q_ik_i $, has mean 0 and variance $d_k$
+
 따라서 $\sqrt{d_k}$로 정규화를 시켜줍니다.
 Attention은 각 벡터에 일정 가중치를 곱해 가중합을 구하는 개념이기 때문에 가중치들을 확률값으로 변환하여 연산을 수행합니다.
 이로서 아래와 같은 수식이 완성됩니다.
@@ -126,3 +133,9 @@ $$ Attention(Q, K, V) = softmax(\frac{Q{K^T}}{\sqrt{d_k}})V $$
 $$ FFN(x) = max(0, xW_1 + b_1)W_2+b_2 $$  
 
 <script src="https://gist.github.com/kh-mo/24f1fbbbc9f4e3950d4be03d3fa367d3.js"></script>
+
+## 
+
+Transformer는 parallelizable하기 때문에 상당히 학습 시간이 짧습니다.
+또한 당시 존재했던 번역 task의 sota를 달성할만큼 높은 성능도 보입니다.
+앙상블이 아닌 single 모델로 달성한 성능이란 점도 주목할 요소 중 하나라고 생각합니다.
