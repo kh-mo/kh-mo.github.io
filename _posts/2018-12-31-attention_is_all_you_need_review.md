@@ -100,11 +100,11 @@ Attention은 특정 벡터가 다른 벡터와 얼마나 유사한지를 측정�
 수식 $Q{K^2}$은 내적을 통해 문장 속 모든 단어들의 유사도를 구하는 과정입니다.
 논문에서는 이 방식이 훨씬 속도가 빠르고 효율적이기 때문에 사용했다고 언급하고 있습니다.
 
-> dot-product attention is much faster and more space-efficient in practice
+> dot-product attention is much faster and more space-efficient in practice.
 
 이 연산은 벡터의 내적이라 차원이 커질수록 그 값도 커지게 됩니다.
 
-> assume that the components of q and k are independent random variables with mean 0 and variance 1. Then their dot product, $ q \cdot k = \sum_{i=1}^{d_k} q_ik_i $, has mean 0 and variance $d_k$
+> assume that the components of q and k are independent random variables with mean 0 and variance 1. Then their dot product, $ q \cdot k = \sum_{i=1}^{d_k} q_ik_i $, has mean 0 and variance $d_k$.
 
 따라서 $\sqrt{d_k}$로 정규화를 시켜줍니다.
 Attention은 각 벡터에 일정 가중치를 곱해 가중합을 구하는 개념이기 때문에 가중치들을 확률값으로 변환하여 연산을 수행합니다.
@@ -134,8 +134,10 @@ $$ FFN(x) = max(0, xW_1 + b_1)W_2+b_2 $$
 
 <script src="https://gist.github.com/kh-mo/24f1fbbbc9f4e3950d4be03d3fa367d3.js"></script>
 
-## 
+## 정리하며...
 
-Transformer는 parallelizable하기 때문에 상당히 학습 시간이 짧습니다.
-또한 당시 존재했던 번역 task의 sota를 달성할만큼 높은 성능도 보입니다.
+지금까지 transformer의 아키텍쳐 building block과 그 의미들을 살펴보았습니다.
+Transformer는 parallelizable하기 때문에 상당히 학습 시간이 짧고 당시 존재했던 번역 task의 sota를 달성할만큼 높은 성능도 보입니다.
 앙상블이 아닌 single 모델로 달성한 성능이란 점도 주목할 요소 중 하나라고 생각합니다.
+전체 아키텍처 구조를 작성한 코드는 [여기](https://github.com/kh-mo/Transformer)를 참고해주시기 바랍니다.
+감사합니다.
