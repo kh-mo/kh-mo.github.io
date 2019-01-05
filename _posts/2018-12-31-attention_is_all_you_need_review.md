@@ -106,7 +106,7 @@ Attention은 각 벡터에 일정 가중치를 곱해 가중합을 구하는 개
 $$ Attention(Q, K, V) = softmax(\frac{Q{K^T}}{sqrt{d_k})V $$
 
 그러나 디코더의 경우 문장을 생성하는 과정에서 뒤쪽 단어의 정보를 참조해서는 안됩니다.
-이것을 방지하기 위해서 앞쪽의 단어가 뒤에 나오는 단어와의 유사도를 구할 때 mask를 사용하여 참조를 방지합니다.  
+이것을 방지하기 위해서 앞쪽의 단어가 뒤에 나오는 단어와의 유사도를 구할 때 mask를 사용하여 참조를 방지합니다.
 전체적인 연산 그림은 아래와 같습니다.
 
 ![](/public/img/attention_is_all_you_need_figure5.JPG "Figure5 of attention is all you need 논문 리뷰")
@@ -115,4 +115,13 @@ $$ Attention(Q, K, V) = softmax(\frac{Q{K^T}}{sqrt{d_k})V $$
 
 <script src="https://gist.github.com/kh-mo/0776a177a5423eb039080e083e22f433.js"></script>
 
+## Layer Normalization
 
+## Feed-Forward Network
+
+인코더, 디코더 레이어에서 multi-head attention 연산과 normalization 연산을 거치고나면 단순한 feed forward 연산을 수행하게 된다.
+수식과 코드는 다음과 같다.
+
+$$ FFN(x) = max(0, xW_1 + b_1)W_2+b_2 $$  
+
+<script src="https://gist.github.com/kh-mo/24f1fbbbc9f4e3950d4be03d3fa367d3.js"></script>
