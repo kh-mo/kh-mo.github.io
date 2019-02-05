@@ -35,8 +35,8 @@ ConvAI 대회에서 사용된 데이터셋에 대한 설명은 ACL 2018에 억�
 ![](/public/img/personalizing_dialogue_agents_figure1.JPG "Figure1 of personalizing_dialogue_agents_figure")
 
 Persona 1과 Persona 2는 자신들의 성격을 5가지 문장으로 정의하고 있습니다.
-데이터셋에는 총 1155개 persona가 있으며 각 persona는 5개 문장으로 그 성격이 정의됩니다. 
-또한 데이터셋을 만드는 과정에서 사람들이 무의식적으로 성격을 표현하는 어휘를 이용해 유사한 대화를 하는 것을 방지하기 위해 profile 정보를 유사한 문장으로 수정합니다(revised persona).
+데이터셋에는 총 1155개 persona가 있으며 각 persona는 5개 문장으로 성격이 정의됩니다. 
+또한 데이터셋을 만드는 과정에서 사람들이 무의식적으로 성격을 표현하는 어휘를 이용해 유사한 대화를 하는 것을 방지하기 위해 profile 정보를 의미는 비슷하나 형태는 다른 문장(revised persona)으로 수정합니다.
 그 성격에 기반한 대화가 PERSONA-CHAT dataset에서 제공하는 데이터입니다. 
 Original persona와 revised persona 사이의 예시는 아래와 같습니다.
 
