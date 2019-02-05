@@ -32,7 +32,7 @@ ConvAI 대회에서 사용된 데이터셋에 대한 설명은 ACL 2018에 억�
 이를 논문에서는 PERSONA-CHAT dataset이라 부릅니다.
 아래 그림은 PERSONA-CHAT dataset의 예시입니다.
 
-![](/public/img/personalizing_dialogue_agents_figure1.JPG "Figure1 of personalizing_dialogue_agents_figure1")
+![](/public/img/personalizing_dialogue_agents_figure1.JPG "Figure1 of personalizing_dialogue_agents_figure")
 
 Persona 1과 Persona 2는 자신들의 성격을 5가지 문장으로 정의하고 있습니다.
 데이터셋에는 총 1155개 persona가 있으며 각 persona는 5개 문장으로 그 성격이 정의됩니다. 
@@ -40,7 +40,7 @@ Persona 1과 Persona 2는 자신들의 성격을 5가지 문장으로 정의하�
 그 성격에 기반한 대화가 PERSONA-CHAT dataset에서 제공하는 데이터입니다. 
 Original persona와 revised persona 사이의 예시는 아래와 같습니다.
 
-![](/public/img/personalizing_dialogue_agents_figure2.JPG "Figure1 of personalizing_dialogue_agents_figure2")
+![](/public/img/personalizing_dialogue_agents_figure2.JPG "Figure2 of personalizing_dialogue_agents_figure")
 
 이렇게 만들어진 데이터셋을 바탕으로 저자들은 총 6가지 베이스라인 모델을 제시합니다.
 
@@ -74,14 +74,14 @@ Perplexity는 생성 모델이 다음 단어를 생성할 때 혼란스러워 �
 Hits@1은 후보 정답 집합군 중 정답으로 맞는 갯수를 1 나머지를 0으로 놓고 계산하는 방식으로 accuracy와 유사한 개념으로 볼 수 있습니다.
 
 아래 그림은 정량적 평가지표를 바탕으로 베이스라인 모델들의 성능을 평가한 표입니다.
-![](/public/img/personalizing_dialogue_agents_figure3.JPG "Figure1 of personalizing_dialogue_agents_figure4")
+![](/public/img/personalizing_dialogue_agents_figure3.JPG "Figure3 of personalizing_dialogue_agents_figure")
 
 표를 살펴보면 성격을 나타내는 persona 정보를 더 사용했을 시 generative model과 ranking model의 성능이 모두 향상됨을 확인할 수 있습니다.
 Revised persona는 original persona보다 성격을 나타내는 표현 사이에 단어 오버랩이 줄어든 등 훨씬 어려운 작업입니다.
 
 정량적인 평가 이외에도 사람이 직접 평가하는 정성적 평가도 진행되었습니다.
 아래 그림은 정성적인 평가가 수행된 표입니다.
-![](/public/img/personalizing_dialogue_agents_figure4.JPG "Figure1 of personalizing_dialogue_agents_figure4")
+![](/public/img/personalizing_dialogue_agents_figure4.JPG "Figure4 of personalizing_dialogue_agents_figure")
 
 이 표는 사람들이 학습된 모델과 대화를 나누면서 fluency, engagingness, consistency에 대해 1~5점 사이 점수를 매긴 표입니다.
 가장 상단은 사람과 사람이 대화를 나눠 받은 점수로 다른 모델들이 목표로 삼을 human level 기준점으로 볼 수 있습니다.
