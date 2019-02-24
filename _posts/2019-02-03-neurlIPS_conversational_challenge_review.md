@@ -5,7 +5,7 @@ category: Non-Category
 ---
 
 본 포스트는 2018 NeurlIPS에서 열린 [the conversational intelligence challenge 2(ConvAI2)](http://convai.io/)에 관한 포스트입니다.
-다룰 내용은 대회에 대한 간략한 소개와 데이터셋을 소개하는 논문, 베이스라인 모델 Key-Value Memory Network 논문입니다.
+다룰 내용은 대회에 대한 간략한 소개와 데이터셋을 소개하는 논문입니다.
 잘못된 해석이나 이해가 포함될 수 있으니 첨언과 조언은 언제나 환영합니다.
 포스트에 사용된 그림은 논문의 그림을 참고했습니다.
 
@@ -14,7 +14,7 @@ ConvAI는 2017년에 처음 열린 대회로 2018년은 두 번째 대회입니�
 주최 측은 비목적 지향 대화형 시스템(non-goal-oriented dialogue system)을 개발하기 위한 데이터셋과 평가 기준을 마련했고 2018 NeuralIPS workshop에서 최종 수상자가 발표되었습니다.
 수상작에 대한 자료는 [여기](https://github.com/atselousov/transformer_chatbot/blob/agent/docs/slides.pdf)에서 확인할 수 있습니다.
 
-## Dataset 
+## Dataset
 
 ConvAI 대회에서 사용된 데이터셋에 대한 설명은 ACL 2018에 억셉된 논문 "[Personalizing Dialogue Agents: I have a dog, do you have pets too?](https://arxiv.org/abs/1801.07243)"에 자세히 설명되어 있습니다.
 대화 시스템은 크게 목적 지향과 비목적 지향 방식으로 구분할 수 있습니다.
@@ -85,6 +85,4 @@ Hits@1은 후보 정답 집합군 중 정답으로 맞는 갯수를 1 나머지�
 이 표는 사람들이 학습된 모델과 대화를 나누면서 fluency, engagingness, consistency에 대해 1~5점 사이 점수를 매긴 것을 바탕으로 작성되었습니다.
 가장 상단은 사람과 사람이 대화를 나눠 받은 점수로 다른 모델들이 목표로 삼을 human level 기준점으로 볼 수 있습니다.
 많은 연구가 진행되어 이 지점에 도달하기를 기대합니다.
-
-## Key-Value Memory Network
 
