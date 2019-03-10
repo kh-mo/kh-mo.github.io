@@ -26,32 +26,60 @@ category: Non-Category
 
 ![](/public/img/manifold_learning_figure2.JPG "Figure2 of manifold_learning, Tangent Bundle Manifold Learning via Grassmann&Stiefel Eigenmaps")
 
-
-매니폴드를 잘 찾으면 유사한 데이터를 획득할 수 있을 것이고 이것은 곧 학습 데이터에 없는 데이터도 획득할 가능성이 열림을 의미합니다.
-
+고차원 공간에 놓인 점들이 특정한 공간 형태를 따라 분포되어 있음을 직관적으로 볼 수 있습니다.
+이렇게 나타난 공간이 매니폴드입니다.
 매니폴드는 다음과 같은 가정을 가지고 있습니다.
 
 >
-> natural data in high dimensional spaces concentrates close to lower dimensional manifolds.
+> Natural data in high dimensional spaces concentrates close to lower dimensional manifolds.<br>
 > 고차원 데이터의 밀도는 낮지만, 이들의 집합을 포함하는 저차원의 매니폴드가 있다.
 >
-> probability density decreases very rapidly when moving away from the supporting manifold.
+> Probability density decreases very rapidly when moving away from the supporting manifold.<br>
 > 이 저차원의 매니폴드를 벗어나는 순간 급격히 밀도는 낮아진다.
 >
 
+
 ## 데이터 포인트 간의 거리
+
+매니폴드 공간을 정의하고 찾았다면 그것의 의미는 무엇일까요?
+내가 가진 데이터들을 잘 아우르는 공간이라는 것은 알겠는데 그것으로 무엇을 할 수 있을까요?
+지금부터 그것을 알아보겠습니다.
+
+매니폴드 공간은 본래 고차원 공간의 subspace이기 때문에 차원수가 상대적으로 작아집니다.
+이는 데이터 차원 축소(dimension reduction)를 가능하게 합니다. 
+그리고 차원 축소가 잘 되었다는 것은 매니폴드 공간을 잘 찾았다는 것이기도 합니다.
+본래 고차원 공간에서 각 차원들을 잘 설명하는 새로운 특징(feature)을 축으로 하는 공간을 찾았다는 뜻으로 해석할수도 있습니다.
+아래 그림을 예시로 살펴보겠습니다.
+
+![](/public/img/manifold_learning_figure3.JPG "Figure3 of manifold_learning, https://dmm613.wordpress.com/tag/machine-learning/")
+
+
+
+이렇게 찾은 공간은 
+
+![](/public/img/manifold_learning_figure4.JPG "Figure4 of manifold_learning, A Global Geometric Framework for Nonlinear Dimensionality Reduction")
+
+매니폴드를 잘 찾으면 유사한 데이터를 획득할 수 있을 것이고 이것은 곧 학습 데이터에 없는 데이터도 획득할 가능성이 열림을 의미합니다.
+
 
 고차원 공간상에서 각 점들 사이의 유사도는 거리로 측정합니다.
 그러나 과연 이것이 올바른 접근법일까요?
 근처에 있는 점이 나랑 유사하다고 생각했지만 실제로는 아닐 수 있습니다.
 그 예시가 아래와 같습니다.
 
-![](/public/img/manifold_learning_figure3.JPG "Figure3 of manifold_learning, A Global Geometric Framework for Nonlinear Dimensionality Reduction")
+
  
 위 이미지와 같은 이유로 의미적 관계를 담고있는 subspace, 매니폴드를 찾아야 할 필요가 있습니다.
 그리고 각 데이터 포인트를 매니폴드 공간에 projection 시키면 점들 사이의 관계도 재정립될 수 있습니다.
 차원이 축소되는 효과도 함께 거둘 수 있습니다.  
 
+다시 한 번 정리하자면 매니폴드 공간을 통해 얻을 수 있는 이점은 다음과 같습니다.
+
+>
+> 차원 축소 효과
+>
+> 의미적 유사성 공간 보존
+>
 ## 알고리즘
 
 오토인코더는 unsupervised learning 알고리즘입니다.
