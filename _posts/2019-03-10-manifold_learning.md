@@ -9,30 +9,31 @@ category: Non-Category
 
 ![](/public/img/manifold_learning_figure1.JPG "Figure1 of manifold_learning")
 
-아마 수천 번을 반복해도 이와 같을 것입니다.
-그런데 이상하지 않습니까?
-분명 우리가 카메라로 찍는 사진도 어떤 숫자의 조합이기 때문에 난수 발생기를 이용해 사진을 만든다면 평소에 보는 그럴듯한 사진이 만들어져야 할 텐데요?
-그러나 실험 결과는 그런 이미지를 제공해주지 않습니다.
+수천 번을 반복해도 이와 같을 것입니다.
+그런데 여기서 이상한 점은 분명 우리가 카메라로 찍는 사진도 어떤 숫자의 조합이기 때문에 난수 발생기를 이용해 사진을 만든다면 평소에 보는 그럴듯한 사진이 만들어져야 할 것입니다.
+그러나 실험 결과는 그런 이미지가 생성되지 않음을 보여줍니다.
 왜 그럴까요?
 이 현상을 매니폴드(manifold) 관점에서 설명해 보겠습니다.
 
 ## manifold 직관적으로 이해하기
 이미지를 구성하는 픽셀, 화소를 하나의 차원으로 간주하여 우리는 고차원 공간에 한 점으로 이미지를 매핑시킬 수 있습니다.
-<이미지>
-내가 가진 학습 데이터셋에 수많은 이미지를 이렇게 공간속에 매핑시키면 유사한 이미지는 특정 공간에 매핑되어 있을 것입니다.
-<이미지>
+내가 가진 학습 데이터셋에 존재하는 수많은 이미지를 공간 속에 매핑시키면 유사한 이미지는 특정 공간에 매핑되어 있을 것입니다.
+이 내용과 관련한 좋은 시각화 자료는 [여기](http://vision-explorer.reactive.ai/#/galaxy?_k=n2cees)를 참고하시기 바랍니다.
+![](/public/img/manifold_learning_figure2.JPG "Figure2 of manifold_learning")
+
 그리고 그 점들의 집합을 잘 아우르는 subspace가 존재할 수 있을텐데 그것을 우리는 매니폴드(manifold)라고 합니다.
-<이미지>
 매니폴드를 잘 찾으면 유사한 데이터를 획득할 수 있을 것이고 이것은 곧 학습 데이터에 없는 데이터도 획득할 가능성이 열림을 의미합니다.
 
 매니폴드는 다음과 같은 가정을 가지고 있습니다.
 
+>
 > 매니폴드 가정(manifold hypothesis)
-> 1. natural data in high dimensional spaces concentrates close to lower dimensional manifolds.
+> natural data in high dimensional spaces concentrates close to lower dimensional manifolds.
 > 고차원 데이터의 밀도는 낮지만, 이들의 집합을 포함하는 저차원의 매니폴드가 있다.
 >
-> 2. probability density decreases very rapidly when moving away from the supporting manifold.
+> probability density decreases very rapidly when moving away from the supporting manifold.
 > 이 저차원의 매니폴드를 벗어나는 순간 급격히 밀도는 낮아진다.
+>
 
 ## 데이터 포인트 간의 거리
 
