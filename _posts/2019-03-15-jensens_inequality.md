@@ -73,10 +73,10 @@ $$ log(\int\limits p(x|z)p(z)dz) \geq \int\limits log(p(x|z)p(z))dz $$
 여기서 $log(p(x|z)p(z))$는 $E[x]$가 되는데 적분식이므로 모든 $p(z)$의 합은 1이 됩니다.
 즉, $p(z)$를 가중치로 보는 또하나의 Jensen's Inequality가 적용되어 다음과 같이 정리할 수 있습니다.
 
-$$ log(p(x|z)p(z)) \geq p(z)log(p(x|z)) $$
+$$ log(p(x|z)p(z)) \geq log(p(x|z))p(z) $$
 
 따라서 이를 다같이 정리하면 아래와 같이 정리할 수 있습니다.
 
-$$ log(p(x)) = log(\int\limits p(x|z)p(z))dz \geq \int\limits log(p(x|z)p(z))dz \geq \int\limits p(z)log(p(x|z))dz $$
+$$ log(p(x)) = log(\int\limits p(x|z)p(z))dz \geq \int\limits log(p(x|z)p(z))dz \geq \int\limits log(p(x|z))p(z)dz $$
 
 
