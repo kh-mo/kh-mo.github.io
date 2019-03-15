@@ -55,3 +55,8 @@ $$ f(E[x]) \leq E[f(x)] $$
 > f(x)가 concave일 때, $f(E[x]) \geq E[f(x)]$
 >
 
+## Example
+
+확률분포 $p(x)$를 다음과 같이 정의해봅시다.
+
+$$ p(x) = \int\limits_p(x|z)p(z), dz $$
