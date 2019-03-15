@@ -59,13 +59,24 @@ $$ f(E[x]) \leq E[f(x)] $$
 
 확률분포 $p(x)$를 다음과 같이 정의해봅시다.
 
-$$ p(x) = \int\limits p(x|z)p(z), dz $$
+$$ p(x) = \int\limits p(x|z)p(z)dz $$
 
 확률분포를 convcave 함수로 만들기 위해 log 변환을 수행하겠습니다.
 그러면 아래처럼 변형됩니다.
 
-$$ log(p(x)) = log(\int\limits p(x|z)p(z), dz) $$
+$$ log(p(x)) = log(\int\limits p(x|z)p(z))dz $$
 
 $p(x)$ 는 0~1 사이값을 가지고 log는 대표적인 concave 함수이기 때문에 Jensen's Inequality가 적용될 수 있습니다.
 
-$$ log(\int\limits p(x|z)p(z), dz) \geq \int\limits log(p(x|z)p(z), dz) $$
+$$ log(\int\limits p(x|z)p(z)dz) \geq \int\limits log(p(x|z)p(z))dz $$
+
+여기서 $log(p(x|z)p(z))$는 $E[x]$가 되는데 적분식이므로 모든 $p(z)$의 합은 1이 됩니다.
+즉, $p(z)$를 가중치로 보는 또하나의 Jensen's Inequality가 적용되어 다음과 같이 정리할 수 있습니다.
+
+$$ log(p(x|z)p(z)) \geq p(z)log(p(x|z)) $$
+
+따라서 이를 다같이 정리하면 아래와 같이 정리할 수 있습니다.
+
+$$ log(p(x)) = log(\int\limits p(x|z)p(z))dz \geq \int\limits log(p(x|z)p(z))dz \geq \int\limits p(z)log(p(x|z))dz $$
+
+
