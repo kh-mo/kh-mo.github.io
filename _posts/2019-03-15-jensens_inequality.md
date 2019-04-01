@@ -36,7 +36,6 @@ convex함수의 함수값이 늘 직선 아래에 위치하는 것입니다.
 
 $$ f(tx_1 + (1-t)x_2) \geq tf(x_1) + (1-t)f(x_2)$$
 
-
 ## 다변수, Jensen's Inequality, 통계적 관점
 
 앞선 수식에서는 변수가 $x_1$, $x_2$로 두 개 였습니다.
@@ -49,12 +48,12 @@ $$ f(\sum_{i=1}^N {w_i}{x_i}) \leq \sum_{i=1}^N {w_i}f(x_i) $$
 
 변수가 늘어남에 따라 더 고차원의 공간을 표현할 수 있으나 결국 성질은 동일합니다.
 여기서 $w_i$에 대해 한 번 더 생각해보면 $w_i$는 0~1 사이값을 가지며 모든 $w_i$ 합은 1이 됩니다.
-이는 $w_i$가 $x$ 변수에 대한 확률이라고 할 수 있고 $\sum_{i=1}^N {w_i}{x_i}$은 $x$에 대한 기대값으로 볼 수 있습니다.
-좌변도 똑같이 $f(x)$에 대한 기대값으로 볼 수 있습니다.
+이는 $w_i$가 변수$x$에 대한 확률이라고 할 수 있고 $\sum_{i=1}^N {w_i}{x_i}$은 $x$에 대한 기대값으로 볼 수 있습니다.
+우변의 경우 $f(x)$에 대한 기대값으로 볼 수 있습니다.
 
 $$ f(E[x]) \leq E[f(x)] $$ 
 
-위 내용을 정리하자면 다음과 같습니다.
+요약하면 결국 이런 것입니다.
 
 >
 > f(x)가 convex일 때, $f(E[x]) \leq E[f(x)]$
@@ -69,15 +68,22 @@ $$ f(E[x]) \leq E[f(x)] $$
 $$ p(x) = \int\limits p(x|z)p(z)dz $$
 
 확률분포를 convcave 함수로 만들기 위해 log 변환을 수행하겠습니다.
+Log 함수가 앞서 설명했던 함수 $f$ 입니다.
 그러면 아래처럼 변형됩니다.
 
-$$ log(p(x)) = log(\int\limits p(x|z)p(z))dz $$
+$$ log(p(x)) = log(\int\limits p(x|z)p(z)dz) $$
 
 $p(x)$ 는 0~1 사이값을 가지고 log는 대표적인 concave 함수이기 때문에 Jensen's Inequality가 적용될 수 있습니다.
 
+$$ f(\lim \sum_{i=1}^N {w_i}{x_i}) \geq \lim \sum_{i=1}^N {w_i}f(x_i) $$
+
+
+
+
 $$ log(\int\limits p(x|z)p(z)dz) \geq \int\limits log(p(x|z)p(z))dz $$
 
-여기서 $log(p(x|z)p(z))$는 $E[x]$가 되는데 적분식이므로 모든 $p(z)$의 합은 1이 됩니다.
+여기서 $log(p(x|z)p(z))$는 변수$p(x|z)$에 대한 로그 기대값입니다.
+ 가 되는데 적분식이므로 모든 $p(z)$의 합은 1이 됩니다.
 즉, $p(z)$를 가중치로 보는 또하나의 Jensen's Inequality가 적용되어 다음과 같이 정리할 수 있습니다.
 
 $$ log(p(x|z)p(z)) \geq log(p(x|z))p(z) $$
