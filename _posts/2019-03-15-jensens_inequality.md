@@ -22,17 +22,15 @@ $$ f(tx_1 + (1-t)x_2) \leq tf(x_1) + (1-t)f(x_2) $$
 
 이 그림에서 검은색 선은 대표적인 아래로 볼록한 이차함수이자 convex 함수입니다.
 자주색 선은 ${x_1}$, ${x_2}$의 함수값을 직선으로 연결한 선입니다.
-$t{x_1} + (1-t){x_2}$은 ${x_1}$과 ${x_2}$를 $(1-t):t$로 내분한 점으로 자주색 점에서 함수값도 $f(x_1)$과 $f(x_2)$를 $(1-t):t$로 내분한 값입니다.
-
+$t{x_1} + (1-t){x_2}$은 ${x_1}$과 ${x_2}$를 $(1-t):t$로 내분한 점이고 자주색 선에서 함수값도 $f(x_1)$과 $f(x_2)$를 $(1-t):t$로 내분한 값입니다.
 그림에서도 확인할 수 있듯 convex 함수는 두 점 ${x_1}$, ${x_2}$가 주어지고 0~1사이 $t$값을 가질 때, 
 
 $$ f(tx_1 + (1-t)x_2) \leq tf(x_1) + (1-t)f(x_2) $$
 
 이 수식을 만족합니다.
 convex함수의 함수값이 늘 직선 아래에 위치하는 것입니다.
-
 볼록한 방향이 반대인 concave 함수는 convex 함수에 음수를 취한 함수로 정의됩니다.
-따라서 위 부등식의 등호 방향이 바뀌게 됩니다. 
+따라서 위 부등식의 등호 방향이 바뀌게 됩니다.
 
 $$ f(tx_1 + (1-t)x_2) \geq tf(x_1) + (1-t)f(x_2)$$
 
@@ -75,21 +73,6 @@ $$ log(p(x)) = log(\int\limits p(x|z)p(z)dz) $$
 
 $p(x)$ 는 0~1 사이값을 가지고 log는 대표적인 concave 함수이기 때문에 Jensen's Inequality가 적용될 수 있습니다.
 
-$$ f(\lim \sum_{i=1}^N {w_i}{x_i}) \geq \lim \sum_{i=1}^N {w_i}f(x_i) $$
+$$ f(\lim_{n \to \infty}\sum_{i=1}^N {w_i}{x_i}) \geq \lim_{n \to \infty}\sum_{i=1}^N {w_i}f(x_i) $$
 
-
-
-
-$$ log(\int\limits p(x|z)p(z)dz) \geq \int\limits log(p(x|z)p(z))dz $$
-
-여기서 $log(p(x|z)p(z))$는 변수$p(x|z)$에 대한 로그 기대값입니다.
- 가 되는데 적분식이므로 모든 $p(z)$의 합은 1이 됩니다.
-즉, $p(z)$를 가중치로 보는 또하나의 Jensen's Inequality가 적용되어 다음과 같이 정리할 수 있습니다.
-
-$$ log(p(x|z)p(z)) \geq log(p(x|z))p(z) $$
-
-따라서 이를 다같이 정리하면 아래와 같이 정리할 수 있습니다.
-
-$$ log(p(x)) = log(\int\limits p(x|z)p(z))dz \geq \int\limits log(p(x|z)p(z))dz \geq \int\limits log(p(x|z))p(z)dz $$
-
-
+$$ log(p(x)) = log(\int\limits p(x|z)p(z))dz \geq \int\limits log(p(x|z))p(z)dz $$
