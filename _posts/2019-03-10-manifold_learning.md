@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 의미를 보존하는 공간, manifold
-category: Non-Category
+category: Definition
 ---
 
 랜덤한 난수를 발생시켜 사진을 하나 만든다면 우리는 어떤 사진을 얻을 수 있을까요?

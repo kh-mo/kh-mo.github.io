@@ -43,9 +43,8 @@ nav:
     - '/Daily/'
   Non-Category:
     - '/Non-Category/'
-
-#  Category:
-#    -
+  Definition:
+    - '/Definition/'
 #  Basic Machine Learning:
 #    - '/Basic Machine Learning/'
 #  Advanced Machine Learning:
