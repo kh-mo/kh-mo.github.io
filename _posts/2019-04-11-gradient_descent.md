@@ -29,3 +29,4 @@ error = y - hat(y) = y - mx - b
 미분(error/m) = -x
 
 
+
