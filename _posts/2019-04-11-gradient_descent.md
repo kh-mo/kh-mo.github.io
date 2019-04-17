@@ -38,12 +38,16 @@ $$ f(x_1, x_2, ..., x_n) $$
 
 이 $f$ 함수의 그래디언트는 함수 $f$를 각 변수로 편미분한 값을 원소로 하는 벡터입니다.
 
-$$ f(\frac{\partial f}{\partial x_1}, \frac{\partial f}{\partial x_2}, ..., \frac{\partial f}{\partial x_n}) $$
+$$ \nabla\f=(\frac{\partial f}{\partial x_1}, \frac{\partial f}{\partial x_2}, ..., \frac{\partial f}{\partial x_n}) $$
 
+이 벡터는 기울기가 가장 가파른 곳으로의 방향, $f$값이 가장 가파르게 증가하는 방향을 의미합니다.
+예를 들어, $f(x, y) = x^2 + y^2 + xy$라고 하면 그래디언트는 $\nabla\f=(2x+y, 2y+x)$ 과 같습니다.
+임의의 점 $(1, 3)$에서 함수 $f$ 값이 최대로 증가하는 방향은 $(5, 7)$이고 그 크기는 유클리드 공간에서 L2 norm인 $\lVert sqrt((5-1)^2 + (7-3)^2) \rVert$입니다.
 
 ## gradient descent
 
+
 ## backpropagation
 
-
+## stochastic gradient descent
 
