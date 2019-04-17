@@ -4,6 +4,35 @@ title: 오차의 최소화, Gradient Descent
 category: Definition
 ---
 
+## what is the gradient?
+
+다변수 함수 $f$가 $n$개 변수로 이루어져 있다면 다음과 같이 표현할 수 있습니다.
+
+$$ f(x_1, x_2, ..., x_n) $$
+
+이 $f$ 함수의 그래디언트는 함수 $f$를 각 변수로 편미분한 값을 원소로 하는 벡터입니다.
+
+$$ \nabla f=(\frac{\partial f}{\partial x_1}, \frac{\partial f}{\partial x_2}, ..., \frac{\partial f}{\partial x_n}) $$
+
+이 벡터는 기울기가 가장 가파른 곳으로의 방향, $f$값이 가장 가파르게 증가하는 방향을 의미합니다.
+
+예를 들어, $f(x, y) = x^2 + y^2 + xy$라고 하면 그래디언트는 $\nabla f=(2x+y, 2y+x)$ 과 같습니다.
+임의의 점 $(1, 3)$에서 함수 $f$ 값이 최대로 증가하는 방향은 $(5, 7)$이고 그 크기는 유클리드 공간에서 L2 norm인 $\lVert \sqrt{(5-1)^2 + (7-3)^2} \rVert$입니다.
+
+## gradient descent
+
+위에서 그래디언트가 함수값을 최대화시키는 방향을 나타내는 것임을 이야기했습니다.
+만약 그래디언트 방향을 반대로 한다면 어떤 함수값을 최소화시키는 방향을 나타낼 것입니다.
+이 방법을 활용하여 비용함수를 최소화시키는 최적화 방법론이 gradient descent 방법론입니다.
+우선 수식으로 살펴보겠습니다.
+
+$$ x_{n+1} = x_n - \alpha \nabla_x f $$ 
+
+## backpropagation
+
+## stochastic gradient descent
+
+
 ## Example
 
 실제 가지고 있는 데이터 x, y가 다음과 같은 튜플 데이터라고 가정하겠습니다.
@@ -27,28 +56,4 @@ b(n+1) = b(n) + gradient(b)
 error = y - hat(y) = y - mx - b
 
 미분(error/m) = -x
-
-
-
-## what is the gradient?
-
-다변수 함수 $f$가 $n$개 변수로 이루어져 있다면 다음과 같이 표현할 수 있습니다.
-
-$$ f(x_1, x_2, ..., x_n) $$
-
-이 $f$ 함수의 그래디언트는 함수 $f$를 각 변수로 편미분한 값을 원소로 하는 벡터입니다.
-
-$$ \nabla f=(\frac{\partial f}{\partial x_1}, \frac{\partial f}{\partial x_2}, ..., \frac{\partial f}{\partial x_n}) $$
-
-이 벡터는 기울기가 가장 가파른 곳으로의 방향, $f$값이 가장 가파르게 증가하는 방향을 의미합니다.
-
-예를 들어, $f(x, y) = x^2 + y^2 + xy$라고 하면 그래디언트는 $\nabla f=(2x+y, 2y+x)$ 과 같습니다.
-임의의 점 $(1, 3)$에서 함수 $f$ 값이 최대로 증가하는 방향은 $(5, 7)$이고 그 크기는 유클리드 공간에서 L2 norm인 $\lVert \sqrt{(5-1)^2 + (7-3)^2} \rVert$입니다.
-
-## gradient descent
-
-
-## backpropagation
-
-## stochastic gradient descent
 
