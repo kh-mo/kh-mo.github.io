@@ -53,6 +53,7 @@ $$ L(\theta + \nabla \theta) \leq L(\theta) $$
 업데이트 된 변수를 기반으로 구한 로스함수 $L$이 업데이트 되기 이전의 변수로 구한 로스함수보다 작거나 같을 경우에만 변수를 업데이트 한다는 조건입니다.
 이 조건값이 만족되는 동안 학습이 진행되며 그동안은 gradient descent 방법론이 최적해를 찾아가고 있다고 할 수 있습니다.
 
+<script src="https://gist.github.com/kh-mo/fbecdd96c163b895b5123571fe63d8c1.js"></script>
 
 ## backpropagation
 
