@@ -30,3 +30,20 @@ error = y - hat(y) = y - mx - b
 
 
 
+## what is the gradient?
+
+다변수 함수 $f$가 $n$개 변수로 이루어져 있다면 다음과 같이 표현할 수 있습니다.
+
+$$ f(x_1, x_2, ..., x_n) $$
+
+이 $f$ 함수의 그래디언트는 함수 $f$를 각 변수로 편미분한 값을 원소로 하는 벡터입니다.
+
+$$ f(\frac{\partial f}{\partial x_1}, \frac{\partial f}{\partial x_2}, ..., \frac{\partial f}{\partial x_n}) $$
+
+
+## gradient descent
+
+## backpropagation
+
+
+
