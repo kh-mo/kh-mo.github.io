@@ -55,7 +55,4 @@ $$ L(\theta + \nabla \theta) \leq L(\theta) $$
 
 <script src="https://gist.github.com/kh-mo/fbecdd96c163b895b5123571fe63d8c1.js"></script>
 
-## backpropagation
-
-## stochastic gradient descent
 
