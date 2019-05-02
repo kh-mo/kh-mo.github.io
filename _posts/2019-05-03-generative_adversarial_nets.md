@@ -29,7 +29,7 @@ GAN이라 불리는 generative adversarial nets은 다른 역할을 하는 모�
 자 이제 필요한 구성요소들을 살펴보았으니 이 결과들을 어떻게 수식으로 조합하여 학습시키는 지 알아보겠습니다.
 GAN의 손실함수(loss function)는 다음과 같이 정의합니다.
 
-$$  \min_{G}\max_{D}{V(D,G)} = $$
+$$ \min_{G}\max_{D}{V(D,G)} = E_{x~p_{data}(x)}\[\log D(x)\] + E_{x~p_{z}(x)}\[\log (1-D(G(z)))\]$$
 
-$$ $\newcommand{\Expect} $$
+
 [그림2 - 많은 gradient 표현]
