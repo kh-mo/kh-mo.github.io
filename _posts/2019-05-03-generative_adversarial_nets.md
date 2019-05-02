@@ -1,7 +1,7 @@
 ---
 layout: post
 title: GAN, Generative Adversarial Nets
-category: Definition
+category: Non-Category
 ---
 
 컴퓨터 비전 분야에서 딥러닝은 이미지가 어떤 범주(class)에 속하는지 잘 구분해줍니다.
@@ -18,6 +18,17 @@ GAN이라 불리는 generative adversarial nets은 다른 역할을 하는 모�
 다시 말하면 생성모델과 분류모델이 이미지를 만들어내고 판단하면서 서로 적대적(adversarial)으로 발전해나가는 알고리즘입니다.
 수식과 기호를 사용해서 조금 더 디테일하게 살펴보겠습니다.  
 
+[그림1 - gan의 전체적인 아키텍쳐]
+
 논문에서 생성모델은 G, 분류모델은 D로 표현합니다.
 먼저 임의의 사전 확률 분포(prior distribution) $P_z$에서 노이즈 변수 z를 추출합니다.
-이 z를 생성모델에 입력으로 주어 이미지 $G(z,; {\theta_g})$를 생성합니다.
+이 z를 생성모델에 입력으로 주어 이미지 $G(z; {\theta_g})$를 생성합니다.
+분류모델은 $D(x; {\theta_d})$로 표기되는데 이 때 x에 들어가는 값은 우리의 training data 또는 생성모델이 생성한 데이터입니다.
+이 데이터를 입력으로 받아 분류모델이 주는 single scalar는 주어진 데이터가 실제 사진일 확률값으로 0~1 사이값을 가지게 됩니다.
+
+자 이제 필요한 구성요소들을 살펴보았으니 이 결과들을 어떻게 수식으로 조합하여 학습시키는 지 알아보겠습니다.
+GAN의 손실함수(loss function)는 다음과 같이 정의합니다.
+
+$$  \min_{G}\max_{D}{V(D,G)} = $$
+
+[그림2 - 많은 gradient 표현]
