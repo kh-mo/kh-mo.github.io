@@ -31,4 +31,5 @@ GAN의 손실함수(loss function)는 다음과 같이 정의합니다.
 
 $$  \min_{G}\max_{D}{V(D,G)} = $$
 
+$$ $\newcommand{\Expect} $$
 [그림2 - 많은 gradient 표현]
