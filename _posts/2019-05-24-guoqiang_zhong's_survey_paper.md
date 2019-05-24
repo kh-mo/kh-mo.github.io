@@ -1,7 +1,7 @@
 ---
 layout: post
 title: An Overview on Data Representation Learning: From Traditional Feature Learning to Recent Deep Learning 번역
-category: Representation_Learning
+category: Representation-Learning
 ---
 
 ## Abstract
