@@ -35,3 +35,35 @@ PCA나 LDA같은 이전의 global 접근법과는 달리, Isomap(isometric featu
 1958년 F.Rosenblatt은 binary classification을 위한 two-layer neural network인 perceptron을 만들었습니다.
 그러나 M.Minsky와 S.Papert는 perceptron이 XOR(exclusive-or) 문제를 풀 수 없다는 점을 지적했습니다.
 1974년 P.Werbos가 MLP(multi-layer perceptrons)을 학습하기 위한 back propagation 알고리즘을 제안할때까지 neural network 연구는 침체되었습니다.
+특히, 1986년 D.Rumelhart와 G.Hinton, R.Williams은 back propagation 알고리즘이 neural network의 hidden layer안에서 유용한 내부적 representation을 생성할 수 있다는 것을 발견했습니다.
+Back propagation 알고리즘을 이용하면 이론적으로 neural network의 많은 layer를 학습할 수 있지만 2가지 중요한 문제점이 있습니다.
+모델의 과적합(overfitting)과 기울기 발산(gradient diffusion)이 그 문제점입니다.
+2006년 G.Hinton은 deep neuural network의 finetuing과 greedy layer별 pre-training을 수행하는 아이디어를 결합해 representation learning 연구에 돌파구를 시도했습니다.
+Neural network community를 혼란스럽게한 이슈들은 따라서 해결되었습니다.
+이후에 많은 deep learning 알고리즘들이 제안되었고 성공적으로 다양한 도메인에 적용되었습니다.
+
+이 논문에서 우리는 전통적인 feature learning과 최근 deep learning 둘 모두에 관한 data representation learning의 개발과정을 리뷰합니다.
+이 논문의 나머지는 다음과 같이 구성되어 있습니다.
+2장에서는 선형 알고리즘, 선형 알고리즘의 kernel 확장 알고리즘, manifold learning 방법론과 같은 전통적인 feature learning을 다룹니다.
+3장에서는 최근 deep learning의 진보와 중요 모델, tookbox에 대해 다룹니다.
+4장에서는 data representation learning에 대한 흥미로운 연구 방향에 대해서 결론을 내립니다.
+
+## Traditional feature learning
+
+이번 장에서 우리는 분류기나 다른 예측기를 만들 때 유용한 정보를 훨씬 쉽게 추출할 수 있는 데이터 변형을 학습하는 것을 목적으로 하는 shallow 모델이 속한 전통적인 feature learning 알고리즘에 집중합니다.
+이런 이유로 우리는 SIFT(scale-invariant feature transform), LBP(local binary pattern), HOG(histogram of oriented gradient)와 같은 image descriptor나 TF-IDF(term frequency-inverse document frequency)와 같은 document statistic 계열의 manual feature engineering 방법론을 고려하지 않을 것입니다.
+
+그것들을 공식화하는 관점에서, 알고리즘은 일반적으로 선형-비선형, supervised-unsupervised, generative-discriminative, global-local과 같은 유형으로 구분됩니다.
+예를들어 PCA는 선형이자 unsupervised, generative, global feature learning 방법론이고 반면에 LDA는 선형이자 supervised, discriminative, global 방법론입니다.
+이번 장에서 우리는 feature learning 알고리즘들을 global인 것과 local한 것으로 범주화한 분류체계를 적용할 것입니다.
+일반적으로 global 방법론은 학습된 feature space에서 데이터의 global information을 보존하려하고 local 방법론은 새로운 representation을 학습하는 동안 데이터 사이의 local similarity를 보존하는 것에 집중합니다.
+예를들어 PCA와 LDA와 달리, LLE는 locality 기반의 feature learning 알고리즘입니다.
+게다가 우리는 manifold learning으로 locality 기반의 feature learning을 부르는데 고차원 데이터에서 manifold structure hidden을 발견하기 때문입니다.
+
+문헌에서 Van der Maaten, Postma, Van den Herik는 34개 feature learning 알고리즘의 코드를 포함한 차원축소를 위한 MATLAB toolbox를 제공합니다.
+Yan et al.의 페이퍼에서 많은 차원 축소 알고리즘군을 하나의 공식으로 통합한 graph embedding이라고 알려진 일반적인 프레임워크를 제안합니다.
+Zhong, Chherawala, Cheriet의 페이퍼는 handwriting recognition에 대한 3종류 supervised 차원축소 방법론을 비교했다.
+그동안에 Zhong, Cheriet의 페이퍼는 tensor로서 입력 데이터를 고려하는 tensor representation learning 관점에서 프레임워크를 제안했는데 이는 많은 선형, kernel, tensor 차원축소 방법론을 한 학습 기준으로 통합했다.
+
+### Global feature learning
+
