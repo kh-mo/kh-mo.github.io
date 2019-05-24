@@ -65,5 +65,5 @@ Yan et al.의 페이퍼에서 많은 차원 축소 알고리즘군을 하나의 
 Zhong, Chherawala, Cheriet의 페이퍼는 handwriting recognition에 대한 3종류 supervised 차원축소 방법론을 비교했다.
 그동안에 Zhong, Cheriet의 페이퍼는 tensor로서 입력 데이터를 고려하는 tensor representation learning 관점에서 프레임워크를 제안했는데 이는 많은 선형, kernel, tensor 차원축소 방법론을 한 학습 기준으로 통합했다.
 
-### Global feature learning
+#### Global feature learning
 
