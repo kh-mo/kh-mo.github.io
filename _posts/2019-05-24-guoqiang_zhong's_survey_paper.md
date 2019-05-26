@@ -67,3 +67,29 @@ Zhong, Chherawala, Cheriet의 페이퍼는 handwriting recognition에 대한 3�
 
 #### Global feature learning
 
+위에서 언급한 것 처럼, PCA는 초기 선형 feature learning 알고리즘 중 하나입니다.
+그것의 간결성덕분에, PCA는 차원 축소에 광범위하게 사용되었습니다.
+그것은 가능한 correlated 변수값들의 집합을 선형 uncorrelated 변수값들의 집합으로 바꾸기 위해 직교 변환을 사용합니다.
+어느정도, 전통적인 MDS(multidimensional scaling)가 PCA는 둘다 선형 방법론이고 고유값 분해를 사용하여 최적화한다는 점에서 유사합니다.
+PCA와 MDS 사이의 차이점은 PCA는 입력이 data matrix이고 반면에 MDS는 데이터의 distance matrix입니다.
+고유값 분해를 제외하고 SVD(singular value decomposition)은 최ㅏ적화에 잘 사용됩니다.
+정보검색에서 LSA(Latent semantic analysis)는 열 사이의 유사한 구조는 보존하면서 행의 숫자를 줄이는 SVD를 사용해서 최적화를 합니다.(이 때 열은 단어 행은 문서를 표현합니다.)
+PCA의 variants인 kernel PCA는 kernel trick을 사용해서 비선형 차원 축소를 위해 PCA를 확장한 것이고 probabilistic PCA는 PCA의 확률적 버전입니다.
+게다가 PPCA에 기반하여, Lawrence는 GPLVM(Gaussian process latent variable model)을 제안했는데 이것은 완전한 확률적인 것으로 비선형 잠재 변수를 모델링하고 잠재 공간을 관찰 공간으로 비선형 매핑하는 법을 학습할 수 있습니다.
+Supervisory information을 GPLVM 프레임워크에 통합시키기 위해서 Urtasun과 Darrell은 discriminative GPLVM을 제안했습니다.
+그러나 DGPLVM이 LDA와 GDA의 학습 기준에 기반했기에 DGPLVM에서 학습된 잠재 공간의 차원은 C가 class의 갯수일 때, 최대 C-1개라고 제한되게 됩니다.
+이 문제를 해결하기 위해서, Zhong은 잠재변수를 supervisory information에서 graph를 구조화시킨 GMRF(Gaussian Markov random field)로 강제한 GPLRF(Gaussian process latent random field)를 제안했습니다.
+다른 사람들이 수행한 PCA의 더 많은 확장은 sparse PCA, robust PCA, probabilistic relational PCA 등이 있습니다.
+
+LDA는 학습된 저차원 subspace에서 같은 class에 속한 데이터는 가깝고 다른 class에 속한 데이터들은 멀어지도록 강제하는 supervised, 선형 feature learning 방법론입니다.
+LDA는 face recognition에서 성공적으로 사용되었고 Fisherfaces라고 불리는 새로운 feature를 얻었습니다.
+GDA는 LDA의 kernel 버전입니다.
+일반적으로 LDA와 GDA는 일반화된 고유값 분해로 학습됩니다.
+그러나 Wang은 일반화된 고유값 분해의 solution이 LDA의 수식적 관점에서 original trace ratio 문제를 근사할 수 있다는 점을 지적했습니다.
+그러므로 그들은 trace ratio 문제를 trace difference 시리즈 문제로 변형해 iterative 알고리즘을 사용하여 풀었습니다.
+게다가 Jia는 trace ratio 문제를 풀기위해 수렴이 증명된 새로운 Newton-Raphson 방법론을 제안했습니다.
+Zhong, Shi, Cheriet는 trace ratio formulation에 기반하고 데이터의 relational 정보를 충분히 탐험하는 relational Fisher analysis라고 불리는 새로운 방법론을 제안했습니다.
+Zhong, Ling은 trace ratio 문제를 위해 iterative 알고리즘을 분석했고 필요성을 증명하고 trace ratio 문제의 최적 솔루션의 존재를 위한 충분한 조건을 증명했습니다.
+게다가 LDA의 확장에는 incremental LDA, DGPLVM, MFA(marginal Fisher analysis)가 있습니다.
+
+
