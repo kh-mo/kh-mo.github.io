@@ -92,4 +92,28 @@ Zhong, Shi, Cheriet는 trace ratio formulation에 기반하고 데이터의 rela
 Zhong, Ling은 trace ratio 문제를 위해 iterative 알고리즘을 분석했고 필요성을 증명하고 trace ratio 문제의 최적 솔루션의 존재를 위한 충분한 조건을 증명했습니다.
 게다가 LDA의 확장에는 incremental LDA, DGPLVM, MFA(marginal Fisher analysis)가 있습니다.
 
+위에서 언급한 feature learning 알고리즘을 제외하고 ICA(Independent component analysis), CCA(canonical correlation analysis), ensemble learning based feature extraction, multitask feature learning과 같은 많은 다른 feature learning 방법론이 있습니다.
+게다가 tensor 데이터를 직접 처리하기위해, 많은 tensor representation learning 알고리즘이 제안되었습니다.
+예를들어 Yang는 2DPCA 알고리즘을 제안해 face recognition 문제에 PCA의 이점을 보였습니다.
+Ye, Janardan, Li는 two-order tensor representation learning에 대한 2DLDA 알고리즘을 제안했습니다.
+특히, [55] 논문에서 이론적인 수렴이 보장되는 large margin low rank tensor representation learning 알고리즘이 소개되었습니다.
+
+#### Maninfold learning
+
+이번장에서 우리는 manifold learning이라고 불리는 locality 기반의 feature learning 방법론에 집중할 것입니다.
+비록 대부분의 manifold learning 알고리즘이 비선형 차원 축소 접근법이지만 locality preserving projections이나 MFA와 같은 몇몇 선형 차원 축소 방법론도 있습니다.
+한편 몇 비선형 차원 축소 알고리즘은 마치 Sammon mapping이나 KPCA같은 고차원 데이터의 본질적인 구조를 발건하는 것이 목적이 아닌 manifold learning 방법론이 아닌것에 주목합니다.
+
+2000년에 "Science"는 manifold learning에 대한 두가지 흥미로운 페이퍼를 출판했다.
+첫 페이퍼는 고전적인 MDS에 Floyd-Warshall 알고리즘을 결합한 Isomap이다.
+Isomap은 Floyd-Warshall 알고리즘을 사용해서 데이터 사이의 pairwise 거리를 계산하고 계산된 pairwise 거리에 대한 고전적인 MDS를 사용하여 데이터의 저차원 임베딩을 학습합니다.
+두번째 페이퍼는 LLE에 대한 것으로 각 포인트에 대한 locality 정보를 이웃의 가중치를 재구성하도록 인코딩합니다. 
+이후, 많은 manifold learning 알고리즘이 제안되었습니다[61,62,63,64,65,59,23,66].
+특히 [67]의 연구는 LTSA(Local Tangent Space Alignment)의 아이디어를 LE(Laplacian Eigenmaps)과 결합한 것으로 local tangent space에서 유클리디안 거리를 사용한 데이터의 local 유사도를 구하고 데이터의 저차원 임베딩을 학습하기 위해 LE를 사용했습니다.
+[68] 연구에서 Bheriet은 manifold learning 접근법을 모양 기반의 역사적인 Arabic 문서 인지에 사용했고 이전의 방법론들보다 주목할만한 성과를 얻었습니다.
+
+위에 언급된 방법론들과 더불어 어느정도 데이터의 기반 구조를 고려하는 distance metric learning, semi-supervised learning, dictionary learning, non-negative matrix factorization과 같은 알고리즘들이 주목받았습니다.
+
+## Deep Learning 
+
 
