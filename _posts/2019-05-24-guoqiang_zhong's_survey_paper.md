@@ -116,4 +116,78 @@ Isomap은 Floyd-Warshall 알고리즘을 사용해서 데이터 사이의 pairwi
 
 ## Deep Learning 
 
+이 문헌에서 서베이 페이퍼 4개를 소개하겠습니다.
+[76]은 Bengio가 소개한 것으로 딥러닝의 중요한 알고리즘과 원리를 소개합니다.
+반면에 [17]에서 representation learning에 대한 관점으로부터 Bengio, Courville, Vincent는 딥러닝과 feature learning의 진보를 리뷰합니다.
+[77]에서 LeCun, Bengio, Hinton은 deep learning의 발전과정과 CNN과 RNN을 포함한 딥러닝 모델을 소개합니다.
+[80]에서 Schmidhuber는 artificial neural network와 딥러닝 발전과정을 연도별로 리뷰합니다.
+이 서베이 페이퍼와 함께 딥러닝에 관심있는 독자들은 쉽게 딥러닝 연구분야와 역사를 이해할 수 있습니다.
 
+딥러닝 알고리즘을 학습하기 위해, 몇 인터넷 자료들을 추천합니다.
+첫번째는 Hinton 교수의 coursera 강좌입니다.
+이 웹사이트 주소는 "https://www.coursera.org/learn/neural-network"입니다.
+이 코스는 artificial neural network에 대해 그리고 어떻게 머신러닝에서 사용되는지에 대해 다룹니다.
+두번째는 Stanford 대학에서 몇 연구자들이 제공한 딥러닝과 unsupervised feature learning에 대한 튜토리얼입니다.
+이 웹사이트 주소는 "http://ufldl.stanford.edu/wiki/index.php/UFLDL_Tutorial"입니다.
+Unsupervised feature learning과 딥러닝 알고리즘에 대한 기초 지식이 없더라도, 이 튜토리얼은 많은 연습문제를 포함하고 있습니다.
+이런 이유로, 딥러닝 beginner에게 적절합니다.
+세번째는 딥러닝 웹사이트입니다.
+주소는 "http://deeplearning.net"입니다.
+이 웹사이트는 딥러닝 튜토리얼을 제공할 뿐만 아니라 읽을 list, software, dataset을 제공합니다.
+네번째는 블로그로 중국에서 쓰여졌습니다.
+주소는 "http://www.cnblogs.com/tornadomeet"입니다.
+이 블로그의 주인은 어떻게 딥러닝을 학습하고 모델별로 코드를 작성할지 절차를 기록했습니다.
+또한 "http://blog.csdn.net/"이나 "wikipedia"같은 많은 다른 블로그와 웹사이트가 유용하고 도움이 됩니다.
+마지막으로 Goodfellow, Bengio, Courville 등이 MIT press를 통해 출판한 딥러닝 책들도 있습니다.
+온라인 버전은 무료이고 웹사이트는 "http://www.deeplearningbook.org/"입니다.
+이 코스와 튜토리얼, 블로그, 책으로 딥러닝을 공부, 이용하는 학생과 엔지니어는 딥러닝 알고리즘의 이론적인 디테일을 이해할 수 있습니다.
+
+#### Deep learning models
+
+여기에서 우리는 대게 [17]에서 제안된 딥러닝 모델을 리뷰합니다.
+딥러닝의 부활은 주로 3가지 측면의 큰 진보덕분입니다.
+Feature learning, 이용가능한 대규모의 labeled data, hardware는 특히 GPGPU(general purpose graphics processing units)입니다.
+2006년 Hinton과 동료들은 딥뉴럴넷의 학습을 위해 greedy layer-wise pre-training과 finetuning을 이용했고 이것은 MNIST 손글씨 숫자 인식과 문서검색 task에서 sota 알고리즘보다 높은 성능을 보였습니다.
+빠르게 몇 연구들이 따라왔습니다.
+Bengio는 autoencoders를 쌓았고 local minimum 근처에 가중치를 초기화하고, 입력에 대한 고차원 추상화가 내부 distributed representation으로 발생하여 더 나은 일반화를 가져옴으로써 greedy layer-wise unsupervised training 전략이 최적화를 도울 수 있다는 이론을 확인했습니다.
+[81]에서 Vincent는 stacked denoising autoencoder를 제안했고 손상된 버전의 입력값을 제거하기 위해 locally로 학습됩니다.
+[82]에서 Zheng은 PCA나 SNE(Stochastic neighbor embedding)과 같은 stacked feature learning modules을 만들기 위한 딥 아키텍쳐의 효용성을 보였습니다.
+딥 아키텍쳐의 효용성을 향상시키기 위해서 feature learning model을 쌓은 Zheng은 stretching 기술을 상단 layer 가중치 행렬에 적용했고 제안된 방법론의 효용을 손글씨 텍스트 인식 task에서 증명했습니다.
+추가적으로 [86]에서 DBNs(Deep Belief Networks)를 사용한 tandem hidden Markov 모델이 오프라인 손글씨 인식에 적용되었습니다.
+
+2012년 Krizhevsky, Suskever, Hinton은 Alexnet을 만들었고 ImageNetLSVRC(Imagenet Large Scale Visual Recognition Competition)에서 우승했습니다.
+Alexnet에서 dropout regularization과 ReLUs(rectified linear units)이라고 불리는 비선형 activation 함수가 사용되었습니다.
+1000개 카테고리를 가진 학습 이미지 120만장의 학습 속도를 올리기위해서, Alexnet은 GPU를 사용했습니다.
+2013년에서 2016년 사이에 Imagenet LSVRC에서 좋은 성능을 낸 모델은 OverFeat, VGGNet, GoogLeNet, ResNet과 같은 CNN 기반의 모델들입니다.
+[94]에서 Alexnet에 기반한 흥미로운 feature extraction 방법론이 제안되었습니다.
+저자들은 object recognition task에서 크고 고정된 데이터셋에 대해 fully supervised fashion으로 학습된 deep convolutional network의 activation으로부터 추출된 feature가 새로운 일반화된 task에서 재사용될 수 있음을 보여주었습니다.
+따라서 이 features는 DeCAF(deep convolutional activation feature)라고 불립니다.
+[95]에서 Zhong은 photographed document image와 관련된 두가지 문제를 소개하고 제안된 문제에 baseline 결과를 설정하기 위해 DeCAF를 적용했습니다.
+[96]에서 Cai는 DeCAF가 정확한 image classification을 위해 충분히 좋은지 아닌지를 고려했고 stretching연산과 reducing연산에 기반하여 몇 image classification 문제에 DeCAF를 향상시켰습니다.
+ Alexnet과 VGGNet에 기반한 Zhong은 deep hashing learning 알고리즘을 제안했는데 이는 image retrieval에 대한 기존의 hashing 학습 방법론을 크게 향상시켰습니다.
+
+최근에 많은 관심을 받은 딥러닝 방법론은 RNN과 LSTM, attention based model과 generative adversarial net입니다.
+어플리케이션은 image classification, object detection, speech recognition, handwriting recognition, image caption generation, machine translation과 같습니다.  
+
+#### Deep learning toolboxes
+
+인터넷에서 공공연히 공유되는 많은 딥러닝 toolbox가 있습니다.
+각 toolbox는 각각 제공된 DBNs, LeNet-5, AlexNet, VGGNet과 같은 딥러닝 모델의 코드들입니다.
+연구자들은 아마 직접적으로 이 코드들을 사용하거나 새로운 모델을 개발할 것입니다.
+아래에서 간략하게 Theano, Caffe, Tensorflow, MXNet에 대해 소개합니다.
+
+Theano는 파이썬 라이브러리입니다.
+이것은 numpy와 긴밀하게 통합되어 있어서 사용자가 고차원 배열을 포함한 수학적인 표현을 효율적으로 정의하고 최적화하고 평가할 수 있습니다.
+게다가 CPU를 사용할 때보다 140배 이상 빠르게 GPU를 사용해서 데이터 집약적인 계산을 수행할 수 있습니다.
+"http://deeplearning.net/tutorial/"에서 제공하는 딥러닝 튜토리얼은 Theano 기반입니다.
+Caffe는 딥러닝을 위한 순수한 C++/CUDA toolbox입니다.
+그러나 그것은 command line, python, matlab 인터페이스로 제공됩니다.
+Caffe code는 빠르게 동작하고 CPU와 GPU사이의 변환을 매끄럽게 수행합니다.
+Tensorflow는 데이터 flow graph를 사용해서 수치적인 연산을 위한 오픈소스 소프트웨어 라이브러리입니다.
+그래프내의 노드는 수학적인 연산을 나타내고 그래프 엣지는 노드 사이를 소통하는 multidimensional data 배열을 나타냅니다.
+Tensorflow는 미분 연산에 유용한 자동 미분 기능을 가지고 있습니다.
+MXNet은 몇몇 회사와 대학으로부터 많은 작업자가 개발했습니다.
+MXNet은 명령형, symbolic 프로그래밍과 C++, Python, R, Scala, Julia, Matlab, Javascript와 같은 다양한 언어를 지원합니다.
+일반적으로 MXNet 코드의 수행 속도는 Caffe code와 비교할 만 하고 Theano와 Tensorflow보다 훨씬 빠릅니다.
+
+## Conclusion
