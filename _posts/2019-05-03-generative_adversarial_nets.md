@@ -49,6 +49,18 @@ Ian Goodfellow는 optimal discriminator가 주어졌을 때 어떠한 generator�
 
 $$ D_G^* (x) = \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}$$
 
+이 수식은 discriminator 입장에서 해당 수식을 최대화하도록 학습할 때 유도됩니다.
+
+$$
+\begin{align}
+\V(G,D) &= \int_{x} p_{data}(x)\log(D(x))\, dx + \int_{z} p_{z}(z)\log(1-D(g(z)))\, dz \\ 
+<br>
+&= \int_{x} p_{data}(x)\log(D(x)) + \int_{z} p_{g}(x)\log(1-D(x))\, dx \\
+\end{align}
+$$
+
+
+
 ## GAN의 장단점
 
 ## GAN의 평가방식
