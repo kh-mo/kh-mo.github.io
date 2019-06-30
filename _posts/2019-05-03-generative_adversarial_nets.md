@@ -31,7 +31,7 @@ Generator와 discriminator가 모두 딥러닝 아키텍쳐를 가지는 모델�
 그러려면 loss function이 잘 정의되어야겠죠.
 GAN의 loss function은 아래와 같습니다.
 
-$$ \min_{G}\max_{D}{V(D,G)} = E_{x~p_{data}(x)}[\log D(x)] + E_{x~p_{z}(x)}[\log (1-D(G(z)))]$$
+$$ \min_{G}\max_{D}{V(D,G)} = E_{x\~p_{data}(x)}[\log D(x)] + E_{z\~p_{z}(x)}[\log (1-D(G(z)))]$$
 
 이 수식은 generator의 입장과 discriminator 입장에서 해석해야 합니다.
 먼저 discriminator 입장에서 보면 크게 두가지 입력 이미지를 받아 loss를 계산합니다.
@@ -54,12 +54,38 @@ $$ D_G^* (x) = \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}$$
 $$
 \begin{align}
 V(G,D) &= \int_{x} p_{data}(x)\log(D(x))\, dx + \int_{z} p_{z}(z)\log(1-D(g(z)))\, dz \\ 
-<br>
 &= \int_{x} p_{data}(x)\log(D(x)) + \int_{z} p_{g}(x)\log(1-D(x))\, dx \\
 \end{align}
 $$
 
+학습셋에 있는 확률값은 최대화, generator에서 나온 이미지데이터에 대한 확률값을 최소화하면 위의 수식은 최대값을 가지게 됩니다.
+즉, 해당 수식을 $D(x)$가 [0, 1]인 범위에서 미분하면 최대값을 가지는 optimal discriminator의 수식이 유도됩니다.
+ 
+이 optimal discriminator가 존재한다고 가정하고, minimax game을 진행하고 있는 GAN의 목적함수는 다음과 같이 재정의 될 수 있습니다.
 
+$$
+\begin{align}
+C(G) &= \max_{D}{V(G,D)} 
+&= E_{x\~p_{data}}[\log D_G^* (x)] + E_{z\~p_{z}}[\log (1-D_G^* (G(z)))] \\ 
+&= E_{x\~p_{data}}[\log D_G^* (x)] + E_{x\~p_{g}}[\log (1-D_G^* (x))] \\
+&= E_{x\~p_{data}}[\log \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}] + E_{x\~p_{g}}[\log \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}] \\
+\end{align}
+$$
+
+이 목적함수를 이용해 global minimum을 찾으려면 $ p_g = p_{data} $가 되어야합니다.
+그 말인즉슨 generator가 trainDB의 분포를 잘 학습했음을 의미합니다.
+논문에서 Ian Goodfellow는 Theorem 1을 통해 global minimum에 도달했을 때 $C(G)$가 $-\log(4)$임을 증명했습니다.
+이것을 결론부터 거슬러 올라가면 다음과 같이 유도할 수 있습니다.
+
+$$
+\begin{align}
+C(G) &= -\log(4) + 2 * JSD(P_{data} || P_g)
+&= -\log(4) + KL(p_{data} || \frac{p_{data}+P_g}{2}) + KL(p_g || \frac{p_{data}+P_g}{2})
+&= -\log(4) + KL(p_{data} || \frac{p_{data}+P_g}{2}) + KL(p_g || \frac{p_{data}+P_g}{2})
+&= -\log(4) + \sum_{i} p_{data}(i)*\log(\frac{p_{data}(i)}{\frac{p_{data}+P_g}{2}}) + \sum_{i} p_{g}(i)*\log(\frac{p_{g}(i)}{\frac{p_{data}+P_g}{2}})
+&= E_{x\~p_{data}}[\log \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}] + E_{x\~p_{g}}[\log \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}] \\
+\end{align}
+$$ 
 
 ## GAN의 장단점
 
