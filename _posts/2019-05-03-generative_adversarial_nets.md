@@ -24,23 +24,30 @@ Adversarial 이라는 단어가 GAN에 포함된 것도 이러한 프레임워�
 Generator가 이미지를 생성하고 discriminator는 그 이미지를 판단합니다.
 특정한 확률 분포 P(z)로부터 샘플링 된 랜덤한 노이즈 벡터 z를 입력으로 받아 generator는 이미지를 생성합니다.
 이 때 만들어지는 딥러닝 모델의 아키텍쳐는 어떤 형태든 크게 상관이 없습니다(물론 좋은 이미지를 만들어내는 아키텍쳐가 존재할테지만 임의의 함수라고 놓고 가겠습니다).
-
 Discriminator는 이미지를 입력으로 받아 이것이 실제 이미지인지 아닌지를 판단합니다.
-이미지가 실제 이미지에 가까우면 확률값 1을 반환하고 그렇지 않으면 0에 가까운 확률값을 줍니다.
-Discriminatro가 그 확률값을 주는 방식을 배울 때 실제 이미지와 generator로부터 생성된 이미지를 사용하는데 결국 generator가 DB에 있는 실제 이미지와 유사한 이미지를 생성한다면 discriminator를 속일 수 있을 것입니다.
-그러면 우리가 원하는 이미지 생성 모델이 만들어졌다고 할 수 있습니다.
+학습 데이터셋에 있는 이미지인 경우 확률값 1을 반환하고 generator가 생성한 이미지인 경우 확률값 0을 반환하도록 합니다.
 
 Generator와 discriminator가 모두 딥러닝 아키텍쳐를 가지는 모델들이기 때문에 SGD 방식을 이용해서 학습할 수 있습니다.
 그러려면 loss function이 잘 정의되어야겠죠.
 GAN의 loss function은 아래와 같습니다.
 
-$$ \min_{G}\max_{D}{V(D,G)} = E_{x~p_{data}(x)}\[\log D(x)\] + E_{x~p_{z}(x)}\[\log (1-D(G(z)))\]$$
+$$ \min_{G}\max_{D}{V(D,G)} = E_{x~p_{data}(x)}[\log D(x)] + E_{x~p_{z}(x)}[\log (1-D(G(z)))]$$
 
 이 수식은 generator의 입장과 discriminator 입장에서 해석해야 합니다.
 먼저 discriminator 입장에서 보면 크게 두가지 입력 이미지를 받아 loss를 계산합니다.
-위 수식의 첫번째 term을 보면 $P_{data}$에서 얻어진 샘플 x를 입력으로 받는데 이는 train DB에 있는 실제 이미지를 뜻합니다.
-그리고 이 입력 이미지를 판단한 확률값을 리턴하는데 이 범위는 당연히 0~1 사이입니다.
+위 수식의 첫번째 term은 $P_{data}$에서 얻어진 샘플 x를 입력으로 받아 이미지를 판단합니다.
+이 때 $P_{data}$는 train DB를 뜻하고 얻어진 샘플 x는 실제 이미지를 뜻합니다.
+Discriminator는 이 데이터의 확률값이 1에 가깝도록 학습합니다.
+두번째 term은 $P_{z}$에서 얻어진 샘플 z를 이용해 generator가 생성한 이미지 $G(z)$를 판단하는 부분입니다.
+이 때 discriminator는 $G(z)$에서 얻은 이미지의 확률값이 0에 가깝도록 학습합니다.
+  
+Generator는 두번째 term loss를 통해 학습하는데 이는 discriminator가 학습하는 방향과 adversarial합니다.
+Discriminator는 G(z)에 대한 확률값을 0으로 판단하려고 학습하는데 반해 Generator는 이 확률값을 1이 되도록 학습하는 것입니다.
+이 과정을 반복하면서 generator는 점차 trainDB에 있는 이미지 데이터들과 유사한 이미지를 생성해 낼 것입니다.
 
+Ian Goodfellow는 optimal discriminator가 주어졌을 때 어떠한 generator에 대한 확률값을 다음과 같이 표현했습니다.
+
+$$ D_G^* (x) = \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}$$
 
 ## GAN의 장단점
 
