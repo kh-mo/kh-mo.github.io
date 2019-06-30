@@ -92,8 +92,10 @@ $$
 이 수식을 따라갈 때 필요한 Kullback-Leibler divergence(KL-divergence)와 Jensen-Shannon divergence 수식은 아래와 같습니다.
 
 - KL-divergence
+
 $$ KL(P||Q) = \sum_{i} P(i)\log(\frac{P(i)}{Q(i)}) $$
 
 - Jensen-Shannon divergence 
+
 $$ JSD(P||Q) = \frac{1}{2}KL(P||M) + \frac{1}{2}KL(Q||M) $$ 
 
