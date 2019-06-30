@@ -31,7 +31,7 @@ Generator와 discriminator가 모두 딥러닝 아키텍쳐를 가지는 모델�
 그러려면 loss function이 잘 정의되어야겠죠.
 GAN의 loss function은 아래와 같습니다.
 
-$$ \min_{G}\max_{D}{V(D,G)} = E_{x\~p_{data}(x)}[\log D(x)] + E_{z\~p_{z}(x)}[\log (1-D(G(z)))]$$
+$$ \min_{G}\max_{D}{V(D,G)} = E_{x \sim p_{data}(x)}[\log D(x)] + E_{z \sim p_{z}(x)}[\log (1-D(G(z)))]$$
 
 이 수식은 generator의 입장과 discriminator 입장에서 해석해야 합니다.
 먼저 discriminator 입장에서 보면 크게 두가지 입력 이미지를 받아 loss를 계산합니다.
@@ -66,9 +66,9 @@ $$
 $$
 \begin{align}
 C(G) &= \max_{D}{V(G,D)} 
-&= E_{x\~p_{data}}[\log D_G^* (x)] + E_{z\~p_{z}}[\log (1-D_G^* (G(z)))] \\ 
-&= E_{x\~p_{data}}[\log D_G^* (x)] + E_{x\~p_{g}}[\log (1-D_G^* (x))] \\
-&= E_{x\~p_{data}}[\log \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}] + E_{x\~p_{g}}[\log \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}] \\
+&= E_{x \sim p_{data}}[\log D_G^* (x)] + E_{z \sim p_{z}}[\log (1-D_G^* (G(z)))] \\ 
+&= E_{x \sim p_{data}}[\log D_G^* (x)] + E_{x \sim p_{g}}[\log (1-D_G^* (x))] \\
+&= E_{x \sim p_{data}}[\log \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}] + E_{x \sim p_{g}}[\log \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}] \\
 \end{align}
 $$
 
@@ -79,10 +79,10 @@ $$
 
 $$
 \begin{align}
-C(G) &= -\log(4) + 2 * JSD(P_{data} || P_g)
-&= -\log(4) + KL(p_{data} || \frac{p_{data}+P_g}{2}) + KL(p_g || \frac{p_{data}+P_g}{2})
-&= -\log(4) + KL(p_{data} || \frac{p_{data}+P_g}{2}) + KL(p_g || \frac{p_{data}+P_g}{2})
-&= -\log(4) + \sum_{i} p_{data}(i)*\log(\frac{p_{data}(i)}{\frac{p_{data}+P_g}{2}}) + \sum_{i} p_{g}(i)*\log(\frac{p_{g}(i)}{\frac{p_{data}+P_g}{2}})
+C(G) &= -\log(4) + 2 * JSD(P_{data} || P_g) \\
+&= -\log(4) + KL(p_{data} || \frac{p_{data}+P_g}{2}) + KL(p_g || \frac{p_{data}+P_g}{2}) \\
+&= -\log(4) + KL(p_{data} || \frac{p_{data}+P_g}{2}) + KL(p_g || \frac{p_{data}+P_g}{2}) \\
+&= -\log(4) + \sum_{i} p_{data}(i)*\log(\frac{p_{data}(i)}{\frac{p_{data}+P_g}{2}}) + \sum_{i} p_{g}(i)*\log(\frac{p_{g}(i)}{\frac{p_{data}+P_g}{2}}) \\
 &= E_{x\~p_{data}}[\log \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}] + E_{x\~p_{g}}[\log \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}] \\
 \end{align}
 $$ 
