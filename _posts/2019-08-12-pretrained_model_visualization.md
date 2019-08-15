@@ -15,4 +15,8 @@ category: Non-Category
 그리고 이 모델이 풀 수 있는 여러가지 문제가 있겠지만 단순하게 분류문제를 풀었다고 해보겠습니다.
 입력 데이터가 고양이 사진일 경우 '왜 이것을 고양이 사진으로 분류했는가?', 입력 데이터가 영화 리뷰일 경우 '왜 이 리뷰를 긍정 리뷰로 분류했는가?'와 같은 질문이 우리가 요구하는 설명력입니다. 
 
-[사진 1]
+![](/public/img/pretrained_model_visualization_figure1.JPG "Guided Backpropagation result")
+
+해당 사진은 [Guided Backpropagation 알고리즘](https://towardsdatascience.com/how-to-code-the-transformer-in-pytorch-24db27c8f9ec)을 적용한 결과입니다.
+Imagenet 데이터로 학습시킨 분류기에 고양이 사진을 넣었을 경우 전파된 그래디언트를 시각화한 것입니다.
+이 부분으
