@@ -26,48 +26,20 @@ version: 1.0.0
 author:
   name: kh-mo
   description: Wanna be a <br><strong>Researcher & Engineer</strong>.
-#  gravatar: 3c2986ad7ac1f2230ea3596f44563328 # md5 hash of your email address
   contact:
-    #linkedin:  https://www.linkedin.com/in/lizhihao
     github:    https://github.com/kh-mo
-    # facebook:  <hide>
-    #twitter:   https://twitter.com/Li_Zhihao
-    #weibo:     http://weibo.com/41173780
     email:     mailto:momkdh2@naver.com
 
 # Navigation (2nd level links supported)
 nav:
   Home:
     - '/'
-  Daily:
-    - '/Daily/'
   Definition:
     - '/Definition/'
-  Representation Learning:
-    - '/Representation_Learning/'
   Generative Model:
       - '/Generative_Model/'
   Non-Category:
     - '/Non-Category/'
-
-#  Basic Machine Learning:
-#    - '/Basic Machine Learning/'
-#  Advanced Machine Learning:
-#    - '/Advanced Machine Learning/'
-#    - { Summarization: '/Advanced Machine Learning/Summarization/' }
-#    - { Translation: '/Advanced Machine Learning/Translation/' }
-#    - { Image Generation: '/Advanced Machine Learning/Image Generation/' }
-#  Dataset:
-#    -
-#    - '/Dataset/'
-#  Unclassified:
-#    - '/Unclassified/'
-#  Github Project:
-#    - 'http://codinfox.github.io/'
-
-# Where are tags and categories displayed
-#tag_page: '/Advanced Machine Learning/Translation/'
-#category_page: '/Advanced Machine Learning/Summarization/'
 
 hero:
   image: /public/img/star_of_the_night_sky.png
