@@ -15,7 +15,26 @@ Neural Network가 computer vision, speech recognition, natural language processi
 최근(18~19년도) sota 성능의 딥러닝 모델들은 대규모 GPU 시스템을 필요로 하는 경우가 많습니다.
 On device, embedded system에 적용하기에는 부담스러운 것이 사실입니다.
 
+=> 수많은 paper의 introduction에서 언급하는 문제점
+
 ## Approach
+
+[Learning both weights and connections for efficient neural network, NIPS 2015](https://arxiv.org/pdf/1506.02626.pdf)
+
+네트워크를 학습하고 중요하지 않은 연결을 끊은 다음에 재학습(retrain)을 시킨다.
+장점 : sparse한 모델을 얻을 수 있다.
+단점 : 재학습 비용이 크다.
+
+[ThiNet: A Filter Level Pruning Method for Deep Neural Network Compression, ICCV 2017](http://openaccess.thecvf.com/content_ICCV_2017/papers/Luo_ThiNet_A_Filter_ICCV_2017_paper.pdf)
+
+장점 : 모델이 차지하는 메모리 공간 내 크기를 효과적으로 줄일 수 있다(모델 사이즈가 작아진다).
+단점 : 삭제하려는 channel을 greedy algorithm으로 선택하기 때문에 계산 복잡도가 매우 크다.
+
+[Variational Convolutional Neural Network Pruning, CVPR 2019](http://openaccess.thecvf.com/content_CVPR_2019/papers/Zhao_Variational_Convolutional_Neural_Network_Pruning_CVPR_2019_paper.pdf)
+
+
+## Research LAB
+
 
 **Remove Redundancy(reduce network complexity)**
 
@@ -39,13 +58,4 @@ On device, embedded system에 적용하기에는 부담스러운 것이 사실�
 
 [paper](https://arxiv.org/pdf/1504.04788.pdf) : Reduce model sizes by using a hash function to randomly group connection weights into hash bucket.
 
-[paper*](https://arxiv.org/pdf/1506.02626.pdf) : Train the network, prune the unimportant connections, retrain the network.
 
-
-[paper]() : 
-[paper]() : 
-[paper]() : 
-
-
-
-## Research LAB
