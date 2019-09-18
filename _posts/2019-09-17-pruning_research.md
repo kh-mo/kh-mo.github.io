@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Pruning Research
-category: Non-Category
+category: Non-Categorys
 ---
 
 Neural Network가 computer vision, speech recognition, natural language processing 분야에서 좋은 성능을 보이고 있습니다.
