@@ -28,15 +28,14 @@ $$ \nabla f=(\frac{\partial f}{\partial x_1}, \frac{\partial f}{\partial x_2}, .
 
 그래디언트는 함수값을 최대화시키는 방향을 의미한다는 점을 위에서 이야기했습니다.
 그래디언트 방향을 반대로 하면 어떻게 될까요?
-어떤 함수값을 최소화시키는 방향을 나타내게 될 것입니다.
-함수값을 최소화시키는 방향으로 나아가 최적값을 찾는 방법론, 이것이 gradient descent입니다.
-머신러닝 분야에서 gradient descent 방법론이 많이 사용되는데요.
-그 이유는 analytic하게 답을 구할 수 없는 경우 점진적으로 문제를 풀어나가야 하며 gradient descent는 그 방식에 알맞는 알고리즘이기 때문입니다.
+함수값을 최소화시키는 방향을 나타내게 될 것입니다.
+이 방향으로 나아가 최적값을 찾는 방법론을 우리는 gradient descent라고 부릅니다.
+많은 문제의 해답을 이 gradient descent로 찾는 이유는 세상에 존재하는 많은 문제들이 analytic하게 답을 구하기 쉽지 않아 점진적으로 문제를 풀어나가야 하며 그 방식에 알맞는 알고리즘이기 때문입니다.
 수식으로 알고리즘을 좀 더 살펴보겠습니다.
 
 $$ x_{n+1} = x_n - \alpha \nabla_x f $$
 
-$x_{n+1}$은 이전의 $x_n$에서 일정 값을 빼주는 것을 수식에서 확인할 수 있습니다.
+$x_{n+1}$은 $x_n$에서 일정 값을 뺀 결과임을 수식에서 확인할 수 있습니다.
 우선 각 요소를 살펴보면 $\nabla_x f$는 함수 $f$를 변수 $x$로 편미분한 값이고 $\alpha$는 learning rate입니다.
 전체 함수값을 최소화시키기 위해 $x$의 변화량을 나타내는 것이 $\nabla_x f$이고 그 비율을 조절하는 역할이 learning rate입니다.
 Learning rate를 조절해서 변수 $x$가 급격하게 변해 optimal point를 지나치는 것을 방지할 수 있습니다.
@@ -51,9 +50,9 @@ Gradient descent 방법은 점진적으로 해를 찾아가는 numerical, iterat
 또 때로는 예기치 못하게 발산할 가능성도 있습니다.
 따라서 다음과 같은 조건을 만족할 경우에만 변수를 업데이트하고 학습을 진행합니다.
 
-$$ L(\theta + \nabla \theta) \leq L(\theta) $$
+$$ L(\theta + \nabla \theta) < L(\theta) $$
 
-업데이트 된 변수를 기반으로 구한 함수 $L$이 업데이트 되기 이전의 변수로 구한 함수값보다 작거나 같을 경우에만 변수를 업데이트 합니다(gradient descent의 경우).
+업데이트 된 변수를 기반으로 구한 함수 $L$이 업데이트 되기 이전의 변수로 구한 함수값보다 작은 경우에만 변수를 업데이트 합니다(gradient descent의 경우).
 이 조건하에서 진행되는 학습은 결국 gradient descent방법론이 최적해를 찾아가는 과정입니다.
 
 <script src="https://gist.github.com/kh-mo/fbecdd96c163b895b5123571fe63d8c1.js"></script>
