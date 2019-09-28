@@ -7,7 +7,7 @@ category: Definition
 딥러닝에서 사용되는 최적화 방법론인 gradient descent에 관한 내용입니다.
 이 분야를 공부하는 사람이라면 누구나 다 알고 있는 내용이지만 그래도 한 번 정리하여 개념이 흔들릴 때 참고하고자 합니다.
 이 포스트가 누군가에게 도움이 되기를 바라고 혹시 잘못된 내용이 있다면 첨언해 주시길 부탁드립니다.
-포스팅 작성에 도움을 받은 참고 [위키독스](https://wikidocs.net/6998)와 [블로그](https://darkpgmr.tistory.com/133)는 링크를 걸어두었습니다.
+포스팅 작성에 도움을 받은 참고 [위키독스](https://wikidocs.net/6998)와 [위키피디아](https://en.wikipedia.org/wiki/Backpropagation), [블로그](https://darkpgmr.tistory.com/133)는 링크를 걸어두었습니다.
 
 ## what is the gradient?
 
@@ -64,6 +64,18 @@ Backpropagation 알고리즘은 역전파라고 불리는 알고리즘입니다.
 저는 평소에 딥러닝에 관심을 가지고 있기에 간단한 모델 예시를 통해 backpropagation 알고리즘을 알아보도록 하겠습니다.
 
 ![](/public/img/gradient_descent_figure1.JPG "Figure1 of gradient descent, 출처:https://en.wikipedia.org/wiki/Backpropagation")
+
+해당 모델은 $x_1$부터 $x_n$까지 n개 입력값을 받아 $O_j$라는 결과값을 반환하는 함수입니다.
+그리고 이 결과값을 내는데 사용되는 파라미터는 $w_{1j}$부터 $w_{nj}$까지 n개입니다.
+파라미터와 입력값을 서로 곱해서 transfer function을 통해 그 합을 구하고 결과값 ${net}_j$를 얻습니다.
+이 과정을 element-wise sum이라고 부르기도 합니다.
+이 ${net}_j$를 특정 activation function에 입력값으로 주어 최종 결과물인 $o_j$를 반환하게 됩니다.
+
+자 그러면 이제부터 backpropagation을 살펴보겠습니다.
+해당 함수는 입력 $x$를 받아 결과 $o$를 반환하는데 이 결과가 특정 값에 가까워지기를 원한다고 하겠습니다.
+그러나 랜덤한 값으로 초기화 된 $w$ 값으로부터는 원하는 결과를 얻지 못할 확률이 큽니다.
+때문에 해당 값에 가까워 질 수 있도록 $w$값을 조절하는 알고리즘에 gradient descent, backpropagation이 사용됩니다.
+
 
 
 ## pytorch backpropagation example
