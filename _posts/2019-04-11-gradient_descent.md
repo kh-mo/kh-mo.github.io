@@ -59,6 +59,11 @@ $$ L(\theta + \nabla \theta) < L(\theta) $$
 
 ## backpropagation
 
+Backpropagation 알고리즘은 역전파라고 불리는 알고리즘입니다.
+특정 작업을 수행하는 함수가 존재할 때, 해당 함수에 있는 파라미터값을 효과적으로 학습하는 반복적이고 재귀적인 알고리즘이라고 할 수 있습니다.
+저는 평소에 딥러닝에 관심을 가지고 있기에 간단한 모델 예시를 통해 backpropagation 알고리즘을 알아보도록 하겠습니다.
+
+![](/public/img/gradient_descent_figure1.JPG "Figure1 of gradient descent, 출처:https://en.wikipedia.org/wiki/Backpropagation")
 
 
 ## pytorch backpropagation example
