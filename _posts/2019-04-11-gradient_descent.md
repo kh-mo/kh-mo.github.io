@@ -56,7 +56,51 @@ $$ L(\theta + \nabla \theta) < L(\theta) $$
 업데이트 된 변수를 기반으로 구한 함수 $L$이 업데이트 되기 이전의 변수로 구한 함수값보다 작은 경우에만 변수를 업데이트 합니다(gradient descent의 경우).
 아래 코드는 gradient descent방법론이 최적해를 찾아가는 과정입니다.
 
-<script src="https://gist.github.com/kh-mo/fbecdd96c163b895b5123571fe63d8c1.js"></script>
+```
+(x, y) = (10, 21)
+init_m = 3
+init_b = 2
+lr = 0.01
+y_hat = init_m * x + init_b
+new_m = 3
+new_b = 2
+
+for i in range(20):
+    tmp_m = new_m - lr * x
+    tmp_b = new_b - lr * 1
+    tmp_y_hat = tmp_m * x + tmp_b
+    print("iter :", i , ", y_hat :", y_hat, ", tmp_y_hat :", tmp_y_hat)
+    if (y-y_hat)**2 > (y-tmp_y_hat)**2:
+        new_m = tmp_m
+        new_b = tmp_b
+    y_hat = new_m * x + new_b
+
+print("(init_m, init_b) :", (init_m, init_b), ", (new_m, new_b) :", (new_m, new_b))
+
+######################################################################################
+iter : 0 , y_hat : 32 , tmp_y_hat : 30.99
+iter : 1 , y_hat : 30.99 , tmp_y_hat : 29.98
+iter : 2 , y_hat : 29.98 , tmp_y_hat : 28.969999999999995
+iter : 3 , y_hat : 28.969999999999995 , tmp_y_hat : 27.959999999999997
+iter : 4 , y_hat : 27.959999999999997 , tmp_y_hat : 26.949999999999996
+iter : 5 , y_hat : 26.949999999999996 , tmp_y_hat : 25.939999999999994
+iter : 6 , y_hat : 25.939999999999994 , tmp_y_hat : 24.929999999999993
+iter : 7 , y_hat : 24.929999999999993 , tmp_y_hat : 23.919999999999995
+iter : 8 , y_hat : 23.919999999999995 , tmp_y_hat : 22.909999999999993
+iter : 9 , y_hat : 22.909999999999993 , tmp_y_hat : 21.89999999999999
+iter : 10 , y_hat : 21.89999999999999 , tmp_y_hat : 20.88999999999999
+iter : 11 , y_hat : 20.88999999999999 , tmp_y_hat : 19.87999999999999
+iter : 12 , y_hat : 20.88999999999999 , tmp_y_hat : 19.87999999999999
+iter : 13 , y_hat : 20.88999999999999 , tmp_y_hat : 19.87999999999999
+iter : 14 , y_hat : 20.88999999999999 , tmp_y_hat : 19.87999999999999
+iter : 15 , y_hat : 20.88999999999999 , tmp_y_hat : 19.87999999999999
+iter : 16 , y_hat : 20.88999999999999 , tmp_y_hat : 19.87999999999999
+iter : 17 , y_hat : 20.88999999999999 , tmp_y_hat : 19.87999999999999
+iter : 18 , y_hat : 20.88999999999999 , tmp_y_hat : 19.87999999999999
+iter : 19 , y_hat : 20.88999999999999 , tmp_y_hat : 19.87999999999999
+(init_m, init_b) : (3, 2) , (new_m, new_b) : (1.899999999999999, 1.89)
+######################################################################################
+```
 
 ## backpropagation
 
@@ -86,5 +130,30 @@ $\frac{\partial {o_j}}{\partial {net_j}}$와 $\frac{\partial {net_j}}{\partial w
 
 ![](/public/img/gradient_descent_figure2.JPG "Figure2 of gradient descent")
 
-
 ## pytorch backpropagation example
+
+딥러닝 툴인 pytorch를 이용해 backpropagation 과정에서 gradient가 전파되는 과정을 한 번 살펴보겠습니다.
+이 섹션을 작성하는 데 참고한 [사이트](https://www.kaggle.com/sironghuang/understanding-pytorch-hooks)는 링크를 걸어두었습니다.
+먼저 역전파를 수행할 간단한 딥러닝 모델을 만들겠습니다.
+코드와 그림은 다음과 같습니다.
+
+```
+class Net(nn.Module):
+    def __init__(self):
+        super(Net, self).__init__()
+        self.fc1 = nn.Linear(2,2)
+        self.s1 = nn.Sigmoid()
+        self.fc2 = nn.Linear(2,2)
+        self.s2 = nn.Sigmoid()
+        self.fc1.weight = torch.nn.Parameter(torch.Tensor([[0.15,0.2],[0.25,0.30]]))
+        self.fc1.bias = torch.nn.Parameter(torch.Tensor([0.35]))
+        self.fc2.weight = torch.nn.Parameter(torch.Tensor([[0.4,0.45],[0.5,0.55]]))
+        self.fc2.bias = torch.nn.Parameter(torch.Tensor([0.6]))
+
+    def forward(self, x):
+        x= self.fc1(x)
+        x = self.s1(x)
+        x= self.fc2(x)
+        x = self.s2(x)
+        return x
+```
