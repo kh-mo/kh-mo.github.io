@@ -79,7 +79,7 @@ Backpropagation 알고리즘은 역전파라고 불리는 알고리즘입니다.
 현재의 $w_{1j}$가 $o_j$에 미치는 영향도, 순간 기울기, 편미분 값은 $\frac{\partial {o_j}}{\partial w_{1j}}$입니다.
 Gradient method 수식에 따르면 원하는 결과값 $o_j$를 얻기 위해 $w_{1j}를 업데이트 하는 수식은 ${w_{1j}}_{n+1} = {}w_{1j}}_{n} - \alpha \frac{\partial {o_j}}{\partial w_{1j}}$입니다.
 해당 수식서 $\frac{\partial {o_j}}{\partial w_{1j}}$ 부분은 chain rule을 통해 여러 단계로 분할하는 것이 가능합니다.
-위 모델 예시에 따르면 $\frac{\partial {o_j}}{\partial w_{1j}} = \frac{\partial {o_j}}{\partial {net}_{j}} \frac{\partial {{net}_j}}{\partial {o_j}}$로 분할이 가능합니다.
+
 
 
 ## pytorch backpropagation example
