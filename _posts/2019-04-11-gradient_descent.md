@@ -77,13 +77,8 @@ Backpropagation 알고리즘은 역전파라고 불리는 알고리즘입니다.
 그러나 랜덤한 값으로 초기화 된 $w$ 값으로부터는 원하는 결과를 얻지 못할 확률이 큽니다.
 때문에 해당 값에 가까워 질 수 있도록 $w$값을 조절하는 알고리즘에 gradient method, backpropagation이 사용됩니다.
 현재의 $w_{1j}$가 $o_j$에 미치는 영향도, 순간 기울기, 편미분 값은 $\frac{\partial {o_j}}{\partial w_{1j}}$입니다.
-Gradient method 수식에 따르면 원하는 결과값 $o_j$를 얻기 위해 $w_{1j}$를 업데이트 하는 수식은 ${w_{1j}}_{n+1} = {}w_{1j}}_{n} - \alpha \frac{\partial {o_j}}{\partial w_{1j}}$입니다.
+Gradient method 수식에 따르면 원하는 결과값 $o_j$를 얻기 위해 $w_{1j}$를 업데이트 하는 수식은 ${w_{1j}}_{n+1} = {w_{1j}}_{n} - \alpha \frac{\partial {o_j}}{\partial w_{1j}}$입니다.
 해당 수식서 $\frac{\partial {o_j}}{\partial w_{1j}}$ 부분은 chain rule을 통해 여러 단계로 분할하는 것이 가능합니다.
-위 모델 예시에 따르면 $\frac{\partial {o_j}}{\partial w_{1j}} = \frac{\partial {o_j}}{\partial {{net}_j}} \frac{\partial {{net}_j}}{\partial w_{1j}}$로 분할이 가능합니다.
-$\frac{\partial {o_j}}{\partial {{net}_j}}$와 $\frac{\partial {{net}_j}}{\partial w_{1j}}$은 local gradient라고 불립니다.
-각 단계의 local gradient값을 구해서 그 값을 모델의 결과로부터 입력값까지 전파시켜가는 이 과정을 backpropagation 알고리즘이라고 부릅니다.
-아래 그림처럼 진행됩니다.
 
-![](/public/img/gradient_descent_figure2.JPG "Figure2 of gradient descent")
 
 ## pytorch backpropagation example
