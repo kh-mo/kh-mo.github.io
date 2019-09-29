@@ -234,11 +234,12 @@ Forward에 비해 수식이 조금 복잡해졌지만 하나하나 따라가보�
 먼저 out.backward\(torch.tensor\(\[1.,1.\]\)\) 함수는 결과값이 2개고 두 결과값으로부터 gradient backpropagation을 수행한다는 함수로 이해할 수 있습니다.
 흘러들어오는 그래디언트가 1이라고 지정해주는 함수로 봐도 무방합니다.
 보통 손실함수(loss function)을 구한 후, loss.backward\(\)를 수행하는데 이는 loss.backward\(torch.Tensor\(\[1\]\)\)의 shortcut 함수임을 참고하면 사용법을 어느정도 이해할 수 있을 것입니다.
-자 그러면 backward path를 살펴보겠습니다.
+자, 그러면 backward path를 살펴보겠습니다.
 시그모이드 함수를 사용해서 우리는 O1과 O2를 생성했습니다.
 그러면 시그모이드 함수의 미분값은 어떻게 나와야 할까요?
-먼저 시그모이드 함수를 미분할경우 결과형태가 $\frac{dsigmoid(x)}{dx} = sigmoid(x)(1-sigmoid(x))$됨은 잘 알려져 있습니다.
-
+먼저 시그모이드 함수를 미분할 경우 결과 형태가 $\frac{dsigmoid(x)}{dx} = sigmoid(x)(1-sigmoid(x))$됨은 잘 알려져 있습니다.
+즉, $\frac{\partial {O1}}{\partial {s(x)}} = grad_{in} * sigmoid(x)(1-sigmoid(x))$가 됩니다.
+이전 forward path에서 시그모이드 입력값이 \[1.1059, 1.2249\]였기에 이 수식에 대입하면 \[0.1868, 0.1755\]가 나옵니다.
 
 ```
 *********  Backward Hooks Inputs & Outputs  *********
