@@ -281,46 +281,46 @@ tensor([0.3623])
 이 결과에서 우리가 수식적으로 풀어낸 결과값을 확인할 수 있습니다.
 각 파라미터의 local gradient는 다음과 같이 표현될 수 있습니다.
 
-$
-\begin{align}
+$$
+\begin{flalign}
 \frac{\partial o_1}{\partial w_1} &= \frac{\partial o_1}{\partial h_1} \frac{\partial h_1}{\partial w_1} \\
 &= grad_{in} * sigmoid(h1) * (1-sigmoid(h1)) * x_1 \\
 &= 1 * 0.7514 * (1-0.7514) * 0.5933 = 0.1108
 \end{align}
-$
+$$
 
-$
-\begin{align}
+$$
+\begin{flalign}
 \frac{\partial o_1}{\partial w_2} &= \frac{\partial o_1}{\partial h_1} \frac{\partial h_1}{\partial w_2} \\
 &= grad_{in} * sigmoid(h1) * (1-sigmoid(h1)) * x_2 \\
 &= 1 * 0.7514 * (1-0.7514) * 0.5969 = 0.1115
 \end{align}
-$
+$$
 
-$
-\begin{align}
+$$
+\begin{flalign}
 \frac{\partial o_2}{\partial w_1} &= \frac{\partial o_2}{\partial h_2} \frac{\partial h_2}{\partial w_1} \\
 &= grad_{in} * sigmoid(h2) * (1-sigmoid(h2)) * x_1 \\
 &= 1 * 0.7729 * (1-0.7729) * 0.5933 = 0.1041
 \end{align}
-$
+$$
 
-$
-\begin{align}
+$$
+\begin{flalign}
 \frac{\partial o_2}{\partial w_2} &= \frac{\partial o_2}{\partial h_2} \frac{\partial h_2}{\partial w_2} \\
 &= grad_{in} * sigmoid(h2) * (1-sigmoid(h2)) * x_1 \\
 &= 1 * 0.7729 * (1-0.7729) * 0.5969 = 0.1048
 \end{align}
-$
+$$
 
-$
-\begin{align}
+$$
+\begin{flalign}
 \frac{\partial o}{\partial b} &= \frac{\partial o_1}{\partial b} + \frac{\partial o_2}{\partial b} \\
 &= \frac{\partial o_1}{\partial h_1} \frac{\partial h_1}{\partial b} + \frac{\partial o_1}{\partial h_2} \frac{\partial h_2}{\partial b} \\
 &= (grad_{in} * sigmoid(h1) * (1-sigmoid(h1)) * 1) + (grad_{in} * sigmoid(h2) * (1-sigmoid(h2)) * 1) \\
 &= (1 * 0.7514 * (1-0.7514) * 1) + (1 * 0.7729 * (1-0.7729) * 1) = 0.3623
 \end{align}
-$
+$$
 
 모든 값들이 일치함을 확인할 수 있습니다.
 Gradient method 방법이 무엇인지 개념과 동작방식, 구현에 대해 다루었으며 추후 관련된 연구, 업무에 참고가 되길 바랍니다.
