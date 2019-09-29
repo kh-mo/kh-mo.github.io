@@ -161,7 +161,7 @@ class Net(nn.Module):
 ```
 
 간단한 ANN 모델입니다.
-히든 레이어 2개를 가지고 있고 그 크기는 2로 동일하며 activation function으로는 sigmoid function을 사용했습니다.
+히든 레이어 2개를 가지고 있고 그 크기는 2로 동일하며 activation function으로는 시그모이드(sigmoid function)을 사용했습니다.
 첫번째 히든레이어의 가중치는 \[\[0.15,0.2\],\[0.25,0.30\]\], \[0.35\] 값을 가지고 있고 두번째 히든레이어의 가중치는 \[\[0.4,0.45\],\[0.5,0.55\]\], \[0.6\] 값을 가지고 있습니다.
 이런 형태를 가진 ANN 모델에 \[0.05, 0.1\]을 입력으로 줄 경우 어떤 forward path와 backward path값이 나타나는지 확인해 보겠습니다.
 
@@ -184,7 +184,7 @@ hookB = [Hook(layer[1],backward=True) for layer in list(net._modules.items())]
 
 data = torch.Tensor([0.05,0.1])
 out=net(data)
-out.backward(torch.tensor([1,1], dtype=torch.float), retain_graph=True)
+out.backward(torch.tensor([1.,1.]))
 
 print('***'*3+'  Forward Hooks Inputs & Outputs  '+'***'*3)
 for hook in hookF:
@@ -221,8 +221,24 @@ tensor([0.7514, 0.7729], grad_fn=<SigmoidBackward>)
 ---------------------------------------------------
 ```
 
-첫 히든레이어로 들어간 입력값은 [0.05, 0.1] 이었습니다.
-그리고 이것이 [[0.15,0.2],[0.25,0.30]],
+첫 히든레이어로 들어간 입력값은 \[0.05, 0.1\] 이었습니다.
+그리고 이것이 가중치 \[\[0.15,0.2\],\[0.25,0.30\]\]과 행렬 곱셈(matrix multiplication)을 수행하고 bias인 \[0.35\]와 더해진 결과가 \[0.3775, 0.3925\]입니다.
+계산 수식은 \[\(0.05 * 0.15\) + \(0.1 * 0.2\) + 0.35, \(0.05 * 0.25\) + \(0.1 * 0.3\) + 0.35\]처럼 진행된 것입니다.
+두번째 결과는 시그모이드 함수에 이전 레이어의 결과값 \[0.3775, 0.3925\]을 입력으로 준 것입니다.
+시그모이드 함수 수식은 $ \frac{1}{1+exp(-x)} $입니다.
+여기에 이전 결과값을 대입하면 \[0.5933, 0.5969\] 결과값을 얻을 수 있습니다.
+나머지 과정은 동일합니다.
+
+다음은 backward path 과정을 보겠습니다.
+Forward에 비해 수식이 조금 복잡해졌지만 하나하나 따라가보면 그리 어렵지않게 이해할 수 있습니다.
+먼저 out.backward\(torch.tensor\(\[1.,1.\]\)\) 함수는 결과값이 2개고 두 결과값으로부터 gradient backpropagation을 수행한다는 함수로 이해할 수 있습니다.
+흘러들어오는 그래디언트가 1이라고 지정해주는 함수로 봐도 무방합니다.
+보통 손실함수(loss function)을 구한 후, loss.backward\(\)를 수행하는데 이는 loss.backward\(torch.Tensor\(\[1\]\)\)의 shortcut 함수임을 참고하면 사용법을 어느정도 이해할 수 있을 것입니다.
+자 그러면 backward path를 살펴보겠습니다.
+시그모이드 함수를 사용해서 우리는 O1과 O2를 생성했습니다.
+그러면 시그모이드 함수의 미분값은 어떻게 나와야 할까요?
+먼저 시그모이드 함수를 미분할경우 결과형태가 $\frac{dsigmoid(x)}{dx} = sigmoid(x)(1-sigmoid(x))$됨은 잘 알려져 있습니다.
+
 
 ```
 *********  Backward Hooks Inputs & Outputs  *********
@@ -240,4 +256,3 @@ tensor([0.7514, 0.7729], grad_fn=<SigmoidBackward>)
 ---------------------------------------------------
 ```
 
-register_backward_hook을 사용할 경우 네트워크 모듈에서 나오는 backward path의 입력값과 출력값을 확인할 수 있다.
