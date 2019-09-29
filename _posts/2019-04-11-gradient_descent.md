@@ -283,9 +283,9 @@ tensor([0.3623])
 
 $$
 \begin{flalign}
-\frac{\partial o_1}{\partial w_1} &= \frac{\partial o_1}{\partial h_1} \frac{\partial h_1}{\partial w_1} \\
-&= grad_{in} * sigmoid(h1) * (1-sigmoid(h1)) * x_1 \\
-&= 1 * 0.7514 * (1-0.7514) * 0.5933 = 0.1108
+\frac{\partial o_1}{\partial w_1} &= \frac{\partial o_1}{\partial h_1} \frac{\partial h_1}{\partial w_1} &&
+&= grad_{in} * sigmoid(h1) * (1-sigmoid(h1)) * x_1 &&
+&= 1 * 0.7514 * (1-0.7514) * 0.5933 = 0.1108 &&
 \end{flalign}
 $$
 
