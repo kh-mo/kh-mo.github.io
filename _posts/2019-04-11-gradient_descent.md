@@ -280,14 +280,21 @@ tensor([0.3623])
 
 이 결과에서 우리가 수식적으로 풀어낸 결과값을 확인할 수 있습니다.
 각 파라미터의 local gradient는 다음과 같이 표현될 수 있습니다.
+$$
+\begin{align}
+\frac{\partial o_1}{\partial w_1}} &= \frac{\partial o_1}{\partial h_1}} \frac{\partial h_1}{\partial w_1}} \\
+&= grad_in * sigmoid(h1) * (1-sigmoid(h1)) * x_1 \\
+&= 1 * 0.7514 * (1-0.7514) * 0.5933 = 0.1108
+\end{align}
+$$
 
 $$ \frac{\partial o_1}{\partial w_1}} = \frac{\partial o_1}{\partial h_1}} \frac{\partial h_1}{\partial w_1}} = grad_in * sigmoid(h1) * (1-sigmoid(h1)) * x_1 = 1 * 0.7514 * (1-0.7514) * 0.5933 = 0.1108$$
 
 $$ \frac{\partial o_1}{\partial w_2}} = \frac{\partial o_1}{\partial h_1}} \frac{\partial h_1}{\partial w_2}} = grad_in * sigmoid(h1) * (1-sigmoid(h1)) * x_2 = 1 * 0.7514 * (1-0.7514) * 0.5969 = 0.1115$$
 
-$$ \frac{\partial o_1}{\partial w_1}} = \frac{\partial o_1}{\partial h_1}} \frac{\partial h_1}{\partial w_1}} = grad_in * sigmoid(h1) * (1-sigmoid(h1)) * x_1 = 1 * 0.7514 * (1-0.7514) * 0.5933 = 0.1108$$
+$$ \frac{\partial o_1}{\partial w_1}} = \frac{\partial o_1}{\partial h_2}} \frac{\partial h_2}{\partial w_1}} = grad_in * sigmoid(h2) * (1-sigmoid(h2)) * x_1 = 1 * 0.7729 * (1-0.7729) * 0.5933 = 0.1041$$
 
-$$ \frac{\partial o_1}{\partial w_1}} = \frac{\partial o_1}{\partial h_1}} \frac{\partial h_1}{\partial w_1}} = grad_in * sigmoid(h1) * (1-sigmoid(h1)) * x_1 = 1 * 0.7514 * (1-0.7514) * 0.5933 = 0.1108$$
+$$ \frac{\partial o_1}{\partial w_2}} = \frac{\partial o_1}{\partial h_2}} \frac{\partial h_2}{\partial w_2}} = grad_in * sigmoid(h2) * (1-sigmoid(h2)) * x_2 = 1 * 0.7729 * (1-0.7729) * 0.5969 = 0.1048$$
 
 $$ \frac{\partial o_1}{\partial w_1}} = \frac{\partial o_1}{\partial h_1}} \frac{\partial h_1}{\partial w_1}} = grad_in * sigmoid(h1) * (1-sigmoid(h1)) * x_1 = 1 * 0.7514 * (1-0.7514) * 0.5933 = 0.1108$$
 
