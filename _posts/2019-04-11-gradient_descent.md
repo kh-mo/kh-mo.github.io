@@ -282,44 +282,44 @@ tensor([0.3623])
 각 파라미터의 local gradient는 다음과 같이 표현될 수 있습니다.
 
 $$
-\begin{flalign}
-\frac{\partial o_1}{\partial w_1} &= \frac{\partial o_1}{\partial h_1} \frac{\partial h_1}{\partial w_1} &&
-&= grad_{in} * sigmoid(h1) * (1-sigmoid(h1)) * x_1 &&
-&= 1 * 0.7514 * (1-0.7514) * 0.5933 = 0.1108 &&
-\end{flalign}
+\begin{align}
+\frac{\partial o_1}{\partial w_1} &= \frac{\partial o_1}{\partial h_1} \frac{\partial h_1}{\partial w_1} \\
+&= grad_{in} * sigmoid(h1) * (1-sigmoid(h1)) * x_1 \\
+&= 1 * 0.7514 * (1-0.7514) * 0.5933 = 0.1108
+\end{align}
 $$
 
 $$
-\begin{flalign}
+\begin{align}
 \frac{\partial o_1}{\partial w_2} &= \frac{\partial o_1}{\partial h_1} \frac{\partial h_1}{\partial w_2} \\
 &= grad_{in} * sigmoid(h1) * (1-sigmoid(h1)) * x_2 \\
 &= 1 * 0.7514 * (1-0.7514) * 0.5969 = 0.1115
-\end{flalign}
+\end{align}
 $$
 
 $$
-\begin{flalign}
+\begin{align}
 \frac{\partial o_2}{\partial w_1} &= \frac{\partial o_2}{\partial h_2} \frac{\partial h_2}{\partial w_1} \\
 &= grad_{in} * sigmoid(h2) * (1-sigmoid(h2)) * x_1 \\
 &= 1 * 0.7729 * (1-0.7729) * 0.5933 = 0.1041
-\end{flalign}
+\end{align}
 $$
 
 $$
-\begin{flalign}
+\begin{align}
 \frac{\partial o_2}{\partial w_2} &= \frac{\partial o_2}{\partial h_2} \frac{\partial h_2}{\partial w_2} \\
 &= grad_{in} * sigmoid(h2) * (1-sigmoid(h2)) * x_1 \\
 &= 1 * 0.7729 * (1-0.7729) * 0.5969 = 0.1048
-\end{flalign}
+\end{align}
 $$
 
 $$
-\begin{flalign}
+\begin{align}
 \frac{\partial o}{\partial b} &= \frac{\partial o_1}{\partial b} + \frac{\partial o_2}{\partial b} \\
 &= \frac{\partial o_1}{\partial h_1} \frac{\partial h_1}{\partial b} + \frac{\partial o_1}{\partial h_2} \frac{\partial h_2}{\partial b} \\
 &= (grad_{in} * sigmoid(h1) * (1-sigmoid(h1)) * 1) + (grad_{in} * sigmoid(h2) * (1-sigmoid(h2)) * 1) \\
 &= (1 * 0.7514 * (1-0.7514) * 1) + (1 * 0.7729 * (1-0.7729) * 1) = 0.3623
-\end{flalign}
+\end{align}
 $$
 
 모든 값들이 일치함을 확인할 수 있습니다.
