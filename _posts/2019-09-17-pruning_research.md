@@ -24,6 +24,14 @@ Redundancy가 있는 filter를 제거하는 방법론을 취하며 이를 위해
 특정 filter와 다른 모든 필터간의 유클리디안 거리합을 구하여 그 값이 최소가 되는 필터들을 제거합니다.
 수식으로는 다음과 같이 표현됩니다.
 
+$$ x^* &isin; $$
+
+$$ \argmin_{x &isin; R^d} f(x) $$
+
+$$ where f(x) \overset{\underset{\mathrm{def}}{}}{=} $$
+
+$$ \sum_{i &isin; [1,n]} {\parallel x-a^{i} \parallel}_2 $$
+
 $$ x^* &isin; \argmin_{x &isin; R^d} f(x) where f(x) \overset{\underset{\mathrm{def}}{}}{=} \sum_{i &isin; [1,n]} {\parallel x-a^{i} \parallel}_2 $$
 
 논문의 설명에 따르면 거리합이 최소가 되는 GM filter는 다른 필터들로 충분히 설명될 수 있는 필터이기 때문에 제거가 가능하다고 합니다.
