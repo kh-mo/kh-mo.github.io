@@ -4,58 +4,29 @@ title: Pruning Research
 category: Non-Category
 ---
 
-Neural Network가 computer vision, speech recognition, natural language processing 분야에서 좋은 성능을 보이고 있습니다.
-각 분야에서 주어지는 task에 딥러닝을 적용하여 성능을 높이는 문제 이외에도 왜 이 모델이 성능을 잘 내는지 판단하는 문제(explainable AI), 더 효율적인 모델은 없는지 탐색하는 문제(AutoML, pruning, distilation)도 존재합니다.
-이 포스트에서는 효율적인 모델을 탐색하기 위한 pruning의 여러 접근방법론을 살펴보려고 합니다.
-
-## pruning의 효율성 문제
-
-많은 페이퍼에서 언급하는 pruning문제를 풀어야 하는 이유는 딥러닝 모델이 너무 크다는 점입니다(over-parameterization).
-물론 이는 사실입니다.
-최근(18~19년도) sota 성능의 딥러닝 모델들은 대규모 GPU 시스템을 필요로 하는 경우가 많습니다.
-On device, embedded system에 적용하기에는 부담스러운 것이 사실입니다.
-
-=> 수많은 paper의 introduction에서 언급하는 문제점
-
 ## Approach
 
-[Learning both weights and connections for efficient neural network, NIPS 2015](https://arxiv.org/pdf/1506.02626.pdf)
+[Learning both weights and connections for efficient neural network, NIPS 2015](https://papers.nips.cc/paper/5784-learning-both-weights-and-connections-for-efficient-neural-network.pdf)
 
-네트워크를 학습하고 중요하지 않은 연결을 끊은 다음에 재학습(retrain)을 시킨다.
-장점 : sparse한 모델을 얻을 수 있다.
-단점 : 재학습 비용이 크다.
+![](/public/img/pruning_figure1.JPG "Figure1 of Learning both weights and connections for efficient neural network")
 
-[ThiNet: A Filter Level Pruning Method for Deep Neural Network Compression, ICCV 2017](http://openaccess.thecvf.com/content_ICCV_2017/papers/Luo_ThiNet_A_Filter_ICCV_2017_paper.pdf)
+Weight pruning 계열의 논문입니다.
+학습된 네트워크를 가져와서 일정한 기준(threshold)에 미치지 않는 가중치 연결을 끊고 그 상태의 네트워크를 재학습시키는 방법론입니다.
+이 과정을 반복하면 sparse한 모델을 얻는 것이 가능해집니다.
+다만 재학습 비용이 크다는 단점이 있습니다.
 
-장점 : 모델이 차지하는 메모리 공간 내 크기를 효과적으로 줄일 수 있다(모델 사이즈가 작아진다).
-단점 : 삭제하려는 channel을 greedy algorithm으로 선택하기 때문에 계산 복잡도가 매우 크다.
+[Filter Pruning via Geometric Median for Deep Convolutional Neural Networks Acceleration, CVPR 2019](http://openaccess.thecvf.com/content_CVPR_2019/papers/He_Filter_Pruning_via_Geometric_Median_for_Deep_Convolutional_Neural_Networks_CVPR_2019_paper.pdf)
 
-[Variational Convolutional Neural Network Pruning, CVPR 2019](http://openaccess.thecvf.com/content_CVPR_2019/papers/Zhao_Variational_Convolutional_Neural_Network_Pruning_CVPR_2019_paper.pdf)
+![](/public/img/pruning_figure2.JPG "Figure1 of Filter Pruning via Geometric Median for Deep Convolutional Neural Networks Acceleration")
 
+Filter pruning 계열의 논문입니다.
+Redundancy가 있는 filter를 제거하는 방법론을 취하며 이를 위해 geometric median이라는 기준을 사용합니다.
+특정 filter와 다른 모든 필터간의 유클리디안 거리합을 구하여 그 값이 최소가 되는 필터들을 제거합니다.
+수식으로는 다음과 같이 표현됩니다.
 
-## Research LAB
+$$ x^* &isin; \argmin_{x &isin; R^d} f(x) where f(x) \overset{\underset{\mathrm{def}}{}}{=} \sum_{i &isin; [1,n]} {\parallel x-a^{i} \parallel}_2 $$
 
-
-**Remove Redundancy(reduce network complexity)**
-
-[paper](https://static.googleusercontent.com/media/research.google.com/ko//pubs/archive/37631.pdf) : A fixed-point implementation with 8-bit integer(vs 32-bit floating point) activations.
-
-[paper](https://arxiv.org/abs/1404.0736) : The linear structure of the neural network by finding an appropriate low-rank approximation of the parameters.
-
-[paper](https://arxiv.org/abs/1412.6115) : Compressed deep convnets using vector quantization.
-
-**"Fully Connected" to "global average pooling"(reduce over-fitting)** 
-
-[paper](https://arxiv.org/abs/1409.4842) : Reduce the number of parameters of neural networks by replacing FC to GAP.
-
-**Network Pruning**
-
-[paper](https://papers.nips.cc/paper/156-comparing-biases-for-minimal-network-construction-with-back-propagation.pdf) : Biased weight decay.
-
-[paper](http://yann.lecun.com/exdb/publis/pdf/lecun-90b.pdf) : Optimal Brain Damage. Reduce the number of connections based on the Hessian of the loss function.
-
-[paper](https://papers.nips.cc/paper/647-second-order-derivatives-for-network-pruning-optimal-brain-surgeon.pdf) : Optimal Brain Surgeon. Reduce the number of connections based on the Hessian of the loss function.
-
-[paper](https://arxiv.org/pdf/1504.04788.pdf) : Reduce model sizes by using a hash function to randomly group connection weights into hash bucket.
-
-
+논문의 설명에 따르면 거리합이 최소가 되는 GM filter는 다른 필터들로 충분히 설명될 수 있는 필터이기 때문에 제거가 가능하다고 합니다.
+이는 선형대수 관점에서 필터들이 생성하는 공간이 존재하고 선형결합으로 만들어질 수 있는 필터를 제거하여 공간을 생성(span)하는 필터들만 남기는 접근 방법론으로 해석을 할 수도 있습니다.
+정확도의 손실이 많지 않고 FLOPs를 상당히 줄일 수 있다는 pruning 계열의 장점을 보입니다.
+다만 filter를 zerorize하고 제거하지 않는다는 점, 또한 geometric median을 정확히 구할 수 없다는 점이 단점으로 여겨집니다.
