@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 강화학습 책 간단 정리
-category: Non-Category
+category: etc
 ---
 
 본 포스트는 **파이썬과 케라스로 배우는 강화학습**을 간략히 정리한 포스트입니다.

@@ -34,12 +34,10 @@ author:
 nav:
   Home:
     - '/'
-  Definition:
-    - '/Definition/'
-  Generative Model:
-      - '/Generative_Model/'
-  Non-Category:
-    - '/Non-Category/'
+  Paper Review:
+      - '/Paper_review/'
+  etc..:
+    - '/etc/'
 
 hero:
   image: /public/img/star_of_the_night_sky.png

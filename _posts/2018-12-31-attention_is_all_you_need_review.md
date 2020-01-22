@@ -1,7 +1,7 @@
 ---
 layout: post
 title: attention is all you need 논문 리뷰
-category: Non-Category
+category: Paper-Review
 ---
 
 본 포스트는 attention is all you need를 리뷰한 포스트입니다.
@@ -46,7 +46,7 @@ $$ PE_{(pos, 2i+1)} = cos(pos/10000^{2i/d_{model}}) $$
 논문에서 $d_{model}$은 512차원으로 구성되므로 i는 1부터 512까지 값을 가지게 됩니다.
 수식을 따라 구현하면 pos by i 로 구성된 2차원 행렬을 만들 수 있고 이것이 positioanl encoding의 결과입니다.
 이 행렬은 input sequence matrix와 동일한 크기를 가지기 때문에 요소들을 더하여 인코더와 디코더의 입력값으로 사용합니다.
-아래와 같은 그림으로 표현할 수 있습니다. 
+아래와 같은 그림으로 표현할 수 있습니다.
 
 ![](/public/img/attention_is_all_you_need_figure2.JPG "Figure2 of attention is all you need 논문 리뷰")
 
@@ -80,7 +80,7 @@ h개 head는 결합되어 다시 선형 연산을 통해 $d_{model}$ 차원의 �
 저는 이것을 h개의 여러 subspace로 입력 문장 정보를 입력하여 평균화하는 것이 더 풍부한 정보를 문장으로부터 추출할 수 있다고 해석하였습니다.
 단일 subspace를 사용하는 것보다 더 많은 정보를 얻을 수 있는 구조라고 생각됩니다(그저 블로거의 뇌피셜일 뿐입니다).
 이를 나타내는 수식과 그림은 아래와 같습니다.
- 
+
 ![](/public/img/attention_is_all_you_need_figure3.JPG "Figure3 of attention is all you need 논문 리뷰")
 
 pytorch 구현은 다음과 같습니다.
@@ -130,7 +130,7 @@ $$ Attention(Q, K, V) = softmax(\frac{Q{K^T}}{\sqrt{d_k}})V $$
 인코더, 디코더 레이어에서 multi-head attention 연산과 normalization 연산을 거치고나면 단순한 feed forward 연산을 수행하게 됩니다.
 수식과 코드는 다음과 같습니다.
 
-$$ FFN(x) = max(0, xW_1 + b_1)W_2+b_2 $$  
+$$ FFN(x) = max(0, xW_1 + b_1)W_2+b_2 $$
 
 <script src="https://gist.github.com/kh-mo/24f1fbbbc9f4e3950d4be03d3fa367d3.js"></script>
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Pruning Research
-category: Non-Category
+category: etc
 ---
 
 ## Approach

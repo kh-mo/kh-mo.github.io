@@ -1,7 +1,7 @@
 ---
 layout: post
 title: GAN, Generative Adversarial Nets
-category: Generative-Model
+category: Paper-Review
 ---
 
 Generative Model은 원하는 특정 결과를 생성해내는 모델군이라고 할 수 있습니다.
@@ -40,7 +40,7 @@ $$ \min_{G}\max_{D}{V(D,G)} = E_{x \sim p_{data}(x)}[\log D(x)] + E_{z \sim p_{z
 Discriminator는 이 데이터의 확률값이 1에 가깝도록 학습합니다.
 두번째 term은 $P_{z}$에서 얻어진 샘플 z를 이용해 generator가 생성한 이미지 $G(z)$를 판단하는 부분입니다.
 이 때 discriminator는 $G(z)$에서 얻은 이미지의 확률값이 0에 가깝도록 학습합니다.
-  
+
 Generator는 두번째 term loss를 통해 학습하는데 이는 discriminator가 학습하는 방향과 adversarial합니다.
 Discriminator는 G(z)에 대한 확률값을 0으로 판단하려고 학습하는데 반해 Generator는 이 확률값을 1이 되도록 학습하는 것입니다.
 이 과정을 반복하면서 generator는 점차 trainDB에 있는 이미지 데이터들과 유사한 이미지를 생성해 낼 것입니다.
@@ -53,20 +53,20 @@ $$ D_G^* (x) = \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}$$
 
 $$
 \begin{align}
-V(G,D) &= \int_{x} p_{data}(x)\log(D(x))\, dx + \int_{z} p_{z}(z)\log(1-D(g(z)))\, dz \\ 
+V(G,D) &= \int_{x} p_{data}(x)\log(D(x))\, dx + \int_{z} p_{z}(z)\log(1-D(g(z)))\, dz \\
 &= \int_{x} p_{data}(x)\log(D(x)) + \int_{z} p_{g}(x)\log(1-D(x))\, dx \\
 \end{align}
 $$
 
 학습셋에 있는 확률값은 최대화, generator에서 나온 이미지데이터에 대한 확률값을 최소화하면 위의 수식은 최대값을 가지게 됩니다.
 즉, 해당 수식을 $D(x)$가 [0, 1]인 범위에서 미분하면 최대값을 가지는 optimal discriminator의 수식이 유도됩니다.
- 
+
 이 optimal discriminator가 존재한다고 가정하고, minimax game을 진행하고 있는 GAN의 목적함수는 다음과 같이 재정의 될 수 있습니다.
 
 $$
 \begin{align}
 C(G) &= \max_{D}{V(G,D)} \\
-&= E_{x \sim p_{data}}[\log D_G^* (x)] + E_{z \sim p_{z}}[\log (1-D_G^* (G(z)))] \\ 
+&= E_{x \sim p_{data}}[\log D_G^* (x)] + E_{z \sim p_{z}}[\log (1-D_G^* (G(z)))] \\
 &= E_{x \sim p_{data}}[\log D_G^* (x)] + E_{x \sim p_{g}}[\log (1-D_G^* (x))] \\
 &= E_{x \sim p_{data}}[\log \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}] + E_{x \sim p_{g}}[\log \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}] \\
 \end{align}
@@ -95,7 +95,7 @@ $$
 
 $$ KL(P||Q) = \sum_{i} P(i)\log(\frac{P(i)}{Q(i)}) $$
 
-- Jensen-Shannon divergence 
+- Jensen-Shannon divergence
 
-$$ JSD(P||Q) = \frac{1}{2}KL(P||M) + \frac{1}{2}KL(Q||M) $$ 
+$$ JSD(P||Q) = \frac{1}{2}KL(P||M) + \frac{1}{2}KL(Q||M) $$
 

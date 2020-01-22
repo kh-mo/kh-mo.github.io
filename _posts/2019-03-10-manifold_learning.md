@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 의미를 보존하는 공간, manifold
-category: Definition
+category: etc
 ---
 
 랜덤한 난수를 발생시켜 사진을 하나 만든다면 우리는 어떤 사진을 얻을 수 있을까요?
@@ -46,7 +46,7 @@ category: Definition
 지금부터 그것을 알아보겠습니다.
 
 매니폴드 공간은 본래 고차원 공간의 subspace이기 때문에 차원수가 상대적으로 작아집니다.
-이는 데이터 차원 축소(dimension reduction)를 가능하게 합니다. 
+이는 데이터 차원 축소(dimension reduction)를 가능하게 합니다.
 그리고 차원 축소가 잘 되었다는 것은 매니폴드 공간을 잘 찾았다는 것이기도 합니다.
 본래 고차원 공간에서 각 차원들을 잘 설명하는 새로운 특징(feature)을 축으로 하는 공간을 찾았다는 뜻으로 해석할수도 있습니다.
 아래 그림을 예시로 살펴보겠습니다.
@@ -63,7 +63,7 @@ category: Definition
 유클리디안 거리를 통해 가장 가까운 점들이 나와 가장 유사하고 생각하는 방법입니다.
 그러나 고차원 공간상에서 나와 가까운 점이 실제로 나와 유사하지 않을 수 있다는 관점은 매니폴드로 설명할 수 있습니다.
 아래 그림을 살펴보겠습니다.
- 
+
 ![](/public/img/manifold_learning_figure4.JPG "Figure4 of manifold_learning, A Global Geometric Framework for Nonlinear Dimensionality Reduction")
 
 고차원 공간에서 $B$와 $A1$ 거리가 $A2$ 거리보다 가깝습니다.
