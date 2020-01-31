@@ -16,7 +16,7 @@ Phonetics란 언어학 소리에 대한 연구로 크게 3가지 분야를 연�
 
 >
 > How they are produced by the articulators of the human vocal track.<br>
-> 어떻게 소리가 사람의 vocal track의 조음기관으로 생성되는지
+> 어떻게 사람의 성도 조음기관으로 소리가 생성되는지
 >
 > How they are realized acoustically.<br>
 > 어떻게 음향적(청각적)으로 인지되는지
@@ -29,13 +29,13 @@ Phonetics 연구의 핵심 요소는 Phones 입니다.
 Phones은 단어가 어떻게 발음되는지는 설명하는 요소이자 개별적인 speech unit 입니다.
 STT나 TTS같은 현대 알고리즘을 제작하려면 먼저 **'발음을 인지할 수 있어야 하고 쓸 수 있어야'**하는데 이 때 phones이 중요한 역할을 하게 됩니다.
 이 phones을 설명하기 위한 체계가 phonetic alphabets 입니다.
-더 나아가 입의 조음기관으로 생성되는 소리에 대한 연구가 articulatory phonetics 이고, 생성된 소리에 대한 음향학적 연구가 acoustic phonetics 입니다.
+더 나아가 조음기관으로 생성되는 소리에 대한 연구가 articulatory phonetics 이고, 생성된 소리에 대한 음향학적 연구가 acoustic phonetics 입니다.
 
 
 ## 언어음과 음성 표기(Speech sounds and phonetic transcription)
 
-Phonetics의 세부분야에는 단어의 발음에 대한 연구가 있습니다.
-연구자들은 phones으로 표현되는 symbol로 단어의 발음을 모델링하게 됩니다.
+Phonetics의 세부분야에는 단어 발음에 대한 연구가 있습니다.
+연구자들은 phones을 표현는 symbol로 단어의 발음을 모델링하게 됩니다.
 즉, phones이 중요한 요소가 되는 것인데 영어에서 phones을 나타내는 큰 2가지 체계가 있습니다.
 
 첫번째 체계는 IPA(International Phonetic Alphabet) 입니다.
@@ -50,4 +50,24 @@ IPA보다 더 보편적으로 사용되기도 합니다.
 
 IPA나 ARPAbet 기호의 대부분은 로마 문자와 유사하기도 하지만 phones와 알파벳 사이에 매핑에 어려운 부분이 존재하기도 합니다.
 때문에 해당 부분의 차이를 인지하고 공부, 연구하는 것이 중요합니다.
+
+## 조음음성학(Articulatory Phonetics)
+
+어떻게 phones이 생성되는지 이해하는 것은 매우 중요합니다.
+조음음성학은 폐에서 나온 공기가 입, 코, 목을 통해 어떻게 소리를 생성하는지에 관한 연구로 여기서부터 우리는 어떻게 phones이 생성되는지 살펴볼 수 있습니다.
+
+### 발성 기관(The Vocal Organs)
+
+소리는 공기의 빠른 움직임입니다.
+사람이 말하는 언어는 폐에서 나온 공기가 호흡기관(trachea)을 통해 코나 입으로 나오며 생성됩니다.
+호흡기관을 거치며 공기는 후두(larynx)를 통과하며 성대(vocal folds, vocal cords)를 거치게 됩니다.
+성대의 두 주름 사이의 공간을 성문(glottis)라고 하는데 성문이 작은 상태이면(성대 주름이 가까운 상태이면) 공기는 이곳을 통과하며 진동을 일으킵니다.
+이 성대의 떨림과 함께 만들어지는 소리를 유성음(voiced)이라고 하며 성대의 떨림이 없는 소리를 무성음(unvoiced, voiceless)라고 합니다.
+호흡기관 위의 영역은 구성도(oral tract)와 비성도(nasal tract)로 이루어진 성도(vocal tract)입니다.
+대부분의 소리가 입을 통해 만들어지고 몇몇 소리는 코를 통합니다.
+이 때 코를 통해 만들어지는 소리를 비음(nasal sound)라고 부릅니다.
+
+Phones은 크게 자음(consonant)과 모음(vowel)으로 나누어집니다.
+자음은 어디선가 공기의 흐름이 방해받아 만들어지고 유성음, 무성음이 혼재합니다.
+모음은 자음에 비해서 공기의 흐름 방해가 덜하고 대부분 유성음이며 소리가 크고 길게 발음되는 특징이 있습니다.
 
