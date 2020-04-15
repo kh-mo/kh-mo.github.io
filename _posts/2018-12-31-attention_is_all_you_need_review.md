@@ -1,6 +1,6 @@
 ---
 title: attention is all you need 논문 리뷰
-category: NLP
+category: Papers
 ---
 
 본 포스트는 attention is all you need를 리뷰한 포스트입니다.

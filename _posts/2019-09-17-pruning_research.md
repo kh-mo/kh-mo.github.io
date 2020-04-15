@@ -1,7 +1,6 @@
 ---
-layout: post
 title: Pruning Research
-category: etc
+category: Incomplete writing
 ---
 
 ## Approach

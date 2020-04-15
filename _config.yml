@@ -34,10 +34,8 @@ author:
 nav:
   Home:
     - '/'
-  Paper Review:
-      - '/Paper_review/'
-  etc..:
-    - '/etc/'
+  Contents:
+      - '/Contents/'
 
 hero:
   image: /public/img/star_of_the_night_sky.png

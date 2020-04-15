@@ -1,7 +1,6 @@
 ---
-layout: post
 title: 젠센 부등식(Jensen's Inequality)
-category: etc
+category: Notation
 ---
 
 젠센 부등식(Jensen's Inequality)은 특정 조건에서 특정 성질을 만족하는 부등식입니다.

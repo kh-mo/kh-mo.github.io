@@ -1,13 +1,11 @@
 ---
-layout: post
 title: Phonetics
-category: etc
+category: Incomplete writing
 ---
 
 본 포스트는 speech and language processing 교재의 7장 phonetics를 정리한 것입니다.
 공부한 내용을 정리하는 것이기에 잘못된 점이 있을 수 있습니다.
 해당 내용에 대한 교정, 첨언, 조언은 언제나 환영입니다.
-
 
 ## Intro
 

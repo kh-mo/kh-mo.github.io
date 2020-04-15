@@ -1,7 +1,6 @@
 ---
-layout: post
 title: 오차의 최소화, Gradient Descent
-category: etc
+category: Notation
 ---
 
 딥러닝에서 사용되는 최적화 방법론인 gradient descent에 관한 내용입니다.
