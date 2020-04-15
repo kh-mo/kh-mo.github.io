@@ -1,4 +1,5 @@
 ---
+layout: post
 title: attention is all you need 논문 리뷰
 category: NLP
 ---

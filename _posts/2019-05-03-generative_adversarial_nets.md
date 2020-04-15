@@ -1,4 +1,5 @@
 ---
+layout: post
 title: GAN, Generative Adversarial Nets
 category: Generative Model
 ---
