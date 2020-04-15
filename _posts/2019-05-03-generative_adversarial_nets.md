@@ -1,7 +1,6 @@
 ---
-layout: post
 title: GAN, Generative Adversarial Nets
-category: Paper-Review
+category: Generative Model
 ---
 
 Generative Model은 원하는 특정 결과를 생성해내는 모델군이라고 할 수 있습니다.
