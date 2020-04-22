@@ -9,13 +9,14 @@ category: Incomplete writing
 
 ## 기존의 방법론 세계
 
-본 논문과 대비되는 기존 이상치 탐지(anomaly detection) 모델들은 정상 개체 범주를 만드는 model-based 방법입니다.
-이는 새로운 개체가 모델이 설정한 정상 범주에 들어오지 않았을 때 비정상으로 판단하는 방법입니다.
+본 논문이 고려하는 기존의 이상치 탐지(anomaly detection) 모델들은 정상 개체로 판단되는 범주를 만드는 model-based 방법입니다.
+새로운 테스트 데이터가 만약 모델이 설정한 정상 범주에 들어오지 않는다면, 이 개체는 비정상으로 판단됩니다.
 
 
 ## Isolation Forest는 어떤 알고리즘인가?
 
-이전의 model-based 방법론들과 달리 비정상 개체를 고립시키는 방법을 사용하는 알고리즘입니다.
+Isolation Forest는 비정상 개체를 고립시키는 방법을 사용하는 알고리즘으로 model-based 방법론에 속합니다.
+선행 연구들보다 sub-sampling을 통해 계산 복잡도, 메모리 사용량에서 얻는 이득이 큰 장점이 있습니다.
 
 
 ## 수식적으로 살펴본 Isolation Forest
