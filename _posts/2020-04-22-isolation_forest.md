@@ -53,34 +53,39 @@ Tree 구조에서 데이터의 분기(partitioning)는 랜덤하게 선택된 �
 
 ## 수식으로 살펴본 Isolation Forest
 
+**(논문에서 n개 instance, n개 externel-node 등 n이 가리키는 것이 무엇인지 혼란스러울 수 있으니 주의!!)**
+
 iForest를 구성하는 기본적인 요소는 iTree 입니다.
-iTree는 먼저 proper binary tree를 기본으로 합니다.
-이는 전체 노드를 두 노드 집단으로 나누는 tree를 말합니다.
-자식 노드를 갖지 않는 외부 노드(external-node)와 2개 자식 노드를 갖는 내부 노드(internal-node)가 그것입니다.
-iTree의 루트부터 시작하여 랜덤하게 속성 q가 정해지고 그 값이 p로 결정된다면 데이터 셋 $X={x_1, x_2, ..., x_n}$은 두 집단으로 분기되어 노드에 담기게 됩니다.
-분기가 된다면 내부 노드가 되고 분기하지 않는다면 외부 노드가 되겠지요.
-다음 3가지 조건 중 하나에 도달할 때 까지 계속 반복적으로 노드를 분기해 나가게 됩니다.
+iTree는 먼저 [완전이진트리(proper binary tree, full binary tree)](https://www.quora.com/What-is-a-proper-binary-tree)를 기본으로 합니다.
+iTree는 주어진 데이터 셋을 특정 기준에 따라 반복적으로 분기하며 다음 3가지 조건 중 하나를 충족시킬 때 멈추게 됩니다.
 
->
-> 제한 높이(height limit)에 도달한 경우
->
-> 노드의 데이터가 1개인 경우(|X|=1)
->
-> 노드에 들어있는 데이터의 값이 모두 동일한 경우
->
+- 제한 높이(height limit)에 도달한 경우
+- 노드의 데이터가 1개인 경우(\|X\|=1)
+- 노드에 들어있는 데이터의 값이 모두 동일한 경우
 
-만약 모든 데이터가 고립되도록 iTree가 커지게 되면, k개 외부 노드와 k-1개 내부 노드를 가지게 되어 전체 2k-1개 노드를 가집니다.
-이는 k에 따라 선형적으로 메모리를 요구한다는 뜻이기도 합니다.
+n개 데이터 샘플이 주어진 데이터 셋 $X={x_1, x_2, ..., x_n}$는 iTree에서 분기되어 최종 노드에 담기게 됩니다.
+BST(binary search tree)에는 search의 결과물이 내부 노드(internal node)에 있는지 혹은 외부 노드(external)에 있는지에 따라 successful search와 unsuccessful search로 나눠지는 개념이 있습니다.
+iTree는 이 중 unsuccessful search의 구조와 유사하며 이 개념에서 두가지 정보를 얻을 수 있습니다.
+첫번째는 tree가 얼마나 깊어질 수 있는지 입니다.
+논문에서 path length라고 부르는 $h(x)$는 앞으로 비정상 점수(anomaly score)를 계산하는데 매우 중요한 요소인데 unsuccessful search tree에서 $h(x)$가 가질 수 있는 범위는 $0 < h(x) \leq n-1$입니다.
+두번째는 tree의 평균깊이(average path length)입니다.
+아래와 같은 수식으로 정의되며 유도 과정은 [이곳](https://book.huihoo.com/data-structures-and-algorithms-with-object-oriented-design-patterns-in-c++/html/page309.html)을 참고하시기 바랍니다.
 
-**(논문에서 n개 instance, n개 externel-node 등 n을 중복사용하여 혼란을 주는 경우가 있으니 주의!!)**
+$$ c(n) = 2H(n-1) - (2\frac{n-1}{n}) $$
 
-Tree가 완성되면 이후 새로운 데이터를 넣었을 때, 비정상 점수(anomaly score)를 알려줘야 합니다.
-iForest는 경로 길이를 활용해서 비정상 점수를 산출합니다.
-비정상 데이터는 분기가 빨리 되어 루트 노드와 가깝다는 특징이 있었음을 다시 상기해 봅시다.
+비정상 점수는 $h(x)$와 $c(n)$을 활용해 다음과 같이 정의됩니다.
 
-데이터 x의 경로 길이를 $h(x)$로 먼저 정의합니다.
-$h(x)$값은 루트 노드에서 x가 들어있는 노드까지 엣지(edge)의 수 입니다.
+$$ s(x,n) = 2^{-\frac{E(h(x))}{c(n)}} $$
 
+$h(x)$의 기대값을 구하는 이유는 알고리즘이 forest이기 때문에 여러 tree에서 나온 결과를 평균내야 하기 때문입니다.
+위에서 $h(x)$의 범위를 알았고 이 값이 0에 가까워지면 s는 1에 근접합니다.
+반대로 n-1에 가까워지면 s는 0에 근접하게 되지요.
+
+$$ 0 < s \leq 1 $$
+
+다시 처음으로 돌아가서 우리는 비정상 데이터가 'few & different' 성질로 인해 루트 노드에 가깝게 분기될 것이라고 했습니다.
+이를 수식에 대입하면 $h(x)$값이 0에 가까워진다는 것을 의미하고 s는 1에 가까워 질 것입니다.
+즉, 비정상 점수 s가 커질수록 데이터가 비정상이라고 할 수 있습니다.
 
 ## 코드 구현 내용
 
