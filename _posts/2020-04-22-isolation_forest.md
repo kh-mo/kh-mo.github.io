@@ -178,7 +178,7 @@ T.size는 알고리즘2에서 external 노드에 들어가는 X의 갯수인데 
 
 iForest에서 c(n) 수식은 n-1개 internal node가 있을 때 external node n개의 평균 길이를 나타내는 수식입니다.
 즉, iTree의 terminal node가 external node가 되고 나머지 노드들이 internal node가 되는 구조입니다.
-이 말은 T.size가 1인 경우 아예 노드가 없는 경우이므로 c(1)=0이 됩니다.
+이 말은 T.size가 1인 경우 0개 internal node가 있는(=아예 노드가 없는) 경우이므로 c(1)=0이 됩니다.
 T.size가 2인 경우 루트 노드만 존재하는 경우이므로 c(2)=1이 됩니다.
 루트 노드만 존재할 경우 BST에서 external node는 2개가 존재하고 이 경우 평균 external node 경로는 $ \frac{1}{2}(1+1) $이기 때문입니다.
 2개 이상인 경우는 평균 external node 경로는 수식을 따라 approximate한 값을 이용합니다.
