@@ -41,7 +41,10 @@ GAN 또한 딥러닝 네트워크 구조로 G와 D를 만들었기 때문에 고
 
 ## 핵심 목적함수
 
-이제 수식적으로 GAN을 살펴보겠습니다.
+![](/public/img/generative_adversarial_nets_figure2.JPG "Figure2 of generative adversarial nets")
+
+위의 그림은 GAN의 전체 프레임워크를 나타낸 그림입니다.
+이것을 수식적으로 살펴보겠습니다.
 먼저 GAN의 목적 함수(objective function)는 아래와 같습니다.
 
 $$ \min_{G}\max_{D}{V(D,G)} = E_{x \sim p_{data}(x)}[\log D(x)] + E_{z \sim p_{z}(x)}[\log (1-D(G(z)))]$$
@@ -82,9 +85,38 @@ D는 $V(D,G)$의 구성요소 두 개와 모두 관련이 있습니다.
 
 #### Framework 동작 방식
 
-Optimal D가 먼저 주어지면 학습이 이뤄질 수 없다.
-G가 적절한 gradient를 받기 못하기 때문이다.
-추가적으로 더 많은 gradient를 받는 trick으로 $1-D(G(z))$를 쓰는 것보다 다른 수식을 쓰는 방법도 있다.
+GAN 페이퍼의 figure 1과 algorithm 1에 G와 D를 학습하는 전체 절차가 나타나 있습니다.
+G와 D는 처음에는 성능이 낮았으나 점진적으로 둘 다 성능이 좋아지게 됩니다.
+
+![](/public/img/generative_adversarial_nets_figure3.JPG "Figure3 of generative adversarial nets")
+
+위 그림은 GAN 논문의 figure 1 입니다.
+(a)를 보면 임의의 z 공간에서 샘플링 된 샘플들이 G를 통해 어떤 x들에 매핑되는 것을 확인할 수 있습니다.
+이 때 초록 실선은 G의 분포를 파란 점선은 D의 분포를 검은 점선은 학습 데이터 분포를 의미합니다.
+(a)는 네트워크가 공평하게 수렴한 중간 단계라고 가정하고 시작합니다.
+이후 (b)는 목적 함수를 따라 D를 학습한 결과입니다.
+구불구불한 파란색 선이 매끄러워 짐을 확인할 수 있습니다.
+특히 G의 분포가 학습 데이터 분포를 정확히 따라가는 정규분포의 왼쪽의 경우 D(x)는 $\frac{P_{data}(x)}{P_{data}(x)+P_{g}(x)}로 수렴하게 됩니다.
+이후 (c)는 목적 함수를 따라 G를 학습하는 경우입니다.
+G의 분포가 학습 데이터 분포를 더 잘 따라가는 것을 확인할 수 있습니다.
+이 과정을 반복해서 최종적으로 도달하기 바라는 GAN의 궁극적인 결과는 (d) 입니다.
+
+![](/public/img/generative_adversarial_nets_figure4.JPG "Figure4 of generative adversarial nets")
+
+위 알고리즘은 GAN의 pseudocode입니다.
+전체 학습 iteration에서 목적 함수를 따라 D를 k번 학습시키고 G를 한 번 학습시킵니다.
+D를 학습시키는 알고리즘에서 사용되는 데이터는 z분포에서 샘플링된 m개 z와 학습 데이터 분포에서 샘플링된 m개 x 입니다.
+그리고 G를 학습시키는데 사용되는 알고리즘은 z분포에서 샘플링 된 m개 z 입니다.
+
+GAN을 학습할 때 optimal D가 미리 주어지면 G는 적절한 gradient를 받을 수 없습니다.
+따라서 G와 D가 적절한 성능을 내도록 밸런스를 잡아줄 필요가 있습니다.
+추가적으로 G를 좀 더 잘 학습시키기 위한 팁으로 $log(1-D(G(z)))$를 최소화하는 것보다 $log(D(G(z)))$를 최대화하는 방법이 있습니다.
+학습 초기 G가 만들어내는 데이터는 아직 실제 데이터와 차이가 있을 수 있고 이 때 $D(G(z))$는 0에 가까운 값을 가지게 될 것입니다.
+
+![](/public/img/generative_adversarial_nets_figure5.JPG "Figure5 of generative adversarial nets")
+
+대략 0.1~0.2 정도의 값이 반환된다고 하면 $log(1-x)$의 평균 기울기는 약 -1.18이 되고 $log(x)$의 평균 기울기는 약 6.93이 됩니다.
+즉, 같은 목적을 나타내더라도 $log(D(G(z)))$가 더 많이 G를 업데이트 시킬 수 있습니다.
 
 ## 이론적 background
 
