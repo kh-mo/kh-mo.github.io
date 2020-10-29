@@ -120,23 +120,42 @@ GAN을 학습할 때 optimal D가 미리 주어지면 G는 적절한 gradient를
 
 ## 이론적 background
 
-Ian Goodfellow는 optimal discriminator가 주어졌을 때 어떠한 generator에 대한 확률값을 다음과 같이 표현했습니다.
+$P_{z}$에서 샘플링 된 z를 입력으로 받아 생성된 데이터 G(z)가 형성하는 확률 분포를 $P_{g}$라고 합니다.
+만약 $P_{g}$가 잘 만들어지면 $P_{data}$와 동일한 분포를 형성할 것입니다.
+G에게 $P_{data}$를 모방할 능력을 부여하기 위해 non-parametric setting으로 모델링을 합니다.
+
+논문의 저자들은 GAN의 프레임워크를 만들면서 몇가지 참인 명제를 주장하고 이를 증명합니다.
+하나하나 살펴보도록 하겠습니다.
+
+#### Proposition 1
+
+만약 임의의 G가 주어졌을 때, 최적의 D는 다음과 같이 주어집니다.
 
 $$ D_G^* (x) = \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}$$
 
-이 수식은 discriminator 입장에서 해당 수식을 최대화하도록 학습할 때 유도됩니다.
+이 수식은 GAN의 목적 함수로부터 유도됩니다.
+D의 관점에서 $V(D,G)$가 최대화되길 바란다는 점은 위에서 확인했습니다.
+그러면 목적 함수를 적분식으로 다시 적었을 때 다음과 같은 식이 유도됩니다.
 
 $$
 \begin{align}
-V(G,D) &= \int_{x} p_{data}(x)\log(D(x))\, dx + \int_{z} p_{z}(z)\log(1-D(g(z)))\, dz \\
+V(D,G) &= E_{x \sim p_{data}(x)}[\log D(x)] + E_{z \sim p_{z}(x)}[\log (1-D(G(z)))] \\
+&= \int_{x} p_{data}(x)\log(D(x))\, dx + \int_{z} p_{z}(z)\log(1-D(g(z)))\, dz \\
 &= \int_{x} p_{data}(x)\log(D(x)) + \int_{z} p_{g}(x)\log(1-D(x))\, dx \\
 \end{align}
 $$
 
-학습셋에 있는 확률값은 최대화, generator에서 나온 이미지데이터에 대한 확률값을 최소화하면 위의 수식은 최대값을 가지게 됩니다.
-즉, 해당 수식을 $D(x)$가 [0, 1]인 범위에서 미분하면 최대값을 가지는 optimal discriminator의 수식이 유도됩니다.
+적분안의 수식은 $alog(y) + blog(1-y)$ 수식처럼 바꿔 쓸 수 있습니다.
+그리고 이 수식은 a와 b가 0이 아닌 $(a,b) \in \mathbb{R}^2$인 공간에서 정의됩니다.
+y는 D(x)를 의미하기 때문에 0~1구간을 갖게 됩니다.
+즉, 정의된 수식은 \[0, 1\] 폐구간에서 $y=\frac{a}{a+b}$일 때 최대값을 가지게 됩니다.
+이 수식은 $Supp(P_{data}) \cup Supp(P_{g})$ 인 구간에서 정의될 필요가 없는데 $Supp(x)$란 위상수학에서 [지지집합](https://ko.wikipedia.org/wiki/%EC%A7%80%EC%A7%80%EC%A7%91%ED%95%A9)이라는 개념으로 해당 함수가 0이 아닌 점들의 집합을 의미합니다.
+즉, $P_{data}$가 0이 아니고 $P_{g}$가 0이 아닌 모든 공간을 의미합니다.
 
-이 optimal discriminator가 존재한다고 가정하고, minimax game을 진행하고 있는 GAN의 목적함수는 다음과 같이 재정의 될 수 있습니다.
+이런 참인 명제를 바탕으로 GAN의 목적 함수를 다시 보면 MLE 관점으로 해석과 reformulate도 가능합니다.
+D의 목적 함수는 x가 $P_{data}$에서 온 것인지 $P_{g}$에서 온 것인지 판단하는 y가 있을 때, $P(Y=y|x)$로 표현되는 조건부 확률을 추정하는 log-likelihood를 최대화하는 것으로 해석할 수 있습니다.
+이것이 MLE 관점으로 D의 목적 함수를 보는 것입니다.
+참인 명제는 본래의 목적 함수 $V(D,G)$에 대입되어 다음과 같이 다시 쓸 수 있습니다.
 
 $$
 \begin{align}
@@ -146,6 +165,10 @@ C(G) &= \max_{D}{V(G,D)} \\
 &= E_{x \sim p_{data}}[\log \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}] + E_{x \sim p_{g}}[\log \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}] \\
 \end{align}
 $$
+
+#### Theorem 1
+
+
 
 이 목적함수를 이용해 global minimum을 찾으려면 $ p_g = p_{data} $가 되어야합니다.
 그 말인즉슨 generator가 trainDB의 분포를 잘 학습했음을 의미합니다.
