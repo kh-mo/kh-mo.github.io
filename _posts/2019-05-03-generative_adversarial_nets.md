@@ -168,12 +168,41 @@ $$
 
 #### Theorem 1
 
+$p_{g}(x) = p_{data}(x)$인 것과 C(G)가 global minimum에 놓이는 것은 필요충분 관계입니다.
+그리고 이 포인트에서 C(G)는 최소값 $-\log 4$ 값을 가지게 됩니다.
 
+만약 $p_{g}(x) = p_{data}(x)$이면 $D_G^* (x)=\frac{1}{2}$가 됩니다.
+그러면 수식 C(G)는 $\log \frac{1}{2} + \log \frac{1}{2} = -\log 4$가 됩니다.
+이것은 C(G)가 가질 수 있는 최소값이자 오직 $p_{g}(x) = p_{data}(x)$인 경우에만 달성됩니다.
 
-이 목적함수를 이용해 global minimum을 찾으려면 $ p_g = p_{data} $가 되어야합니다.
-그 말인즉슨 generator가 trainDB의 분포를 잘 학습했음을 의미합니다.
-논문에서 Ian Goodfellow는 Theorem 1을 통해 global minimum에 도달했을 때 $C(G)$가 $-\log(4)$임을 증명했습니다.
-이것을 결론부터 거슬러 올라가면 다음과 같이 유도할 수 있습니다.
+수식 C(G)가 가질 수 있는 최소값이 $-\log 4$이기 때문에 목적함수 V(D,G)는 다음과 같이 다시 쓰여질 수 있습니다.
+
+$$
+\begin{align}
+C(G) &= -\log(4) + KL(p_{data} || \frac{p_{data}+P_g}{2}) + KL(p_g || \frac{p_{data}+P_g}{2}) \\
+\end{align}
+$$
+
+KL은 Kullback-Leibler divergence의 약자로 두 분포의 차이를 설명하는 개념입니다.
+임의의 두 분포 P와 Q가 있을 때, 다음과 같은 수식으로 표현됩니다.
+
+$$ KL(P||Q) = \sum_{i} P(i)\log(\frac{P(i)}{Q(i)}) $$
+
+만약 P와 Q가 동일한 분포라면 KL divergence는 0 값을 가지게 됩니다.
+그리고 위의 두 KL divergence는 Jensen-Shannon divergence로 변환이 가능합니다.
+Jensen-Shannon divergence는 아래와 같은 수식으로 표현됩니다.
+
+$$ JSD(P||Q) = \frac{1}{2}KL(P||M) + \frac{1}{2}KL(Q||M) $$
+
+이 수식을 따라 KL divergence를 포함한 C(G) 수식을 다음과 같이 변경시킬 수 있습니다.
+
+$$
+\begin{align}
+C(G) &= -\log(4) + 2 * JSD(P_{data} || P_g) \\
+\end{align}
+$$
+
+위에서 설명한 모든 과정을 연결하면 결과적으로 초기 V(D,G)는 아래와 같이 표현될 수 있습니다.
 
 $$
 \begin{align}
@@ -183,19 +212,17 @@ C(G) &= -\log(4) + 2 * JSD(P_{data} || P_g) \\
 &= -\log(4) + \log(2) + \sum_{i} p_{data}(i)*\log(\frac{p_{data}(i)}{p_{data}+P_g}) + \log(2) + \sum_{i} p_{g}(i)*\log(\frac{p_{g}(i)}{p_{data}+P_g}) \\
 &= \sum_{i} p_{data}(i)*\log(\frac{p_{data}(i)}{p_{data}+P_g}) + \sum_{i} p_{g}(i)*\log(\frac{p_{g}(i)}{p_{data}+P_g}) \\
 &= E_{x \sim p_{data}}[\log \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}] + E_{x \sim p_{g}}[\log \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}] \\
+&= V(D,G)
 \end{align}
 $$
 
-수식을 따라가니 결국 위에서 재정의한 $C(G)$와 같은 결론을 얻었습니다.
-이 수식을 따라갈 때 필요한 Kullback-Leibler divergence(KL-divergence)와 Jensen-Shannon divergence 수식은 아래와 같습니다.
+#### Proposition 2
 
-- KL-divergence
+명제 :
+G,D가 충분한 케파를 가지고 알고리즘1 스탭을 따라가면 D는 optimum에 도달하고 pg는 기준을 높이도록 업데이트 된다
+그리고 결국 pg가 pdata에 수렴한다
 
-$$ KL(P||Q) = \sum_{i} P(i)\log(\frac{P(i)}{Q(i)}) $$
 
-- Jensen-Shannon divergence
-
-$$ JSD(P||Q) = \frac{1}{2}KL(P||M) + \frac{1}{2}KL(Q||M) $$
 
 ## 결과
 
