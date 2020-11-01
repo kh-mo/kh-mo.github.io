@@ -1,5 +1,5 @@
 ---
-title: attention is all you need 논문 리뷰
+title: Transformer, Attention is all you need
 category: Incomplete writing
 ---
 
