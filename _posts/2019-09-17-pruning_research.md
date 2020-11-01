@@ -1,6 +1,6 @@
 ---
 title: Pruning Research
-category: Incomplete writing
+category: tmp
 ---
 
 ## Approach

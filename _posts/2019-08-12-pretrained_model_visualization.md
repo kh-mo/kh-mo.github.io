@@ -1,6 +1,6 @@
 ---
 title: Pretrained Model Visualization
-category: Incomplete writing
+category: tmp
 ---
 
 우리가 어떤 인공지능 모델을 만들었고 이를 활용하면서 마주치는 문제에는 **'왜 이 모델이 이렇게 판단했는가?'**를 이야기해야 한다는 점입니다.

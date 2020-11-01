@@ -1,6 +1,6 @@
 ---
 title: Phonetics
-category: Incomplete writing
+category: tmp
 ---
 
 본 포스트는 speech and language processing 교재의 7장 phonetics를 정리한 것입니다.
