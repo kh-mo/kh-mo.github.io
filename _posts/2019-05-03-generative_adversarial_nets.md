@@ -219,10 +219,15 @@ $$
 #### Proposition 2
 
 명제 :
-G,D가 충분한 케파를 가지고 알고리즘1 스탭을 따라가면 D는 optimum에 도달하고 pg는 기준을 높이도록 업데이트 되어 결국 pg가 pdata에 수렴한다.
+G,D가 충분한 케파를 가지고 알고리즘1 스탭을 따라가면 D는 optimum에 도달하고 $p_{g}$는 기준 수식 $E_{x \sim p_{data}}[\log D_G^* (x)] + E_{x \sim p_{g}}[\log (1-D_G^* (x))]$을 향상시키도록 업데이트 되어 결국 $p_{g}$가 $p_{data}$에 수렴한다.
 
+$p_{g}$의 함수로써 $V(G,D) = U(p_{g},D)$를 고려해보자.
+$U(p_{g},D)$는 $(p_{g}$ 안에서 convex다.
+convex 함수의 supremum의 2차 미분은 최대값에 도달한 포인트에서 함수의 미분을 포함합니다.
+즉, $f(x)=sup_{\alpha \in A}(f_{\alpha}(x)))$이고 $f_{\alpha}(x)$가 모든 $\alpha$에 대해 x에서 convex일 때, $\beta = arg sup_{\alpha \in A}(f_{\alpha}(x)))$라면 $\partial f_{\beta}(x) \in \partial f$ 입니다.
 
-
+여태까지 수식은 임의의 G에 대해 최적 D는 $p_{g}$에 대해 gradient descent 방식으로 계산될 수 있다는 것과 동치입니다.
+따라서 $sup_{D}U(p_{g},D)$는 $p_{g}$에서 convex이고 $p_{g}$의 일부 변화에 따라 $p_{g}$가 $p_{x}$에 수렴합니다.
 
 ## 결과
 
@@ -232,7 +237,7 @@ GAN은 적대적 프레임워크를 통해 학습 데이터 분포를 잘 모방
 또한 주어진 테스트 데이터셋도 DB에 있는 데이터이기 때문에 G를 평가하는데 직접적으로 사용될 수 없는 부분도 있습니다.
 다만 정성적으로 생성된 데이터를 보고 판단하는 경우가 있는데 이미지 데이터의 경우 이런 판단하기가 좋습니다.
 
-<논문 그림 2>
+![](/public/img/generative_adversarial_nets_figure6.JPG "Figure6 of generative adversarial nets")
 
 가장 오른쪽 그림은 생성된 이미지와 가장 인접한 학습 데이터셋을 뽑은 것입니다.
 생성된 이미지가 그럴듯한 이미지를 생성해냈는지, 그리고 학습 데이터와 유사한 의미를 지닌 이미지를 생성했는지 정성적으로 판단할 수 있을 것입니다.
