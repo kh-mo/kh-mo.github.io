@@ -136,15 +136,15 @@ Adversarial framework를 따라 무한한 capacity를 가진 non-parametric 모�
 
 $$
 \begin{align}
-\[Proposition 1\] &= \\
+[Proposition 1] &= \\
 &= G가 주어졌을 때, 최적의 D는 D_G^* (x) = \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)} 이다. \\
 \end{align}
 $$
 
-```
-\[Proposition 1\]
-G가 주어졌을 때, 최적의 D는 $ D_G^* (x) = \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}$ 이다.
-```
+
+> [Proposition 1]
+> G가 주어졌을 때, 최적의 D는 $ D_G^* (x) = \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}$ 이다.
+
 
 
 만약 임의의 G가 주어졌을 때, 최적의 D는 다음과 같이 주어집니다.
