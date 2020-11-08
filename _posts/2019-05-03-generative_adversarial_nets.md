@@ -134,112 +134,89 @@ GAN의 학습 초반에 G가 D로부터 낮은 확률 값 0.1~0.2 정도의 값�
 
 Adversarial framework를 따라 무한한 capacity를 가진 non-parametric 모델 G, D가 점차 성능을 높여가서 결국에는 $p_{g}$가 $p_{data}$에 수렴하게 된다는 이론적 배경을 살펴보겠습니다.
 
-*[Proposition 1]*
+**[Proposition 1]**
 
 *G가 주어졌을 때, 최적의 D는 $D_G^\* (x) = \frac{p\_{data}(x)}{p\_{data}(x)+p\_{g}(x)}$ 이다.*
 
+**[Proof]**
 
-
-
-만약 임의의 G가 주어졌을 때, 최적의 D는 다음과 같이 주어집니다.
-
-$$ D_G^* (x) = \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}$$
-
-이 수식은 GAN의 목적 함수로부터 유도됩니다.
-D의 관점에서 $V(G,D)$가 최대화되길 바란다는 점은 위에서 확인했습니다.
-그러면 목적 함수를 적분식으로 다시 적었을 때 다음과 같은 식이 유도됩니다.
+G가 주어졌을 때, D를 학습하는 기준은 $V(G,D)$ 수식이 최대가 되는 것입니다.
 
 $$
 \begin{align}
-V(G,D) &= E_{x \sim p_{data}(x)}[\log D(x)] + E_{z \sim p_{z}(x)}[\log (1-D(G(z)))] \\
-&= \int_{x} p_{data}(x)\log(D(x))\, dx + \int_{z} p_{z}(z)\log(1-D(g(z)))\, dz \\
-&= \int_{x} p_{data}(x)\log(D(x)) + \int_{z} p_{g}(x)\log(1-D(x))\, dx \\
+V(G,D) &= \int_{x} p_{data}(x)\log(D(x))\, dx + \int_{z} p_{z}(z)\log(1-D(g(z)))\, dz \\
+&= \int_{x} p_{data}(x)\log(D(x)) + p_{g}(x)\log(1-D(x))\, dx \\
 \end{align}
 $$
 
-적분안의 수식은 $alog(y) + blog(1-y)$ 수식처럼 바꿔 쓸 수 있습니다.
-그리고 이 수식은 a와 b가 0이 아닌 $(a,b) \in \mathbb{R}^2$인 공간에서 정의됩니다.
-y는 D(x)를 의미하기 때문에 0~1구간을 갖게 됩니다.
-즉, 정의된 수식은 \[0, 1\] 폐구간에서 $y=\frac{a}{a+b}$일 때 최대값을 가지게 됩니다.
-이 수식은 $Supp(p_{data}) \cup Supp(p_{g})$ 인 구간에서 정의될 필요가 없는데 $Supp(x)$란 위상수학에서 [지지집합](https://ko.wikipedia.org/wiki/%EC%A7%80%EC%A7%80%EC%A7%91%ED%95%A9)이라는 개념으로 해당 함수가 0이 아닌 점들의 집합을 의미합니다.
+이 수식은 $p_{data}$와 $p_{g}$가 정의되는 구간에서만 계산되면 됩니다.
+이를 논문에서는 $Supp(p_{data}) \cup Supp(p_{g})$로 표현합니다([지지집합](https://ko.wikipedia.org/wiki/%EC%A7%80%EC%A7%80%EC%A7%91%ED%95%A9)이라는 개념으로 해당 함수가 0이 아닌 점들의 집합을 의미합니다).
 즉, $p_{data}$가 0이 아니고 $p_{g}$가 0이 아닌 모든 공간을 의미합니다.
-
-이런 참인 명제를 바탕으로 GAN의 목적 함수를 다시 보면 MLE 관점으로 해석과 reformulate도 가능합니다.
-D의 목적 함수는 x가 $p_{data}$에서 온 것인지 $p_{g}$에서 온 것인지 판단하는 y가 있을 때, $P(Y=y|x)$로 표현되는 조건부 확률을 추정하는 log-likelihood를 최대화하는 것으로 해석할 수 있습니다.
-이것이 MLE 관점으로 D의 목적 함수를 보는 것입니다.
-참인 명제는 본래의 목적 함수 $V(G,D)$에 대입되어 다음과 같이 다시 쓸 수 있습니다.
+$V(G,D)$ 수식은 $a \log (y) + b \log (1-y)$ 꼴로 나타낼 수 있는데 a와 b가 0이 아니고 y가 \[0,1\] 구간에 있다는 조건하에서, $y=\frac{a}{a+b}$인 지점에서 최대값을 갖습니다.
+D가 최적화 된 $D_G^*$을 $V(G,D)$에 대입하여 다시 표현한 수식을 논문에서는 C(G)라고 표현합니다.
 
 $$
 \begin{align}
 C(G) &= \max_{D}{V(G,D)} \\
 &= E_{x \sim p_{data}}[\log D_G^* (x)] + E_{z \sim p_{z}}[\log (1-D_G^* (G(z)))] \\
 &= E_{x \sim p_{data}}[\log D_G^* (x)] + E_{x \sim p_{g}}[\log (1-D_G^* (x))] \\
-&= E_{x \sim p_{data}}[\log \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}] + E_{x \sim p_{g}}[\log \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}] \\
+&= E_{x \sim p_{data}}[\log \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}] + E_{x \sim p_{g}}[\log \frac{p_{g}(x)}{p_{data}(x)+p_{g}(x)}] \\
 \end{align}
 $$
 
-#### Theorem 1
+**[Theorem 1]**
 
-$p_{g}(x) = p_{data}(x)$인 것과 C(G)가 global minimum에 놓이는 것은 필요충분 관계입니다.
-그리고 이 포인트에서 C(G)는 최소값 $-\log 4$ 값을 가지게 됩니다.
+*$p_{g}=p_{data}$일 때, 임의의 학습 기준 C(G)는 전역 최저점(global minimum)에 도달하고 그 값은 $- \log 4$다.*
 
-만약 $p_{g}(x) = p_{data}(x)$이면 $D_G^* (x)=\frac{1}{2}$가 됩니다.
-그러면 수식 C(G)는 $\log \frac{1}{2} + \log \frac{1}{2} = -\log 4$가 됩니다.
-이것은 C(G)가 가질 수 있는 최소값이자 오직 $p_{g}(x) = p_{data}(x)$인 경우에만 달성됩니다.
+**[Proof]**
 
-수식 C(G)가 가질 수 있는 최소값이 $-\log 4$이기 때문에 목적 함수 $V(G,D)$는 다음과 같이 다시 쓰여질 수 있습니다.
+$p_{g}(x) = p_{data}(x)$이면 $D_G^* (x)=\frac{1}{2}$가 됩니다.
+이 값을 C(G)에 대입하면 $\log \frac{1}{2} + \log \frac{1}{2} = -\log 4$를 얻을 수 있습니다.
+그러나 이 값은 $p_{g}$와 $p_{data}$ 분포가 일치할 때 얻어지는 것으로 분포의 차이가 존재할 경우 패널티가 붙어야 합니다.
+C(G)를 변형하는 과정을 통해 중간에 어떤 패널티가 생길 수 있는지 살펴보겠습니다.
 
 $$
 \begin{align}
-C(G) &= -\log(4) + KL(p_{data} || \frac{p_{data}+P_g}{2}) + KL(p_g || \frac{p_{data}+P_g}{2}) \\
+C(G) &= E_{x \sim p_{data}}[\log \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}] + E_{x \sim p_{g}}[\log \frac{p_{g}(x)}{p_{data}(x)+p_{g}(x)}] \\
+&= \int_{x} p_{data}(x)\log(\frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)})\, dx + \int_{x} p_{g}(x)\log(\frac{p_{g}(x)}{p_{data}(x)+p_{g}(x)})\, dx \\
+&= -\log(4) + \log(2) + \int_{x} p_{data}(x)\log(\frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)})\, dx + \log(2) + \int_{x} p_{g}(x)\log(\frac{p_{g}(x)}{p_{data}(x)+p_{g}(x)})\, dx \\
+&= -\log(4) + \int_{x} p_{data}(x)\log(\frac{p_{data}(x)}{\frac{p_{data}+P_g}{2}})\, dx + \int_{x} p_{g}(x)\log(\frac{p_{g}(x)}{\frac{p_{data}+P_g}{2}})\, dx \\
+&= -\log(4) + KL(p_{data} || \frac{p_{data}+P_g}{2}) + KL(p_g || \frac{p_{data}+P_g}{2}) \\
+&= -\log(4) + 2 * JSD(p_{data} || P_g) \\
 \end{align}
 $$
 
 KL은 Kullback-Leibler divergence의 약자로 두 분포의 차이를 설명하는 개념입니다.
 임의의 두 분포 P와 Q가 있을 때, 다음과 같은 수식으로 표현됩니다.
 
-$$ KL(P||Q) = \sum_{i} P(i)\log(\frac{P(i)}{Q(i)}) $$
+$$ KL(P||Q) = \int_{x} P(x)\log(\frac{P(x)}{Q(x)}), dx $$
 
 만약 P와 Q가 동일한 분포라면 KL divergence는 0 값을 가지게 됩니다.
-그리고 위의 두 KL divergence는 Jensen-Shannon divergence로 변환이 가능합니다.
+동일한 분포가 아니라면 양수 값을 나타나게 되고 이는 최소점 $-\log 4$에 더해져 패널티 역할을 하게 되는 것입니다.
+추가적으로 두 KL divergence는 Jensen-Shannon divergence로 변환이 가능합니다.
 Jensen-Shannon divergence는 아래와 같은 수식으로 표현됩니다.
 
 $$ JSD(P||Q) = \frac{1}{2}KL(P||M) + \frac{1}{2}KL(Q||M) $$
 
-이 수식을 따라 KL divergence를 포함한 C(G) 수식을 다음과 같이 변경시킬 수 있습니다.
+논문에 있는 수식 (5)와 (6)은 위의 과정에 따라 유도되고 $p_{g}$와 $p_{data}$ 분포가 동일하다면 최소값 $-\log 4$를 갖게 됩니다.
 
-$$
-\begin{align}
-C(G) &= -\log(4) + 2 * JSD(p_{data} || P_g) \\
-\end{align}
-$$
+**[Proposition 2]**
 
-위에서 설명한 모든 과정을 연결하면 결과적으로 초기 $V(G,D)$는 아래와 같이 표현될 수 있습니다.
+*충분한 capa를 가진 G와 D가 algorithm 1을 따라 학습하면 최종적으로 $p_{g}$는 $p_{data}$에 수렴한다.*
 
-$$
-\begin{align}
-C(G) &= -\log(4) + 2 * JSD(p_{data} || P_g) \\
-&= -\log(4) + KL(p_{data} || \frac{p_{data}+P_g}{2}) + KL(p_g || \frac{p_{data}+P_g}{2}) \\
-&= -\log(4) + \sum_{i} p_{data}(i)*\log(\frac{p_{data}(i)}{\frac{p_{data}+P_g}{2}}) + \sum_{i} p_{g}(i)*\log(\frac{p_{g}(i)}{\frac{p_{data}+P_g}{2}}) \\
-&= -\log(4) + \log(2) + \sum_{i} p_{data}(i)*\log(\frac{p_{data}(i)}{p_{data}+P_g}) + \log(2) + \sum_{i} p_{g}(i)*\log(\frac{p_{g}(i)}{p_{data}+P_g}) \\
-&= \sum_{i} p_{data}(i)*\log(\frac{p_{data}(i)}{p_{data}+P_g}) + \sum_{i} p_{g}(i)*\log(\frac{p_{g}(i)}{p_{data}+P_g}) \\
-&= E_{x \sim p_{data}}[\log \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}] + E_{x \sim p_{g}}[\log \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}] \\
-&= V(G,D)
-\end{align}
-$$
+**[Proof]**
 
-#### Proposition 2
+$V(G,D)$를 $U(p_{g},D)$라는 $p_{g}$의 convex 함수로 가정합니다.
+Convex 함수의 supremum의 subderivatives라는 표현은 해당 함수에서 얻을 수 있는 모든 기울기 집합을 의미합니다([supremum](https://en.wikipedia.org/wiki/Infimum_and_supremum), [subderivatives](https://en.wikipedia.org/wiki/Subderivative)).
+그리고 이 집합 안에는 함수의 최대값이 되는 지점의 기울기도 포함되어 있습니다.
+이를 논문에서는 다음과 같은 수식으로 표현합니다.
 
-명제 :
-G,D가 충분한 케파를 가지고 알고리즘1 스탭을 따라가면 D는 optimum에 도달하고 $p_{g}$는 기준 수식 $E_{x \sim p_{data}}[\log D_G^* (x)] + E_{x \sim p_{g}}[\log (1-D_G^* (x))]$을 향상시키도록 업데이트 되어 결국 $p_{g}$가 $p_{data}$에 수렴한다.
+$$ f(x)=sup_{\alpha \in A}(f_{\alpha}(x)))$이고 $f_{\alpha}(x)$가 모든 $\alpha$에 대해 x에서 convex일 때, $\beta = arg sup_{\alpha \in A}(f_{\alpha}(x)))$라면 $\partial f_{\beta}(x) \in \partial f$$
 
-$p_{g}$의 함수로써 $V(G,D) = U(p_{g},D)$를 고려해보자.
-$U(p_{g},D)$는 $(p_{g}$ 안에서 convex다.
-convex 함수의 supremum의 2차 미분은 최대값에 도달한 포인트에서 함수의 미분을 포함합니다.
-즉, $f(x)=sup_{\alpha \in A}(f_{\alpha}(x)))$이고 $f_{\alpha}(x)$가 모든 $\alpha$에 대해 x에서 convex일 때, $\beta = arg sup_{\alpha \in A}(f_{\alpha}(x)))$라면 $\partial f_{\beta}(x) \in \partial f$ 입니다.
-
-여태까지 수식은 임의의 G에 대해 최적 D는 $p_{g}$에 대해 gradient descent 방식으로 계산될 수 있다는 것과 동치입니다.
-따라서 $sup_{D}U(p_{g},D)$는 $p_{g}$에서 convex이고 $p_{g}$의 일부 변화에 따라 $p_{g}$가 $p_{x}$에 수렴합니다.
+이는 최대 지점으로 미분해서 G를 업데이트 할 수 있다는 뜻이고 결국 SGD로 딥러닝 모델을 학습할 수 있다는 개념과 동치입니다.
+앞선 명제들과 합쳐 G가 주어졌을 때 최적 D를 찾을 수 있고 또 D가 주어지면 최적 G를 찾아갈 수 있으니 결국 algorithm 1에 따라 $p_{g}$는 $p_{data}$에 수렴하게 됩니다.
+단, proposition 2 명제에서 나타난 논리적 아쉬움은 해당 증명에서 얻어진 gradient는 $p_{g}$에 관한 것이나 실제 모델을 학습시키는 대상은 G 모델의 $\theta_{g}$입니다.
+이런 이론적 보장에 대한 아쉬움을 논문에서도 언급하고는 있지만 그럼에도 GAN framework는 유효하며 합리적으로 모델이 데이터 분포를 학습할 수 있습니다.
 
 ## 결과
 
