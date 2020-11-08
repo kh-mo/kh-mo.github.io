@@ -134,18 +134,12 @@ GAN의 학습 초반에 G가 D로부터 낮은 확률 값 0.1~0.2 정도의 값�
 
 Adversarial framework를 따라 무한한 capacity를 가진 non-parametric 모델 G, D가 점차 성능을 높여가서 결국에는 $p_{g}$가 $p_{data}$에 수렴하게 된다는 이론적 배경을 살펴보겠습니다.
 
+\[Proposition 1\]
 $$
 \begin{align}
-& [Proposition 1] \\
-& G가 주어졌을 때, 최적의 D는 D_G^* (x) = \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)} 이다. \\
+G가 주어졌을 때, 최적의 D는 D_G^* (x) = \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)} 이다. \\
 \end{align}
 $$
-
-
-> [Proposition 1]
->
->> G가 주어졌을 때, 최적의 D는 $ D_G^* (x) = \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}$ 이다.
-
 
 
 만약 임의의 G가 주어졌을 때, 최적의 D는 다음과 같이 주어집니다.
