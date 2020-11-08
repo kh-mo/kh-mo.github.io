@@ -180,9 +180,9 @@ $$
 C(G) &= E_{x \sim p_{data}}[\log \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}] + E_{x \sim p_{g}}[\log \frac{p_{g}(x)}{p_{data}(x)+p_{g}(x)}] \\
 &= \int_{x} p_{data}(x)\log(\frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)})\, dx + \int_{x} p_{g}(x)\log(\frac{p_{g}(x)}{p_{data}(x)+p_{g}(x)})\, dx \\
 &= -\log(4) + \log(2) + \int_{x} p_{data}(x)\log(\frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)})\, dx + \log(2) + \int_{x} p_{g}(x)\log(\frac{p_{g}(x)}{p_{data}(x)+p_{g}(x)})\, dx \\
-&= -\log(4) + \int_{x} p_{data}(x)\log(\frac{p_{data}(x)}{\frac{p_{data}+P_g}{2}})\, dx + \int_{x} p_{g}(x)\log(\frac{p_{g}(x)}{\frac{p_{data}+P_g}{2}})\, dx \\
-&= -\log(4) + KL(p_{data} || \frac{p_{data}+P_g}{2}) + KL(p_g || \frac{p_{data}+P_g}{2}) \\
-&= -\log(4) + 2 * JSD(p_{data} || P_g) \\
+&= -\log(4) + \int_{x} p_{data}(x)\log(\frac{p_{data}(x)}{\frac{p_{data}+p_{g}}{2}})\, dx + \int_{x} p_{g}(x)\log(\frac{p_{g}(x)}{\frac{p_{data}+p_{g}}{2}})\, dx \\
+&= -\log(4) + KL(p_{data} || \frac{p_{data}+p_{g}}{2}) + KL(p_g || \frac{p_{data}+p_{g}}{2}) \\
+&= -\log(4) + 2 * JSD(p_{data} || p_{g}) \\
 \end{align}
 $$
 
