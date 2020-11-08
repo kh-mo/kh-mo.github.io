@@ -211,7 +211,7 @@ Convex 함수의 supremum의 subderivatives라는 표현은 해당 함수에서 
 그리고 이 집합 안에는 함수의 최대값이 되는 지점의 기울기도 포함되어 있습니다.
 이를 논문에서는 다음과 같은 수식으로 표현합니다.
 
-$$ f(x)=sup_{\alpha \in A}(f_{\alpha}(x)))$이고 $f_{\alpha}(x)$가 모든 $\alpha$에 대해 x에서 convex일 때, $\beta = arg sup_{\alpha \in A}(f_{\alpha}(x)))$라면 $\partial f_{\beta}(x) \in \partial f$$
+$$ f(x)=sup_{\alpha \in A}(f_{\alpha}(x)))이고 f_{\alpha}(x)가 convex일 때, \beta = arg sup_{\alpha \in A}(f_{\alpha}(x)))라면 \partial f_{\beta}(x) \in \partial f이다$$
 
 이는 최대 지점으로 미분해서 G를 업데이트 할 수 있다는 뜻이고 결국 SGD로 딥러닝 모델을 학습할 수 있다는 개념과 동치입니다.
 앞선 명제들과 합쳐 G가 주어졌을 때 최적 D를 찾을 수 있고 또 D가 주어지면 최적 G를 찾아갈 수 있으니 결국 algorithm 1에 따라 $p_{g}$는 $p_{data}$에 수렴하게 됩니다.
