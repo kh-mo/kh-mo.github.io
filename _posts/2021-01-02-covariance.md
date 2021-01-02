@@ -78,3 +78,29 @@ $$
 \end{align}
 $$
 
+코드는 다음과 같이 쓸 수 있습니다.
+
+```
+import numpy as np
+import matplotlib.pyplot as plt
+
+# data
+x = [2,1,2,3,6,7,6,5]
+y = [3,2,1,2,5,6,7,6]
+color = [0,0,0,0,1,1,1,1]
+
+# covariance matrix
+np.cov(x[:4],y[:4], bias=True)
+
+array([[0.5, 0. ],
+       [0. , 0.5]])
+
+# image
+plt.scatter(x[:4],y[:4],c="red")
+plt.scatter(x[4:],y[4:],c="blue")
+plt.xlim(0,8)
+plt.ylim(0,8)
+plt.xlabel("x")
+plt.ylabel("y").set_rotation(0)
+plt.grid(linestyle='dotted')
+```
